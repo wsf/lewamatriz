@@ -97,6 +97,18 @@ const drawerTitle = document.querySelector("#drawer-title");
 const drawerNumber = document.querySelector("#drawer-number");
 const drawerContent = document.querySelector("#drawer-content");
 const drawerClose = document.querySelector("#drawer-close");
+const drawerNote = document.querySelector("#drawer-note");
+
+const scienceSections = [
+  ["01", "Diagnóstico del problema", "En 2024 Santa Fe registró $193.100 millones corrientes de inversión en I+D, equivalentes a $52.478 por habitante, 6,7 % del total nacional y 42 % de la Región Centro. Contó con 5.151 investigadores EJC, 2.081 personas de otro personal de I+D y 140 investigadores cada 100.000 habitantes. En 2023, las empresas empleaban 25,9 % del personal provincial de I+D, la mayor proporción de Región Centro.", "Los datos son provinciales y no describen por sí solos a Rosario. La serie 2019-2024 debe deflactarse y compararse con el total nacional y provincias equivalentes."],
+  ["02", "Marco normativo", "La Ley Provincial 13.742 organiza el sistema de CTI y crea ASaCTeI. Rosario cuenta con la Ordenanza 10.264/2021 de Compra Pública de Innovación, el Decreto 507/2022 y el Decreto 274/2026, que completa la regulación de compra precomercial y asociación para la innovación. La Ordenanza 9.279/2014 creó Open Data Rosario.", "No se localizó una norma provincial transversal y específica sobre IA para todo el Poder Ejecutivo. Deben relevarse protocolos de impacto, auditoría, explicabilidad, revisión humana y discontinuidad."],
+  ["03", "Instituciones y actores estatales", "El mapa incluye al Ministerio de Desarrollo Productivo, la Secretaría de Ciencia, Tecnología e Innovación, ASaCTeI, Municipalidad de Rosario, Legislatura y Concejo; UNR, UNL y UTN; CCT CONICET Rosario y Santa Fe; INTA, INTI, Polo Tecnológico, parques, incubadoras y empresas. El directorio de CONICET Rosario reúne institutos como CIFASIS, IBR, IFIR, IQUIR, IRICE e IICAR.", "Para cada institución faltan consolidar competencia, autoridad, presupuesto, ejecución, dotación, equipamiento, proyectos y mecanismos de coordinación."],
+  ["04", "Políticas y programas vigentes", "La Provincia informó $8.142.458.824,44 ejecutados en políticas CTI durante 2025. TecPRO 2024 financió 50 proyectos por $2.404.484.298,02. También se identificaron Investigación Orientada, Eventos CTI, becas de posgrado, #XperienciaUNR, Universidad y Desarrollo Sostenible, Tecnoteca Rosario y el régimen municipal de Compra Pública de Innovación.", "Los montos informados por el Ejecutivo deben conciliarse con la cuenta de inversión. Falta publicar un padrón integrado con localidad, beneficiario, monto, etapa y resultado."],
+  ["05", "Casos relevantes 2025-2026", "Se documentaron cinco casos: inversión científica provincial 2025; mesas provinciales de biotecnología y tecnologías digitales de mayo de 2026; reglamentación completa de Compra Pública de Innovación en febrero de 2026; proyecto rosarino de 600 cámaras con analítica de video basada en IA; y once prototipos de #XperienciaUNR desarrollados entre 2024 y 2025.", "Cada caso debe completarse con costo, contratación, datos utilizados, evaluación, resultados, riesgos, supervisión humana y estado actual."],
+  ["06", "Percepción ciudadana", "La Encuesta Provincial de Percepción de la Ciencia, la Tecnología y la Innovación 2023 dispone de un informe específico para Santa Fe y declara representatividad provincial.", "Falta extraer la ficha técnica y resultados provinciales. No se localizó una encuesta oficial representativa de la ciudad de Rosario sobre confianza o percepción de la IA."],
+  ["07", "Actores sociales y políticos", "El mapa inicial comprende universidades y organismos científicos, empresas de software, biotecnología, agtech, salud y logística; cámaras y clusters; sindicatos y colegios profesionales; organizaciones de derechos digitales y consumidores; Ejecutivos, Legislatura, Concejo y organismos de control.", "Registrar posición sobre financiamiento, regulación y adopción de IA, recursos, alianzas, capacidad de incidencia y población afectada."],
+  ["08", "Síntesis", "Los principales nudos son la fragmentación de evidencia; escasez de indicadores específicos para Rosario; brecha entre financiamiento y evaluación de resultados; falta de un registro transversal de IA pública; capacidades de transferencia desiguales; y riesgo de dependencia tecnológica de proveedores.", "Próximos productos: serie 2019-2024, presupuesto y ejecución 2024-2026, padrón de proyectos, inventario de capacidades y registro público de sistemas de IA."]
+];
 
 Object.entries(axes).forEach(([key, axis]) => {
   matrixFilter.insertAdjacentHTML("beforeend", `<option value="${key}">${axis.number} · ${axis.title}</option>`);
@@ -125,7 +137,7 @@ matrixFilter.addEventListener("change", renderMatrix);
 function openAxisDevelopment(key) {
   const axis = axes[key];
   const details = matrixDetails[key];
-  const sections = [
+  const sections = key === "ciencia" ? scienceSections : [
     ["01", "Diagnóstico del problema", axis.points[0], "Magnitud, evolución de cinco años, desigualdades territoriales y limitaciones estadísticas."],
     ["02", "Marco normativo", "Relevar normas nacionales, provinciales y municipales aplicables.", "Distinguir competencias legales, reglamentación vigente y vacíos normativos."],
     ["03", "Instituciones y actores estatales", details.institutions, "Registrar autoridad, competencia, programas, presupuesto, recursos y coordinación."],
@@ -137,6 +149,9 @@ function openAxisDevelopment(key) {
   ];
   drawerNumber.textContent = `Eje ${axis.number}`;
   drawerTitle.textContent = axis.title;
+  drawerNote.innerHTML = key === "ciencia"
+    ? `Informe consolidado al 23/10/2026 · <a href="docs/EJE_9_CIENCIA_TECNOLOGIA_INNOVACION_IA_SANTA_FE_ROSARIO_2026.md">abrir archivo de referencia en Markdown</a>`
+    : "Estructura estándar de desarrollo · los vacíos deben consignarse explícitamente y nunca completarse con supuestos.";
   drawerContent.innerHTML = sections.map(([number, title, content, requirement]) => `<section><span>${number}</span><div><h4>${title}</h4><p>${content}</p><small>${requirement}</small></div></section>`).join("");
   axisDrawer.classList.add("open");
   axisDrawer.setAttribute("aria-hidden", "false");

@@ -474,6 +474,7 @@ section.matrix-section { width: min(1180px, calc(100% - 28px)); }
 .axis-drawer .drawer-note,
 .axis-drawer .drawer-content { max-width: 1080px; margin-inline: auto; }
 .axis-drawer .drawer-note { margin-top: 18px; padding: 12px 14px; font-size: 12px; }
+.axis-drawer .drawer-note a { color: #2383e2; font-weight: 600; text-underline-offset: 2px; }
 .axis-drawer .drawer-content section { grid-template-columns: 38px 1fr; gap: 14px; padding: 20px 0; }
 .axis-drawer .drawer-content section > span { font-size: 11px; }
 .axis-drawer .drawer-content h4 { margin-bottom: 7px; font-size: 17px; }
