@@ -3,88 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Documentación del proceso de creación de la Matriz de diagnóstico de Santa Fe y Rosario.">
+  <meta name="description" content="Memoria pública del proceso de creación de la Matriz de diagnóstico de Santa Fe y Rosario.">
   <title>Lewa Matriz | Diagnóstico Santa Fe y Rosario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero" id="inicio">
-    <nav class="nav" aria-label="Navegación principal">
-      <a class="brand" href="#inicio"><span>LEWA</span> MATRIZ</a>
-      <div class="nav-links">
-        <a href="#proceso">Proceso</a><a href="#metodo">Método</a><a href="#ejes">Ejes</a><a href="#fuentes">Fuentes</a>
-      </div>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark">L</span>
+      <span>Lewa Matriz</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
+    <nav id="main-nav" aria-label="Navegación principal">
+      <a href="#proceso">Proceso</a>
+      <a href="#metodo">Método</a>
+      <a href="#ejes">Ejes</a>
+      <a href="#trazabilidad">Trazabilidad</a>
+      <a href="#fuentes">Fuentes</a>
     </nav>
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">Diagnóstico territorial · Octubre 2026</p>
-        <h1>Una matriz común para leer Santa Fe y Rosario con evidencia.</h1>
-        <p class="lead">Este sitio documenta cómo se construyó el instrumento de investigación: qué se pidió, cómo se organizaron los datos, qué decisiones metodológicas se tomaron y cómo deben continuar el relevamiento los diez equipos temáticos.</p>
-        <div class="actions">
-          <a class="button primary" href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Descargar matriz Word</a>
-          <a class="button secondary" href="#proceso">Ver el proceso</a>
-        </div>
-      </div>
-      <aside class="snapshot" aria-label="Resumen del proyecto">
-        <div><strong>8</strong><span>bloques metodológicos</span></div>
-        <div><strong>10</strong><span>ejes temáticos</span></div>
-        <div><strong>5 años</strong><span>horizonte de tendencias</span></div>
-        <div><strong>24 meses</strong><span>ventana para casos</span></div>
-      </aside>
-    </div>
   </header>
 
   <main>
-    <section class="section intro" id="proceso">
-      <div class="section-heading"><p class="eyebrow">Trazabilidad</p><h2>Del documento base a una herramienta operativa</h2></div>
-      <div class="timeline">
-        <article><span>01</span><div><h3>Lectura del documento original</h3><p>Se identificó que la primera versión era una plantilla: definía ocho bloques y diez ejes, pero todavía no aportaba evidencia suficiente para sostener diagnósticos ni propuestas.</p></div></article>
-        <article><span>02</span><div><h3>Definición del estándar común</h3><p>Se precisaron productos mínimos, preguntas, universos territoriales, fuentes y reglas para que equipos distintos produzcan resultados comparables.</p></div></article>
-        <article><span>03</span><div><h3>Investigación documental y web</h3><p>Se priorizaron INDEC, IPEC, Gobierno de Santa Fe, Municipalidad de Rosario, presupuestos, observatorios, normativa y fuentes periodísticas contrastadas.</p></div></article>
-        <article><span>04</span><div><h3>Edición y control</h3><p>Los dos cuadros se completaron en Word, se reorganizaron en formato apaisado y se revisaron estructura, legibilidad, enlaces, comparabilidad y vacíos de información.</p></div></article>
+    <section class="hero" id="inicio">
+      <div class="eyebrow">Santa Fe y Rosario · 2026</div>
+      <h1>Una matriz para convertir evidencia en decisiones públicas</h1>
+      <p class="hero-copy">Este sitio documenta cómo se construyó un instrumento común para investigar diez áreas estratégicas, comparar diagnósticos y preparar una segunda etapa de propuestas de política pública.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Descargar matriz Word</a>
+        <a class="button button-secondary" href="#proceso">Conocer el proceso</a>
+      </div>
+      <dl class="hero-stats" aria-label="Resumen del proyecto">
+        <div><dt>8</dt><dd>bloques metodológicos</dd></div>
+        <div><dt>10</dt><dd>ejes temáticos</dd></div>
+        <div><dt>5 años</dt><dd>de tendencia estructural</dd></div>
+        <div><dt>24 meses</dt><dd>de agenda y casos</dd></div>
+      </dl>
+    </section>
+
+    <section class="section intro" aria-labelledby="proposito-title">
+      <div>
+        <p class="section-kicker">Propósito</p>
+        <h2 id="proposito-title">Diagnósticos comparables, territoriales y verificables</h2>
+      </div>
+      <div class="intro-copy">
+        <p>La matriz organiza un relevamiento interdisciplinario para que diferentes equipos trabajen con criterios homogéneos. Cada dato debe conservar su definición, período, fecha de publicación, fuente directa y limitaciones.</p>
+        <p>El proyecto distingue ciudad de Rosario, departamento Rosario, aglomerado Gran Rosario, Gran Santa Fe y total provincial. Esos universos no se comparan como si fueran equivalentes.</p>
       </div>
     </section>
 
-    <section class="section method" id="metodo">
-      <div class="section-heading"><p class="eyebrow">Método común</p><h2>Ocho bloques para cada eje</h2><p>Cada bloque produce una evidencia concreta. La síntesis sólo puede utilizar afirmaciones trazables a los siete bloques anteriores.</p></div>
-      <div class="method-grid" id="method-grid"></div>
+    <section class="section process" id="proceso" aria-labelledby="proceso-title">
+      <p class="section-kicker">Cómo se construyó</p>
+      <h2 id="proceso-title">Del encargo inicial a un instrumento de trabajo</h2>
+      <ol class="timeline">
+        <li><span>01</span><div><h3>Definición del objetivo</h3><p>Completar los dos cuadros originales del documento Word y conservar su estructura para uso inmediato de los equipos asesores.</p></div></li>
+        <li><span>02</span><div><h3>Conversión de pautas en tareas</h3><p>Las orientaciones generales se transformaron en preguntas, productos mínimos, documentos a buscar y reglas comunes de registro.</p></div></li>
+        <li><span>03</span><div><h3>Investigación documental</h3><p>Se priorizaron fuentes oficiales, presupuestos, normas, estadísticas, informes de gestión, organismos de control y antecedentes periodísticos contrastados.</p></div></li>
+        <li><span>04</span><div><h3>Desarrollo territorial</h3><p>Los diez ejes incorporaron indicadores, instituciones, competencias, capacidades, casos recientes y vacíos de información.</p></div></li>
+        <li><span>05</span><div><h3>Control de calidad</h3><p>Se revisaron comparabilidad territorial, vigencia, enlaces, trazabilidad, coherencia interna y legibilidad del archivo final.</p></div></li>
+        <li><span>06</span><div><h3>Apertura del proceso</h3><p>Este sitio publica la metodología y el recorrido para facilitar revisión, comparación y futuras actualizaciones.</p></div></li>
+      </ol>
     </section>
 
-    <section class="section territory">
-      <div class="territory-copy"><p class="eyebrow">Regla territorial</p><h2>No comparar universos diferentes como si fueran equivalentes.</h2><p>Ciudad de Rosario, departamento Rosario, aglomerado Gran Rosario, aglomerado Gran Santa Fe y total provincial responden a delimitaciones distintas. Cada indicador debe registrar universo, período, unidad, fuente y limitaciones.</p></div>
-      <div class="territory-list"><span>Ciudad de Rosario</span><span>Departamento Rosario</span><span>Gran Rosario EPH</span><span>Gran Santa Fe EPH</span><span>Total provincial</span></div>
-    </section>
-
-    <section class="section" id="ejes">
-      <div class="section-heading"><p class="eyebrow">Agenda de relevamiento</p><h2>Diez ejes temáticos</h2><p>Seleccioná un eje para ver sus indicadores prioritarios, instituciones y asuntos de agenda.</p></div>
-      <div class="axis-controls" role="tablist" aria-label="Ejes temáticos" id="axis-controls"></div>
-      <article class="axis-detail" id="axis-detail" aria-live="polite"></article>
-    </section>
-
-    <section class="section evidence">
-      <div class="section-heading"><p class="eyebrow">Criterio de evidencia</p><h2>Qué entra en la matriz y qué queda como hipótesis</h2></div>
-      <div class="evidence-grid">
-        <article><h3>Dato comprobado</h3><p>Incluye definición, período, fecha de publicación, universo, unidad y enlace directo.</p></article>
-        <article><h3>Declaración</h3><p>Se atribuye a quien la emitió y no se presenta como resultado demostrado.</p></article>
-        <article><h3>Interpretación</h3><p>Explica patrones sin atribuir causalidad que la evidencia no sostenga.</p></article>
-        <article><h3>Vacío</h3><p>Se registra como “Sin información pública verificable localizada”, sin completar con supuestos.</p></article>
+    <section class="section method" id="metodo" aria-labelledby="metodo-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Método común</p><h2 id="metodo-title">Ocho bloques para cada eje</h2></div>
+        <p>Todos los equipos siguen el mismo recorrido y producen resultados mínimos comparables.</p>
+      </div>
+      <div class="method-grid">
+        <article><b>01</b><h3>Diagnóstico</h3><p>Magnitud, evolución, distribución territorial y vacíos.</p></article>
+        <article><b>02</b><h3>Marco normativo</h3><p>Derechos, obligaciones, competencias y reglamentación.</p></article>
+        <article><b>03</b><h3>Instituciones</h3><p>Responsables, recursos, capacidades y coordinación.</p></article>
+        <article><b>04</b><h3>Políticas vigentes</h3><p>Cobertura, presupuesto, ejecución, metas y evaluación.</p></article>
+        <article><b>05</b><h3>Casos recientes</h3><p>Hechos relevantes, respuesta pública y estado actual.</p></article>
+        <article><b>06</b><h3>Percepción</h3><p>Preocupaciones, satisfacción y contraste con registros.</p></article>
+        <article><b>07</b><h3>Actores</h3><p>Intereses, posiciones, recursos y capacidad de incidencia.</p></article>
+        <article><b>08</b><h3>Síntesis</h3><p>Nudos críticos, prioridades, riesgos y evidencia faltante.</p></article>
       </div>
     </section>
 
-    <section class="section sources" id="fuentes">
-      <div class="section-heading"><p class="eyebrow">Fuentes prioritarias</p><h2>Una base verificable y actualizable</h2></div>
+    <section class="section axes" id="ejes" aria-labelledby="ejes-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Alcance temático</p><h2 id="ejes-title">Diez miradas sobre un mismo territorio</h2></div>
+        <p>Seleccioná un eje para ver su foco de relevamiento.</p>
+      </div>
+      <div class="axis-layout">
+        <div class="axis-list" role="tablist" aria-label="Ejes temáticos">
+          <button class="axis-button active" role="tab" aria-selected="true" data-axis="seguridad">Seguridad y convivencia</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="justicia">Justicia y sistema penal</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="economia">Economía, producción y empleo</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="educacion">Educación</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="salud">Salud</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="habitat">Hábitat y vivienda</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="infraestructura">Infraestructura y movilidad</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="energia">Energía y servicios públicos</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="ciencia">Ciencia, tecnología e innovación</button>
+          <button class="axis-button" role="tab" aria-selected="false" data-axis="cultura">Cultura, deporte y juventudes</button>
+        </div>
+        <article class="axis-detail" id="axis-detail" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <section class="section principles" id="trazabilidad" aria-labelledby="principios-title">
+      <p class="section-kicker">Reglas de evidencia</p>
+      <h2 id="principios-title">Lo que la matriz exige</h2>
+      <div class="principle-grid">
+        <article><span>Fuente</span><h3>Cada afirmación debe poder rastrearse</h3><p>Las cifras, normas, autoridades, presupuestos y casos llevan una fuente identificable y un enlace directo cuando está disponible.</p></article>
+        <article><span>Límite</span><h3>La ausencia de datos también se registra</h3><p>Cuando no hay información pública verificable, el vacío se explicita. No se completa con estimaciones sin respaldo.</p></article>
+        <article><span>Criterio</span><h3>Hechos, análisis e hipótesis no se mezclan</h3><p>La matriz separa datos comprobados, declaraciones, interpretaciones y cuestiones que todavía deben validarse.</p></article>
+      </div>
+    </section>
+
+    <section class="section sources" id="fuentes" aria-labelledby="fuentes-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Fuentes prioritarias</p><h2 id="fuentes-title">Una base verificable y actualizable</h2></div>
+        <p>El relevamiento se apoya primero en organismos oficiales y documentos primarios.</p>
+      </div>
       <div class="source-grid">
         <a href="https://www.indec.gob.ar/" target="_blank" rel="noreferrer"><strong>INDEC</strong><span>Censo, EPH y estadísticas nacionales</span></a>
         <a href="https://www.santafe.gob.ar/index.php/web/content/view/full/93664" target="_blank" rel="noreferrer"><strong>IPEC</strong><span>Estadística provincial</span></a>
-        <a href="https://www.santafe.gob.ar/ms/osp/" target="_blank" rel="noreferrer"><strong>OSP</strong><span>Seguridad y violencia</span></a>
-        <a href="https://datos.rosario.gob.ar/" target="_blank" rel="noreferrer"><strong>Rosario Datos</strong><span>Indicadores y bases municipales</span></a>
-        <a href="https://www.santafe.gob.ar/index.php/web/content/view/full/255848" target="_blank" rel="noreferrer"><strong>Presupuesto 2026</strong><span>Créditos y programas provinciales</span></a>
-        <a href="https://www.rosario.gob.ar/inicio/presupuesto" target="_blank" rel="noreferrer"><strong>Presupuesto Rosario</strong><span>Programación y ejecución municipal</span></a>
+        <a href="https://www.santafe.gob.ar/ms/osp/" target="_blank" rel="noreferrer"><strong>OSP</strong><span>Seguridad y violencia altamente lesiva</span></a>
+        <a href="https://datos.rosario.gob.ar/" target="_blank" rel="noreferrer"><strong>Rosario Datos</strong><span>Bases e indicadores municipales</span></a>
       </div>
+    </section>
+
+    <section class="section next" aria-labelledby="next-title">
+      <div><p class="section-kicker">Próxima etapa</p><h2 id="next-title">Del diagnóstico a las propuestas</h2></div>
+      <div><p>La primera fase ordena evidencia y responsabilidades. La segunda podrá formular proyectos de corto, mediano y largo plazo, con metas, responsables, costos e indicadores.</p><p class="status"><span></span> Matriz base completada · versión del 23 de octubre de 2026</p></div>
     </section>
   </main>
 
-  <footer><div><strong>LEWA MATRIZ</strong><p>Instrumento de trabajo para equipos de asesoramiento político y políticas públicas.</p></div><a href="#inicio">Volver arriba ↑</a></footer>
+  <footer>
+    <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
+    <a href="#inicio">Volver al inicio ↑</a>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
