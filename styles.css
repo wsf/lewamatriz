@@ -286,6 +286,35 @@ footer { margin-left: calc(var(--sidebar) + 18px); padding: 14px 0 20px; border-
 .source-grid span { margin-top: 2px; }
 @media (max-width: 900px) { .hero, .section { width: min(100% - 28px, 780px); } }
 
+/* Interactive diagnostic matrix */
+.matrix-intro { max-width: 650px; margin: 7px 0 14px; color: #787774; font-size: 12px; }
+.matrix-app { background: #fff; }
+.matrix-toolbar { display: grid; grid-template-columns: 1fr 220px auto; gap: 8px; align-items: end; padding: 10px 0; border-block: 1px solid #eee; }
+.matrix-toolbar label span { display: block; margin-bottom: 4px; color: #9b9a97; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+.matrix-toolbar input, .matrix-toolbar select { width: 100%; min-height: 34px; padding: 7px 9px; color: #37352f; background: #fff; border: 1px solid #ddd; border-radius: 3px; font-size: 11px; }
+.matrix-toolbar button { min-height: 34px; padding: 7px 11px; color: #37352f; background: #f7f7f5; border: 1px solid #ddd; border-radius: 3px; font-size: 11px; cursor: pointer; }
+.matrix-toolbar button:hover { background: #efefed; }
+.matrix-status { display: flex; justify-content: space-between; padding: 8px 0; color: #9b9a97; font-size: 10px; }
+.matrix-status strong { color: #37352f; }
+.matrix-table-wrap { max-width: 100%; overflow: auto; border: 1px solid #eee; }
+.matrix-table { width: 100%; min-width: 760px; border-collapse: collapse; table-layout: fixed; font-size: 10px; line-height: 1.45; }
+.matrix-table th, .matrix-table td { padding: 9px 10px; border-right: 1px solid #eee; border-bottom: 1px solid #eee; text-align: left; vertical-align: top; }
+.matrix-table tr:last-child > * { border-bottom: 0; }
+.matrix-table tr > *:last-child { border-right: 0; }
+.matrix-table thead th { position: sticky; top: 0; z-index: 1; color: #787774; background: #f7f7f5; font-size: 9px; font-weight: 700; text-transform: uppercase; }
+.matrix-table tbody th { width: 20%; font-size: 11px; font-weight: 600; }
+.matrix-table tbody th span { display: block; margin-bottom: 3px; color: #9b9a97; font-size: 9px; }
+.matrix-table tbody td { color: #5f5e5b; }
+.matrix-table tbody tr:hover { background: #fbfbfa; }
+.matrix-empty { padding: 18px; color: #787774; border: 1px solid #eee; border-top: 0; text-align: center; font-size: 11px; }
+.matrix-fullscreen { position: fixed; inset: 12px; z-index: 100; display: flex; flex-direction: column; padding: 18px; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 12px 48px rgba(15,15,15,.22); }
+.matrix-fullscreen .matrix-table-wrap { flex: 1; }
+.matrix-fullscreen .matrix-table { min-width: 1000px; font-size: 12px; }
+.matrix-fullscreen .matrix-table th, .matrix-fullscreen .matrix-table td { padding: 12px; }
+.matrix-fullscreen .matrix-toolbar { grid-template-columns: 1fr 280px auto; }
+body.matrix-open { overflow: hidden; }
+@media (max-width: 700px) { .matrix-toolbar { grid-template-columns: 1fr; } .matrix-status { display: block; } .matrix-status span { display: block; margin-top: 2px; } .matrix-fullscreen { inset: 0; padding: 12px; border-radius: 0; } }
+
 /* Workspace board inspired by the supplied Notion reference */
 .hero { width: min(1120px, calc(100% - 36px)); }
 .workspace-title { display: flex; align-items: center; gap: 10px; margin: 5px 0 13px; }

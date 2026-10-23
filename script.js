@@ -15,6 +15,18 @@ const detail = document.querySelector("#axis-detail");
 const buttons = [...document.querySelectorAll(".axis-button")];
 const search = document.querySelector("#axis-search");
 const sideNav = document.querySelector("#side-nav");
+const matrixDetails = {
+  seguridad: { institutions: "Ministerio de Justicia y Seguridad; Policía de Santa Fe; Municipalidad de Rosario; fuerzas federales.", cases: "Violencia armada, homicidios, robos, convivencia urbana y coordinación interjurisdiccional." },
+  justicia: { institutions: "Poder Judicial; MPA; Servicio Público de la Defensa; Servicio Penitenciario; Legislatura provincial.", cases: "Duración de causas, prisión preventiva, capacidad penitenciaria, vacantes y acceso a defensa." },
+  economia: { institutions: "Ministerios productivos; IPEC; municipios; agencias de desarrollo; cámaras empresarias y sindicatos.", cases: "Empleo, informalidad, ingresos, pobreza, inversión, crédito, exportaciones y actividad pyme." },
+  educacion: { institutions: "Ministerio de Educación; universidades; municipios; institutos terciarios; gremios docentes.", cases: "Asistencia, trayectorias, aprendizajes, infraestructura, conectividad y formación técnica." },
+  salud: { institutions: "Ministerio de Salud; hospitales y centros de salud; municipios; universidades; obras sociales.", cases: "Acceso, turnos, medicamentos, salud mental, consumos, dengue y vacunación." },
+  habitat: { institutions: "Secretaría de Hábitat; municipios; ASSA; EPE; organismos de vivienda y planificación urbana.", cases: "Déficit habitacional, alquiler, barrios populares, servicios, suelo y riesgo hídrico." },
+  infraestructura: { institutions: "Ministerios de Obras Públicas y Transporte; Vialidad; ENAPRO; municipios; empresas prestatarias.", cases: "Obras, transporte, tarifa, subsidios, accesibilidad, logística, puertos e hidrovía." },
+  energia: { institutions: "EPE; ASSA; ENARGAS; ENRE; municipios; organismos de defensa del consumidor.", cases: "Tarifas, cortes, calidad, deuda, inversión, agua, cloacas, gas y conectividad." },
+  ciencia: { institutions: "Universidades; CONICET; INTA; INTI; CCT Rosario; polos tecnológicos; empresas y gobiernos.", cases: "Inversión en I+D, talento, IA, datos, cómputo, transferencia, adopción pyme y financiamiento." },
+  cultura: { institutions: "Ministerios y secretarías de Cultura; municipios; clubes; universidades; organizaciones juveniles.", cases: "Oferta cultural, acceso, clubes, becas, empleo joven, salud mental y participación." }
+};
 
 function renderAxis(key) {
   const axis = axes[key];
@@ -64,4 +76,46 @@ search.addEventListener("input", () => {
   }
 });
 
+const matrixApp = document.querySelector("#matrix-app");
+const matrixBody = document.querySelector("#matrix-body");
+const matrixSearch = document.querySelector("#matrix-search");
+const matrixFilter = document.querySelector("#matrix-filter");
+const matrixCount = document.querySelector("#matrix-count");
+const matrixEmpty = document.querySelector("#matrix-empty");
+const matrixExpand = document.querySelector("#matrix-expand");
+
+Object.entries(axes).forEach(([key, axis]) => {
+  matrixFilter.insertAdjacentHTML("beforeend", `<option value="${key}">${axis.number} · ${axis.title}</option>`);
+});
+
+function renderMatrix() {
+  const query = matrixSearch.value.trim().toLocaleLowerCase("es");
+  const filter = matrixFilter.value;
+  const rows = Object.entries(axes).filter(([key, axis]) => {
+    const details = matrixDetails[key];
+    const searchable = [axis.title, ...axis.points, details.institutions, details.cases].join(" ").toLocaleLowerCase("es");
+    return (filter === "all" || key === filter) && searchable.includes(query);
+  });
+
+  matrixBody.innerHTML = rows.map(([key, axis]) => {
+    const details = matrixDetails[key];
+    return `<tr><th scope="row"><span>${axis.number}</span>${axis.title}</th><td>${axis.points[0]}</td><td>${details.institutions}</td><td>${details.cases}</td></tr>`;
+  }).join("");
+  matrixCount.textContent = `${rows.length} ${rows.length === 1 ? "eje" : "ejes"}`;
+  matrixEmpty.hidden = rows.length !== 0;
+}
+
+matrixSearch.addEventListener("input", renderMatrix);
+matrixFilter.addEventListener("change", renderMatrix);
+matrixExpand.addEventListener("click", () => {
+  const expanded = matrixApp.classList.toggle("matrix-fullscreen");
+  document.body.classList.toggle("matrix-open", expanded);
+  matrixExpand.textContent = expanded ? "Cerrar vista ampliada" : "Ampliar matriz";
+  matrixExpand.setAttribute("aria-expanded", String(expanded));
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && matrixApp.classList.contains("matrix-fullscreen")) matrixExpand.click();
+});
+
 renderAxis("seguridad");
+renderMatrix();

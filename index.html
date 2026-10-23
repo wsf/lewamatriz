@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261023-5">
+  <link rel="stylesheet" href="styles.css?v=20261023-6">
 </head>
 <body>
   <header class="site-header">
@@ -51,6 +51,7 @@
       <div class="side-subgroup"><span>Innovación</span><a href="#ejes" data-axis-link="ciencia">Ciencia e IA</a></div>
     </div>
     <a class="side-main" href="#trazabilidad">Reglas de evidencia</a>
+    <a class="side-main" href="#matriz-interactiva">Matriz interactiva</a>
     <a class="side-main" href="#fuentes">Fuentes</a>
   </aside>
 
@@ -137,6 +138,27 @@
       </div>
     </section>
 
+    <section class="section matrix-section" id="matriz-interactiva" aria-labelledby="matrix-title">
+      <p class="section-kicker">Producto final</p>
+      <h2 id="matrix-title">Matriz de diagnóstico interactiva</h2>
+      <p class="matrix-intro">Explorá los diez ejes, filtrá contenidos y ampliá la matriz para trabajarla en toda la pantalla.</p>
+      <div class="matrix-app" id="matrix-app">
+        <div class="matrix-toolbar">
+          <label><span>Buscar</span><input id="matrix-search" type="search" placeholder="Indicador, institución o tema…"></label>
+          <label><span>Eje</span><select id="matrix-filter"><option value="all">Todos los ejes</option></select></label>
+          <button id="matrix-expand" type="button" aria-expanded="false">Ampliar matriz</button>
+        </div>
+        <div class="matrix-status"><strong id="matrix-count">10 ejes</strong><span>Indicadores · Instituciones · Temas y casos</span></div>
+        <div class="matrix-table-wrap">
+          <table class="matrix-table">
+            <thead><tr><th>Eje</th><th>Indicadores mínimos</th><th>Instituciones a mapear</th><th>Temas y casos</th></tr></thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+        <p class="matrix-empty" id="matrix-empty" hidden>No se encontraron resultados para esta búsqueda.</p>
+      </div>
+    </section>
+
     <section class="section principles" id="trazabilidad" aria-labelledby="principios-title">
       <p class="section-kicker">Reglas de evidencia</p>
       <h2 id="principios-title">Lo que la matriz exige</h2>
@@ -170,6 +192,6 @@
     <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
     <a href="#inicio">Volver al inicio ↑</a>
   </footer>
-  <script src="script.js?v=20261023-2"></script>
+  <script src="script.js?v=20261023-6"></script>
 </body>
 </html>
