@@ -56,6 +56,7 @@ sideNav.addEventListener("click", event => {
   if (axisLink) {
     const matchingButton = buttons.find(button => button.dataset.axis === axisLink.dataset.axisLink);
     if (matchingButton) matchingButton.click();
+    openAxisDevelopment(axisLink.dataset.axisLink);
   }
   sideNav.classList.remove("open");
   menuButton.setAttribute("aria-expanded", "false");
@@ -83,6 +84,11 @@ const matrixFilter = document.querySelector("#matrix-filter");
 const matrixCount = document.querySelector("#matrix-count");
 const matrixEmpty = document.querySelector("#matrix-empty");
 const matrixExpand = document.querySelector("#matrix-expand");
+const axisDrawer = document.querySelector("#axis-drawer");
+const drawerTitle = document.querySelector("#drawer-title");
+const drawerNumber = document.querySelector("#drawer-number");
+const drawerContent = document.querySelector("#drawer-content");
+const drawerClose = document.querySelector("#drawer-close");
 
 Object.entries(axes).forEach(([key, axis]) => {
   matrixFilter.insertAdjacentHTML("beforeend", `<option value="${key}">${axis.number} · ${axis.title}</option>`);
@@ -99,7 +105,7 @@ function renderMatrix() {
 
   matrixBody.innerHTML = rows.map(([key, axis]) => {
     const details = matrixDetails[key];
-    return `<tr><th scope="row"><span>${axis.number}</span>${axis.title}</th><td>${axis.points[0]}</td><td>${details.institutions}</td><td>${details.cases}</td></tr>`;
+    return `<tr tabindex="0" data-axis-key="${key}" aria-label="Abrir desarrollo de ${axis.title}"><th scope="row"><span>${axis.number}</span>${axis.title}</th><td>${axis.points[0]}</td><td>${details.institutions}</td><td>${details.cases}</td></tr>`;
   }).join("");
   matrixCount.textContent = `${rows.length} ${rows.length === 1 ? "eje" : "ejes"}`;
   matrixEmpty.hidden = rows.length !== 0;
@@ -107,6 +113,42 @@ function renderMatrix() {
 
 matrixSearch.addEventListener("input", renderMatrix);
 matrixFilter.addEventListener("change", renderMatrix);
+
+function openAxisDevelopment(key) {
+  const axis = axes[key];
+  const details = matrixDetails[key];
+  const sections = [
+    ["01", "Diagnóstico del problema", axis.points[0], "Magnitud, evolución de cinco años, desigualdades territoriales y limitaciones estadísticas."],
+    ["02", "Marco normativo", "Relevar normas nacionales, provinciales y municipales aplicables.", "Distinguir competencias legales, reglamentación vigente y vacíos normativos."],
+    ["03", "Instituciones y actores estatales", details.institutions, "Registrar autoridad, competencia, programas, presupuesto, recursos y coordinación."],
+    ["04", "Políticas y programas vigentes", "Identificar programas activos y documentar cobertura, metas, presupuesto y resultados.", "Consignar: “Sin información pública verificable localizada” cuando corresponda."],
+    ["05", "Casos resonantes en la prensa", details.cases, "Para cada caso: fecha, actores, fuente original, estado actual y problema que permite examinar."],
+    ["06", "Percepción ciudadana", "Contrastar encuestas, reclamos y consultas con registros administrativos.", "Separar percepción, experiencia de usuarios y evidencia objetiva."],
+    ["07", "Actores sociales y políticos", "Mapear organizaciones, cámaras, sindicatos, universidades, especialistas y grupos afectados.", "Registrar posiciones, intereses, recursos y capacidad de incidencia."],
+    ["08", "Síntesis", axis.points[1], "Identificar nudos críticos, responsabilidades, vacíos de información y asuntos para una segunda etapa de propuestas."]
+  ];
+  drawerNumber.textContent = `Eje ${axis.number}`;
+  drawerTitle.textContent = axis.title;
+  drawerContent.innerHTML = sections.map(([number, title, content, requirement]) => `<section><span>${number}</span><div><h4>${title}</h4><p>${content}</p><small>${requirement}</small></div></section>`).join("");
+  axisDrawer.classList.add("open");
+  axisDrawer.setAttribute("aria-hidden", "false");
+  drawerClose.focus();
+}
+
+matrixBody.addEventListener("click", event => {
+  const row = event.target.closest("[data-axis-key]");
+  if (row) openAxisDevelopment(row.dataset.axisKey);
+});
+matrixBody.addEventListener("keydown", event => {
+  if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-axis-key]")) {
+    event.preventDefault();
+    openAxisDevelopment(event.target.dataset.axisKey);
+  }
+});
+drawerClose.addEventListener("click", () => {
+  axisDrawer.classList.remove("open");
+  axisDrawer.setAttribute("aria-hidden", "true");
+});
 matrixExpand.addEventListener("click", () => {
   const expanded = matrixApp.classList.toggle("matrix-fullscreen");
   document.body.classList.toggle("matrix-open", expanded);
@@ -114,7 +156,9 @@ matrixExpand.addEventListener("click", () => {
   matrixExpand.setAttribute("aria-expanded", String(expanded));
 });
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && matrixApp.classList.contains("matrix-fullscreen")) matrixExpand.click();
+  if (event.key !== "Escape") return;
+  if (axisDrawer.classList.contains("open")) drawerClose.click();
+  else if (matrixApp.classList.contains("matrix-fullscreen")) matrixExpand.click();
 });
 
 renderAxis("seguridad");

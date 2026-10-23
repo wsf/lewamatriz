@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261023-6">
+  <link rel="stylesheet" href="styles.css?v=20261023-7">
 </head>
 <body>
   <header class="site-header">
@@ -29,11 +29,13 @@
 
   <aside class="side-nav" id="side-nav" aria-label="Índice del documento">
     <p class="side-label">Contenido</p>
-    <a class="side-main" href="#inicio">Resumen ejecutivo</a>
-    <a class="side-main" href="#proposito">Propósito</a>
-    <a class="side-main" href="#proceso">Proceso</a>
     <div class="side-group">
-      <a class="side-main" href="#metodo">Método común</a>
+      <a class="side-main" href="#inicio">Introducción</a>
+      <a href="#proposito">Propósito y alcance</a>
+      <a href="#proceso">Proceso de construcción</a>
+    </div>
+    <div class="side-group">
+      <a class="side-main" href="#metodo">Metodología de trabajo</a>
       <a href="#bloque-1">Diagnóstico</a>
       <a href="#bloque-2">Marco normativo</a>
       <a href="#bloque-3">Instituciones</a>
@@ -44,15 +46,19 @@
       <a href="#bloque-8">Síntesis</a>
     </div>
     <div class="side-group">
-      <a class="side-main" href="#ejes">Ejes temáticos</a>
-      <div class="side-subgroup"><span>Estado y convivencia</span><a href="#ejes" data-axis-link="seguridad">Seguridad</a><a href="#ejes" data-axis-link="justicia">Justicia</a></div>
-      <div class="side-subgroup"><span>Desarrollo humano</span><a href="#ejes" data-axis-link="educacion">Educación</a><a href="#ejes" data-axis-link="salud">Salud</a><a href="#ejes" data-axis-link="habitat">Hábitat</a><a href="#ejes" data-axis-link="cultura">Cultura y juventudes</a></div>
-      <div class="side-subgroup"><span>Producción y territorio</span><a href="#ejes" data-axis-link="economia">Economía y empleo</a><a href="#ejes" data-axis-link="infraestructura">Infraestructura</a><a href="#ejes" data-axis-link="energia">Energía</a></div>
-      <div class="side-subgroup"><span>Innovación</span><a href="#ejes" data-axis-link="ciencia">Ciencia e IA</a></div>
+      <a class="side-main" href="#matriz-interactiva">Matriz</a>
+      <a href="#matriz-interactiva">Vista interactiva</a>
+      <div class="side-subgroup"><span>Estado y convivencia</span><a href="#matriz-interactiva" data-axis-link="seguridad">Seguridad</a><a href="#matriz-interactiva" data-axis-link="justicia">Justicia</a></div>
+      <div class="side-subgroup"><span>Desarrollo humano</span><a href="#matriz-interactiva" data-axis-link="educacion">Educación</a><a href="#matriz-interactiva" data-axis-link="salud">Salud</a><a href="#matriz-interactiva" data-axis-link="habitat">Hábitat</a><a href="#matriz-interactiva" data-axis-link="cultura">Cultura y juventudes</a></div>
+      <div class="side-subgroup"><span>Producción y territorio</span><a href="#matriz-interactiva" data-axis-link="economia">Economía y empleo</a><a href="#matriz-interactiva" data-axis-link="infraestructura">Infraestructura</a><a href="#matriz-interactiva" data-axis-link="energia">Energía</a></div>
+      <div class="side-subgroup"><span>Innovación</span><a href="#matriz-interactiva" data-axis-link="ciencia">Ciencia e IA</a></div>
     </div>
-    <a class="side-main" href="#trazabilidad">Reglas de evidencia</a>
-    <a class="side-main" href="#matriz-interactiva">Matriz interactiva</a>
-    <a class="side-main" href="#fuentes">Fuentes</a>
+    <div class="side-group">
+      <a class="side-main" href="#fuentes">Referencias</a>
+      <a href="#trazabilidad">Reglas de evidencia</a>
+      <a href="#fuentes">Fuentes prioritarias</a>
+      <a href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Descargar Word</a>
+    </div>
   </aside>
 
   <main>
@@ -70,6 +76,24 @@
         <a href="#trazabilidad">Reglas de evidencia</a>
         <a href="#fuentes">Fuentes prioritarias</a>
       </nav>
+      <figure class="matrix-visual" aria-labelledby="visual-caption">
+        <svg viewBox="0 0 760 210" role="img" aria-label="La matriz conecta evidencia, territorio, instituciones y diez ejes temáticos">
+          <g class="visual-links">
+            <path d="M380 105H105M380 105H655M380 105V30M380 105V180"/>
+            <path d="M380 105L190 38M380 105L570 38M380 105L190 172M380 105L570 172"/>
+          </g>
+          <g class="visual-node core"><rect x="310" y="72" width="140" height="66" rx="5"/><text x="380" y="99">MATRIZ</text><text x="380" y="118">10 ejes · 8 bloques</text></g>
+          <g class="visual-node"><circle cx="105" cy="105" r="28"/><text x="105" y="109">Datos</text></g>
+          <g class="visual-node"><circle cx="655" cy="105" r="28"/><text x="655" y="109">Actores</text></g>
+          <g class="visual-node"><circle cx="380" cy="30" r="23"/><text x="380" y="34">Normas</text></g>
+          <g class="visual-node"><circle cx="380" cy="180" r="23"/><text x="380" y="184">Síntesis</text></g>
+          <g class="visual-node small"><circle cx="190" cy="38" r="18"/><text x="190" y="42">SF</text></g>
+          <g class="visual-node small"><circle cx="570" cy="38" r="18"/><text x="570" y="42">Rosario</text></g>
+          <g class="visual-node small"><circle cx="190" cy="172" r="18"/><text x="190" y="176">5 años</text></g>
+          <g class="visual-node small"><circle cx="570" cy="172" r="18"/><text x="570" y="176">24 meses</text></g>
+        </svg>
+        <figcaption id="visual-caption">Una estructura común conecta evidencia, instituciones, territorio y agenda reciente para producir diagnósticos comparables.</figcaption>
+      </figure>
     </section>
 
     <section class="section intro" id="proposito" aria-labelledby="proposito-title">
@@ -156,6 +180,11 @@
           </table>
         </div>
         <p class="matrix-empty" id="matrix-empty" hidden>No se encontraron resultados para esta búsqueda.</p>
+        <aside class="axis-drawer" id="axis-drawer" aria-hidden="true" aria-labelledby="drawer-title">
+          <div class="drawer-header"><div><span id="drawer-number"></span><h3 id="drawer-title"></h3></div><button id="drawer-close" type="button" aria-label="Cerrar desarrollo del eje">Cerrar</button></div>
+          <p class="drawer-note">Estructura estándar de desarrollo · los vacíos deben consignarse explícitamente y nunca completarse con supuestos.</p>
+          <div class="drawer-content" id="drawer-content"></div>
+        </aside>
       </div>
     </section>
 
@@ -192,6 +221,6 @@
     <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
     <a href="#inicio">Volver al inicio ↑</a>
   </footer>
-  <script src="script.js?v=20261023-6"></script>
+  <script src="script.js?v=20261023-7"></script>
 </body>
 </html>
