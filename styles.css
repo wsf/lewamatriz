@@ -443,3 +443,44 @@ section.matrix-section { width: min(1180px, calc(100% - 28px)); }
   section.matrix-section { width: calc(100% - 20px); }
   .matrix-table, .matrix-fullscreen .matrix-table { min-width: 700px; }
 }
+
+/* Full-screen axis report */
+.axis-drawer,
+.matrix-fullscreen .axis-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  width: 100vw;
+  height: 100dvh;
+  padding: 0 clamp(18px, 5vw, 72px) 48px;
+  overflow-y: auto;
+  background: #fff;
+  border: 0;
+  box-shadow: none;
+}
+.axis-drawer.open { display: block; }
+.axis-drawer .drawer-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 22px 0 14px;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+}
+.axis-drawer .drawer-header h3 { font-size: clamp(24px, 3vw, 38px); }
+.axis-drawer .drawer-header button { min-height: 36px; padding: 8px 12px; font-size: 12px; }
+.axis-drawer .drawer-note,
+.axis-drawer .drawer-content { max-width: 1080px; margin-inline: auto; }
+.axis-drawer .drawer-note { margin-top: 18px; padding: 12px 14px; font-size: 12px; }
+.axis-drawer .drawer-content section { grid-template-columns: 38px 1fr; gap: 14px; padding: 20px 0; }
+.axis-drawer .drawer-content section > span { font-size: 11px; }
+.axis-drawer .drawer-content h4 { margin-bottom: 7px; font-size: 17px; }
+.axis-drawer .drawer-content p { margin-bottom: 7px; font-size: 14px; line-height: 1.55; }
+.axis-drawer .drawer-content small { font-size: 11px; line-height: 1.5; }
+body.axis-report-open { overflow: hidden; }
+@media (max-width: 600px) {
+  .axis-drawer, .matrix-fullscreen .axis-drawer { padding-inline: 16px; }
+  .axis-drawer .drawer-content section { grid-template-columns: 28px 1fr; }
+}

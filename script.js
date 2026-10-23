@@ -140,6 +140,7 @@ function openAxisDevelopment(key) {
   drawerContent.innerHTML = sections.map(([number, title, content, requirement]) => `<section><span>${number}</span><div><h4>${title}</h4><p>${content}</p><small>${requirement}</small></div></section>`).join("");
   axisDrawer.classList.add("open");
   axisDrawer.setAttribute("aria-hidden", "false");
+  document.body.classList.add("axis-report-open");
   drawerClose.focus();
 }
 
@@ -156,6 +157,7 @@ matrixBody.addEventListener("keydown", event => {
 drawerClose.addEventListener("click", () => {
   axisDrawer.classList.remove("open");
   axisDrawer.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("axis-report-open");
 });
 matrixExpand.addEventListener("click", () => {
   const expanded = matrixApp.classList.toggle("matrix-fullscreen");
