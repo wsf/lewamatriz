@@ -13,7 +13,7 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Ir al inicio">
-      <span class="brand-mark">L</span>
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <span>Lewa <small>Matriz de diagnóstico</small></span>
     </a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
@@ -23,12 +23,14 @@
       <a href="#ejes">Ejes</a>
       <a href="#trazabilidad">Trazabilidad</a>
       <a href="#fuentes">Fuentes</a>
+      <a class="nav-action" href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Descargar</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="eyebrow">Informe ejecutivo · Santa Fe y Rosario · 2026</div>
+      <div class="breadcrumb"><span>Inicio</span><b>›</b><span>Diagnóstico territorial</span><b>›</b><strong>Matriz 2026</strong></div>
+      <div class="eyebrow">Santa Fe y Rosario · Documento de trabajo</div>
       <h1>Evidencia para decisiones públicas</h1>
       <p class="hero-copy">Este sitio documenta cómo se construyó un instrumento común para investigar diez áreas estratégicas, comparar diagnósticos y preparar una segunda etapa de propuestas de política pública.</p>
       <div class="hero-actions">
@@ -87,7 +89,10 @@
     <section class="section axes" id="ejes" aria-labelledby="ejes-title">
       <div class="section-heading">
         <div><p class="section-kicker">Alcance temático</p><h2 id="ejes-title">Diez miradas sobre un mismo territorio</h2></div>
-        <p>Seleccioná un eje para ver su foco de relevamiento.</p>
+        <div class="axis-tools">
+          <label for="axis-search">Buscar un eje</label>
+          <input id="axis-search" type="search" placeholder="Ej. educación, vivienda…" autocomplete="off">
+        </div>
       </div>
       <div class="axis-layout">
         <div class="axis-list" role="tablist" aria-label="Ejes temáticos">

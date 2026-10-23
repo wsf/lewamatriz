@@ -13,6 +13,7 @@ const axes = {
 
 const detail = document.querySelector("#axis-detail");
 const buttons = [...document.querySelectorAll(".axis-button")];
+const search = document.querySelector("#axis-search");
 
 function renderAxis(key) {
   const axis = axes[key];
@@ -40,6 +41,21 @@ menuButton.addEventListener("click", () => {
 nav.addEventListener("click", () => {
   nav.classList.remove("open");
   menuButton.setAttribute("aria-expanded", "false");
+});
+
+search.addEventListener("input", () => {
+  const query = search.value.trim().toLocaleLowerCase("es");
+  buttons.forEach(button => {
+    button.hidden = !button.textContent.toLocaleLowerCase("es").includes(query);
+  });
+  const firstVisible = buttons.find(button => !button.hidden);
+  if (firstVisible && query) {
+    buttons.forEach(button => {
+      button.classList.toggle("active", button === firstVisible);
+      button.setAttribute("aria-selected", String(button === firstVisible));
+    });
+    renderAxis(firstVisible.dataset.axis);
+  }
 });
 
 renderAxis("seguridad");
