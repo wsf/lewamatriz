@@ -7,7 +7,7 @@ const axes = {
   habitat: { number: "06", title: "Hábitat y vivienda", points: ["Déficit habitacional, tenencia y servicios básicos.", "Barrios populares, suelo, alquiler y regularización.", "Riesgo hídrico, urbanización y capacidad institucional."] },
   infraestructura: { number: "07", title: "Infraestructura, transporte y movilidad", points: ["Inversión, avance de obras y conectividad territorial.", "Pasajeros, frecuencia, tarifa, subsidios y accesibilidad.", "Siniestralidad, logística, puertos e hidrovía."] },
   energia: { number: "08", title: "Energía y servicios públicos", points: ["Tarifas, subsidios, deuda y peso sobre el ingreso.", "Cortes, calidad, reclamos e inversión.", "Agua, cloacas, gas y conectividad digital."] },
-  ciencia: { number: "09", title: "Ciencia, tecnología e innovación", points: ["Inversión en I+D, talento, proyectos y financiamiento.", "Empresas tecnológicas, patentes y adopción productiva.", "Laboratorios, universidades, parques y vinculación."] },
+  ciencia: { number: "09", title: "Ciencia, tecnología e innovación", points: ["Santa Fe registró $193.100 millones de inversión en I+D, 5.151 investigadores EJC y 140 investigadores cada 100.000 habitantes en 2024.", "La evidencia pública está fragmentada y la mayoría de los indicadores disponibles tiene escala provincial, no de ciudad de Rosario.", "La provincia informó $8.142 millones ejecutados en políticas CTI durante 2025; falta conciliar el dato con la cuenta de inversión y resultados por proyecto."] },
   cultura: { number: "10", title: "Cultura, deporte y juventudes", points: ["Oferta, participación, infraestructura y gasto.", "Clubes, becas, prácticas deportivas y acceso territorial.", "Trayectorias juveniles, empleo, salud mental y participación."] }
 };
 
@@ -24,7 +24,7 @@ const matrixDetails = {
   habitat: { institutions: "Secretaría de Hábitat; municipios; ASSA; EPE; organismos de vivienda y planificación urbana.", cases: "Déficit habitacional, alquiler, barrios populares, servicios, suelo y riesgo hídrico." },
   infraestructura: { institutions: "Ministerios de Obras Públicas y Transporte; Vialidad; ENAPRO; municipios; empresas prestatarias.", cases: "Obras, transporte, tarifa, subsidios, accesibilidad, logística, puertos e hidrovía." },
   energia: { institutions: "EPE; ASSA; ENARGAS; ENRE; municipios; organismos de defensa del consumidor.", cases: "Tarifas, cortes, calidad, deuda, inversión, agua, cloacas, gas y conectividad." },
-  ciencia: { institutions: "Universidades; CONICET; INTA; INTI; CCT Rosario; polos tecnológicos; empresas y gobiernos.", cases: "Inversión en I+D, talento, IA, datos, cómputo, transferencia, adopción pyme y financiamiento." },
+  ciencia: { institutions: "Secretaría CTI y ASaCTeI; Municipalidad de Rosario; UNR, UNL y UTN; CCT CONICET Rosario y Santa Fe; INTA; INTI; Polo Tecnológico; parques, incubadoras y empresas.", cases: "TecPRO y financiamiento CTI 2025; Decreto Rosario 274/2026 de compra pública de innovación; analítica de video con IA; mesas de tecnologías digitales; prototipos #XperienciaUNR." },
   cultura: { institutions: "Ministerios y secretarías de Cultura; municipios; clubes; universidades; organizaciones juveniles.", cases: "Oferta cultural, acceso, clubes, becas, empleo joven, salud mental y participación." }
 };
 
