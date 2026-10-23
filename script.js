@@ -14,6 +14,7 @@ const axes = {
 const detail = document.querySelector("#axis-detail");
 const buttons = [...document.querySelectorAll(".axis-button")];
 const search = document.querySelector("#axis-search");
+const sideNav = document.querySelector("#side-nav");
 
 function renderAxis(key) {
   const axis = axes[key];
@@ -35,11 +36,16 @@ buttons.forEach(button => {
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector("#main-nav");
 menuButton.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
+  const open = sideNav.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(open));
 });
-nav.addEventListener("click", () => {
-  nav.classList.remove("open");
+sideNav.addEventListener("click", event => {
+  const axisLink = event.target.closest("[data-axis-link]");
+  if (axisLink) {
+    const matchingButton = buttons.find(button => button.dataset.axis === axisLink.dataset.axisLink);
+    if (matchingButton) matchingButton.click();
+  }
+  sideNav.classList.remove("open");
   menuButton.setAttribute("aria-expanded", "false");
 });
 
