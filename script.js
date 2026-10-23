@@ -48,8 +48,14 @@ buttons.forEach(button => {
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector("#main-nav");
 menuButton.addEventListener("click", () => {
-  const open = sideNav.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(open));
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    const open = sideNav.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(open));
+  } else {
+    const collapsed = sideNav.classList.toggle("collapsed");
+    document.body.classList.toggle("sidebar-collapsed", collapsed);
+    menuButton.setAttribute("aria-expanded", String(!collapsed));
+  }
 });
 sideNav.addEventListener("click", event => {
   const axisLink = event.target.closest("[data-axis-link]");
@@ -58,8 +64,10 @@ sideNav.addEventListener("click", event => {
     if (matchingButton) matchingButton.click();
     openAxisDevelopment(axisLink.dataset.axisLink);
   }
-  sideNav.classList.remove("open");
-  menuButton.setAttribute("aria-expanded", "false");
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    sideNav.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  }
 });
 
 search.addEventListener("input", () => {

@@ -349,6 +349,24 @@ body.matrix-open { overflow: hidden; }
 @keyframes matrixPulse { 0%,100% { transform: scale(1); opacity: .82; } 50% { transform: scale(1.035); opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .visual-links path, .visual-node { animation: none; } }
 
+/* Reduced navigation and full-width matrix */
+.menu-button { display: block; margin-right: 8px; color: #37352f; }
+.side-nav { transition: transform .2s ease; }
+.side-nav.collapsed { transform: translateX(-100%); }
+body.sidebar-collapsed main { margin-left: 0; }
+body.sidebar-collapsed footer { margin-left: 18px; }
+.matrix-section { width: min(1180px, calc(100% - 32px)); }
+.matrix-table { min-width: 0; }
+.matrix-fullscreen { inset: 0; padding: 18px; border: 0; border-radius: 0; box-shadow: none; }
+.matrix-fullscreen .matrix-table-wrap { width: 100%; }
+.matrix-fullscreen .matrix-table { width: 100%; min-width: 0; }
+.matrix-app.matrix-fullscreen { position: fixed !important; inset: 0 !important; z-index: 999; width: 100vw !important; max-width: none !important; height: 100dvh !important; margin: 0 !important; padding: 16px !important; overflow: hidden; background: #fff; }
+.matrix-app.matrix-fullscreen .matrix-toolbar, .matrix-app.matrix-fullscreen .matrix-status, .matrix-app.matrix-fullscreen .matrix-table-wrap { width: 100% !important; max-width: none !important; }
+.matrix-app.matrix-fullscreen .matrix-table-wrap { height: calc(100dvh - 104px); overflow: auto; }
+.matrix-app.matrix-fullscreen .matrix-table { width: 100% !important; }
+@media (max-width: 900px) { .side-nav.collapsed { transform: none; } .matrix-section { width: min(100% - 28px, 1180px); } }
+@media (max-width: 760px) { .matrix-table { min-width: 760px; } .matrix-fullscreen .matrix-table { min-width: 760px; } }
+
 /* Workspace board inspired by the supplied Notion reference */
 .hero { width: min(1120px, calc(100% - 36px)); }
 .workspace-title { display: flex; align-items: center; gap: 10px; margin: 5px 0 13px; }
@@ -411,3 +429,17 @@ body.matrix-open { overflow: hidden; }
 .source-grid span { display: block; margin-top: 2px; }
 footer { max-width: 720px; margin-left: calc(var(--sidebar) + (100% - var(--sidebar) - 720px) / 2); }
 @media (max-width: 900px) { .hero, .section { width: min(100% - 28px, 720px); } footer { width: min(100% - 28px, 720px); margin-inline: auto; } }
+
+/* Final matrix layout: complete on page and true full-screen expansion */
+section.matrix-section { width: min(1180px, calc(100% - 28px)); }
+.matrix-table { width: 100%; min-width: 0; }
+.matrix-table th:first-child { width: 18%; }
+.matrix-table th:nth-child(2) { width: 27%; }
+.matrix-table th:nth-child(3) { width: 28%; }
+.matrix-table th:nth-child(4) { width: 27%; }
+.matrix-fullscreen { inset: 0; width: 100vw; height: 100dvh; padding: 14px; }
+.matrix-fullscreen .matrix-table { width: 100%; min-width: 0; }
+@media (max-width: 760px) {
+  section.matrix-section { width: calc(100% - 20px); }
+  .matrix-table, .matrix-fullscreen .matrix-table { min-width: 700px; }
+}
