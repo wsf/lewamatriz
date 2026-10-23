@@ -49,6 +49,13 @@ sideNav.addEventListener("click", event => {
   menuButton.setAttribute("aria-expanded", "false");
 });
 
+document.querySelector(".work-board").addEventListener("click", event => {
+  const axisLink = event.target.closest("[data-axis-link]");
+  if (!axisLink) return;
+  const matchingButton = buttons.find(button => button.dataset.axis === axisLink.dataset.axisLink);
+  if (matchingButton) matchingButton.click();
+});
+
 search.addEventListener("input", () => {
   const query = search.value.trim().toLocaleLowerCase("es");
   buttons.forEach(button => {

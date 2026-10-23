@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261023-3">
+  <link rel="stylesheet" href="styles.css?v=20261023-4">
 </head>
 <body>
   <header class="site-header">
@@ -57,19 +57,43 @@
   <main>
     <section class="hero" id="inicio">
       <div class="breadcrumb"><span>Inicio</span><b>›</b><span>Diagnóstico territorial</span><b>›</b><strong>Matriz 2026</strong></div>
-      <div class="eyebrow">Santa Fe y Rosario · Documento de trabajo</div>
-      <h1>Evidencia para decisiones públicas</h1>
-      <p class="hero-copy">Este sitio documenta cómo se construyó un instrumento común para investigar diez áreas estratégicas, comparar diagnósticos y preparar una segunda etapa de propuestas de política pública.</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Descargar matriz Word</a>
-        <a class="button button-secondary" href="#proceso">Ver metodología</a>
+      <div class="workspace-title">
+        <span class="workspace-icon">▦</span>
+        <div><div class="eyebrow">Santa Fe y Rosario · 2026</div><h1>Matriz de diagnóstico</h1></div>
       </div>
-      <dl class="hero-stats" aria-label="Resumen del proyecto">
-        <div><dt>8</dt><dd>bloques metodológicos</dd></div>
-        <div><dt>10</dt><dd>ejes temáticos</dd></div>
-        <div><dt>5 años</dt><dd>de tendencia estructural</dd></div>
-        <div><dt>24 meses</dt><dd>de agenda y casos</dd></div>
-      </dl>
+      <div class="view-tabs" aria-label="Vistas del proyecto">
+        <a class="active" href="#inicio">Tablero general</a>
+        <a href="#metodo">Método común</a>
+        <a href="#ejes">Ejes temáticos</a>
+        <a href="#fuentes">Fuentes</a>
+      </div>
+      <div class="work-board" aria-label="Estado del relevamiento">
+        <section class="board-column pending">
+          <h2><span></span>Base metodológica <b>2</b></h2>
+          <a href="#proposito">Propósito y alcance territorial</a>
+          <a href="#proceso">Proceso de construcción</a>
+        </section>
+        <section class="board-column progress">
+          <h2><span></span>Método común <b>8</b></h2>
+          <a href="#bloque-1">Diagnóstico del problema</a>
+          <a href="#bloque-3">Instituciones y actores</a>
+          <a href="#bloque-5">Casos recientes</a>
+          <a href="#metodo">Ver los ocho bloques →</a>
+        </section>
+        <section class="board-column review">
+          <h2><span></span>Ejes temáticos <b>10</b></h2>
+          <a href="#ejes" data-axis-link="seguridad">Seguridad y convivencia</a>
+          <a href="#ejes" data-axis-link="economia">Economía y empleo</a>
+          <a href="#ejes" data-axis-link="ciencia">Ciencia e inteligencia artificial</a>
+          <a href="#ejes">Explorar todos los ejes →</a>
+        </section>
+        <section class="board-column done">
+          <h2><span></span>Entregables <b>3</b></h2>
+          <a href="#trazabilidad">Reglas de evidencia</a>
+          <a href="#fuentes">Fuentes prioritarias</a>
+          <a href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Descargar matriz Word ↓</a>
+        </section>
+      </div>
     </section>
 
     <section class="section intro" id="proposito" aria-labelledby="proposito-title">
