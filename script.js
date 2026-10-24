@@ -64,7 +64,7 @@ sideNav.addEventListener("click", event => {
     if (matchingButton) matchingButton.click();
     openAxisDevelopment(axisLink.dataset.axisLink);
   }
-  if (window.matchMedia("(max-width: 900px)").matches) {
+  if (event.target.closest("a") && window.matchMedia("(max-width: 900px)").matches) {
     sideNav.classList.remove("open");
     menuButton.setAttribute("aria-expanded", "false");
   }

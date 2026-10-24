@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261024-14">
+  <link rel="stylesheet" href="styles.css?v=20261024-15">
 </head>
 <body>
   <header class="site-header">
@@ -28,10 +28,37 @@
   </header>
 
   <aside class="side-nav" id="side-nav" aria-label="Índice del documento">
-    <a class="side-main" href="#inicio">Introducción</a>
-    <a class="side-main" href="#metodo">Metodología</a>
-    <a class="side-main" href="#matriz-interactiva">Matriz</a>
-    <a class="side-main" href="#fuentes">Referencias</a>
+    <details class="side-menu" open>
+      <summary><span>📖</span> Introducción</summary>
+      <div class="side-submenu">
+        <a href="#inicio">Portada</a>
+        <a href="#proposito">Propósito</a>
+        <a href="#proceso">Proceso de construcción</a>
+      </div>
+    </details>
+    <details class="side-menu">
+      <summary><span>🧭</span> Metodología</summary>
+      <div class="side-submenu">
+        <a href="#metodo">Ocho bloques</a>
+        <a href="#trazabilidad">Reglas de evidencia</a>
+      </div>
+    </details>
+    <details class="side-menu">
+      <summary><span>▦</span> Matriz</summary>
+      <div class="side-submenu">
+        <a href="#ejes">Diez ejes</a>
+        <a href="#matriz-interactiva">Matriz interactiva</a>
+        <a href="#matriz-interactiva" data-axis-link="ciencia">Eje 9 · Ciencia e IA</a>
+      </div>
+    </details>
+    <details class="side-menu">
+      <summary><span>📚</span> Referencias</summary>
+      <div class="side-submenu">
+        <a href="#fuentes">Fuentes prioritarias</a>
+        <a href="docs/EJE_9_CIENCIA_TECNOLOGIA_INNOVACION_IA_SANTA_FE_ROSARIO_2026.md">Informe del eje 9</a>
+        <a href="docs/MATRIZ_DIAGNOSTICO_SANTA_FE_ROSARIO_COMPLETA_V2.docx" download>Matriz Word</a>
+      </div>
+    </details>
   </aside>
 
   <main>
@@ -173,6 +200,6 @@
     <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
     <a href="#inicio">Volver al inicio ↑</a>
   </footer>
-  <script src="script.js?v=20261024-14"></script>
+  <script src="script.js?v=20261024-15"></script>
 </body>
 </html>
