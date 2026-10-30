@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261030-05">
+  <link rel="stylesheet" href="styles.css?v=20261030-06">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -85,8 +85,10 @@
     <details class="side-menu">
       <summary><span>📣</span> Consignas y proyectos</summary>
       <div class="side-submenu">
-        <a href="#consignas">Banco por eje</a>
+        <a href="#consignas-politicas">Consignas políticas</a>
+        <a href="#lemas-campana">Lemas de campaña</a>
         <a href="#proyectos-politicos">Proyectos políticos</a>
+        <a href="#frases-significantes">Frases y significantes</a>
         <a href="#consignas-actualizacion">Cómo se actualiza</a>
       </div>
     </details>
@@ -216,20 +218,30 @@
       </div>
     </section>
 
-    <section class="section messages" id="consignas" aria-labelledby="consignas-title">
+        <section class="section messages" id="consignas" aria-labelledby="consignas-title">
       <div class="section-heading">
         <div><p class="section-kicker">Del diagnóstico a la campaña</p><h2 id="consignas-title">Consignas, lemas y proyectos por eje</h2></div>
-        <p>Banco de productos concretos para la labor legislativa y la difusión de campaña. Se nutre de los aportes verificados de la matriz: cada ítem es <strong>borrador</strong> hasta su validación política y comunicacional, y referencia la evidencia que lo respalda.</p>
+        <p>Banco de productos concretos para la labor legislativa y la difusión de campaña. Se nutre de los aportes verificados de la matriz: cada ítem es <strong>borrador</strong> hasta su validación política y comunicacional, y referencia la evidencia que lo respalda. Desplegá el acordeón de cada eje.</p>
       </div>
-      <div class="axis-list" id="msg-axis-list" role="tablist" aria-label="Ejes del banco de consignas"></div>
-      <div id="msg-panel" class="msg-panel" aria-live="polite"></div>
+
+      <p class="section-kicker" id="consignas-politicas">Consignas políticas</p>
+      <p class="matrix-intro">Síntesis movilizadoras del diagnóstico de cada eje, para el discurso y la militancia.</p>
+      <div id="acc-consignas" class="acc-wrap"></div>
+
+      <p class="section-kicker" id="lemas-campana">Lemas de campaña</p>
+      <p class="matrix-intro">Lemas por eje y transversales, en exploración: requieren validación política y comunicacional antes de considerarse oficiales.</p>
+      <div id="acc-lemas" class="acc-wrap"></div>
+
       <p class="section-kicker" id="proyectos-politicos">Proyectos políticos</p>
-      <p class="matrix-intro">Enunciados de proyectos que surgen de cada eje, listos para que el dirigente los presente en la <strong>Legislatura de Santa Fe</strong>, el <strong>Congreso de la Nación</strong> o los concejos municipales. Cada enunciado indica ámbito, estado y la evidencia de la matriz que lo fundamenta. El punto ● en el selector marca los ejes con proyectos cargados.</p>
-      <div class="axis-list" id="proj-axis-list" role="tablist" aria-label="Ejes de proyectos políticos"></div>
-      <div id="proj-panel" class="msg-panel" aria-live="polite"></div>
+      <p class="matrix-intro">Enunciados de proyectos que surgen de cada eje, listos para que el dirigente los presente en la <strong>Legislatura de Santa Fe</strong>, el <strong>Congreso de la Nación</strong>, los concejos municipales o el <strong>Poder Ejecutivo</strong>. Cada enunciado indica ámbito, estado y la evidencia de la matriz que lo fundamenta.</p>
+      <div id="acc-proyectos" class="acc-wrap"></div>
+
+      <p class="section-kicker" id="frases-significantes">Frases para la prensa y significantes</p>
+      <p class="matrix-intro">Frases con datos verificables para entrevistas y comunicados, y el vocabulario clave (significantes) de cada eje.</p>
+      <div id="acc-frases" class="acc-wrap"></div>
 
       <p class="section-kicker" id="consignas-actualizacion">Cómo se actualiza</p>
-      <p class="matrix-intro">Cuando un eje registra aportes verificados, el bot de Telegram extrae y propone aquí consignas, lemas, significantes, frases para la prensa, ideas ejecutivas y legislativas. El especialista del eje las aprueba o corrige antes de su publicación; el coordinador puede reorganizarlas. Estados: <strong>borrador</strong> (propuesto, pendiente de validación) y <strong>validado</strong> (aprobado con evidencia de respaldo).</p>
+      <p class="matrix-intro">Cuando un eje registra aportes verificados, el bot de Telegram extrae y propone aquí consignas, lemas, significantes, frases para la prensa y proyectos políticos. El especialista del eje las aprueba o corrige antes de su publicación; el coordinador puede reorganizarlas. Estados: <strong>borrador</strong> (propuesto, pendiente de validación) y <strong>validado</strong> (aprobado con evidencia de respaldo).</p>
     </section>
 
     <section class="section principles" id="trazabilidad" aria-labelledby="principios-title">

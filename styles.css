@@ -591,3 +591,18 @@ body.axis-report-open { overflow: hidden; }
 #gate-form button:hover { background: #a6e0c0; }
 .gate-error { margin: 14px 0 0; font-size: 12px; color: #f2a9a0; }
 .gate-foot { margin: 24px 0 0; font-size: 10px; color: #7d9184; }
+
+/* Acordeones por eje (banco de consignas) */
+.acc-wrap { display: grid; gap: 6px; margin: 10px 0 20px; }
+.eje-acc { border: 1px solid #eee; border-radius: 6px; background: #fff; }
+.eje-acc summary { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 12px; cursor: pointer; font-size: 13px; color: #37352f; list-style: none; }
+.eje-acc summary::-webkit-details-marker { display: none; }
+.eje-acc summary::before { content: "\25B8"; color: #9b9a97; margin-right: 8px; font-size: 11px; display: inline-block; transition: transform .15s ease; }
+.eje-acc[open] > summary::before { transform: rotate(90deg); }
+.eje-acc summary:hover { background: #fbfbfa; }
+.acc-title { font-weight: 500; }
+.acc-count { font-size: 9px; font-weight: 700; color: #9b9a97; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; }
+.eje-acc-empty summary .acc-title { color: #b6b5b2; }
+.acc-body { padding: 6px 12px 12px; border-top: 1px solid #f2f2f0; }
+.acc-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+.ambito-ejec { background: #d9f2e3; color: #1e6b40; }
