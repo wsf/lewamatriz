@@ -536,3 +536,20 @@ body.axis-report-open { overflow: hidden; }
   .matrix-cover span { right: 14px; font-size: 12px; }
   .cover-icon { width: 28px; height: 28px; margin-top: -12px; font-size: 16px; }
 }
+
+/* Eje 9: contenido completo embebido en el drawer */
+.drawer-content .sec-body { color: #5f5e5b; font-size: 11px; }
+.drawer-content .sec-body h1 { font-size: 14px; margin: 10px 0 6px; }
+.drawer-content .sec-body h2 { font-size: 13px; margin: 12px 0 6px; border-bottom: 1px solid #eee; padding-bottom: 3px; }
+.drawer-content .sec-body h3 { font-size: 12px; margin: 10px 0 4px; }
+.drawer-content .sec-body h4 { font-size: 11px; margin: 8px 0 4px; }
+.drawer-content .sec-body p { margin: 0 0 6px; font-size: 11px; color: #5f5e5b; }
+.drawer-content .sec-body ul, .drawer-content .sec-body ol { margin: 4px 0 8px; padding-left: 18px; }
+.drawer-content .sec-body li { margin-bottom: 3px; }
+.drawer-content .sec-body table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 10px; }
+.drawer-content .sec-body th, .drawer-content .sec-body td { border: 1px solid #ddd; padding: 4px 6px; text-align: left; vertical-align: top; }
+.drawer-content .sec-body th { background: #f7f7f5; }
+.drawer-content .sec-body a { color: #1a5fb4; word-break: break-all; }
+.drawer-content .sec-body blockquote { margin: 6px 0; padding: 4px 10px; border-left: 3px solid #ddd; color: #787774; }
+.drawer-content .sec-body code { background: #f7f7f5; padding: 1px 3px; border-radius: 2px; font-size: 10px; }
+.drawer-content .sec-body hr { border: none; border-top: 1px solid #eee; margin: 10px 0; }
