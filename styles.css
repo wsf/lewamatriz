@@ -568,3 +568,10 @@ body.axis-report-open { overflow: hidden; }
 .badge-ok { background: #d9f2e3; color: #1e6b40; }
 .msg-empty { color: #787774; font-size: 12px; padding: 14px; background: #fbfbfa; border: 1px dashed #ddd; border-radius: 6px; }
 #msg-axis-list { margin: 12px 0 0; }
+
+/* Proyectos políticos */
+.proj-item p strong { color: #2f6f4e; }
+.ambito { display: inline-block; font-style: normal; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 2px 6px; border-radius: 3px; margin-right: 4px; }
+.ambito-prov { background: #d2e3fc; color: #1a4b8f; }
+.ambito-nac { background: #e5dbf5; color: #5b3a8f; }
+.ambito-muni { background: #ffe3cc; color: #9a4f14; }
