@@ -8,9 +8,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261030-04">
+  <link rel="stylesheet" href="styles.css?v=20261030-05">
 </head>
 <body>
+  <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
+    <div class="gate-card">
+      <div class="gate-mark" aria-hidden="true">▦</div>
+      <h1 class="gate-title">Lewa <span>Matriz</span></h1>
+      <p class="gate-sub">Diagnóstico y propuestas · Santa Fe y Rosario · 2026</p>
+      <p class="gate-copy">Portal de trabajo del equipo y de los especialistas de la matriz.<br>Ingresá la clave para continuar.</p>
+      <form id="gate-form" autocomplete="off">
+        <input id="gate-pass" type="password" placeholder="Clave de acceso" aria-label="Clave de acceso">
+        <button type="submit">Ingresar</button>
+      </form>
+      <p id="gate-error" class="gate-error" hidden>Clave incorrecta.</p>
+      <p class="gate-foot">Acceso restringido · documento de trabajo en construcción</p>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var H = "697ffefdabf5830c28c5e422e84493b2fdfb36ae2964b66207988494341f732d";
+    var KEY = "lewa" + "matriz_" + "ok";
+    var gate = document.getElementById("gate");
+    try { if (sessionStorage.getItem(KEY) === H.slice(0, 16)) { gate.remove(); return; } } catch (e) {}
+    document.getElementById("gate-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var v = document.getElementById("gate-pass").value;
+      crypto.subtle.digest("SHA-256", new TextEncoder().encode(v)).then(function (buf) {
+        var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+        if (hex === H) { try { sessionStorage.setItem(KEY, H.slice(0, 16)); } catch (e) {} gate.remove(); }
+        else { document.getElementById("gate-error").hidden = false; }
+      });
+    });
+  })();
+  </script>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Ir al inicio">
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>

@@ -575,3 +575,19 @@ body.axis-report-open { overflow: hidden; }
 .ambito-prov { background: #d2e3fc; color: #1a4b8f; }
 .ambito-nac { background: #e5dbf5; color: #5b3a8f; }
 .ambito-muni { background: #ffe3cc; color: #9a4f14; }
+
+/* Portada de acceso con clave */
+#gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: radial-gradient(1200px 600px at 50% -10%, #22463a 0%, #12241c 55%, #0c1811 100%); }
+.gate-card { width: min(430px, 92vw); padding: 36px 30px; text-align: center; color: #e8efe9; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; }
+.gate-mark { font-size: 36px; color: #8fd3ac; margin-bottom: 10px; }
+.gate-title { margin: 0; font-size: 27px; letter-spacing: .02em; font-weight: 700; }
+.gate-title span { color: #8fd3ac; font-weight: 500; }
+.gate-sub { margin: 8px 0 20px; font-size: 10px; text-transform: uppercase; letter-spacing: .09em; color: #9db3a5; }
+.gate-copy { font-size: 13px; line-height: 1.5; color: #c6d3c9; margin: 0 0 20px; }
+#gate-form { display: flex; gap: 8px; }
+#gate-pass { flex: 1; min-width: 0; padding: 11px 12px; font-size: 13px; color: #eef4ef; background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.22); border-radius: 6px; outline: none; }
+#gate-pass:focus { border-color: #8fd3ac; }
+#gate-form button { padding: 11px 18px; font-size: 13px; font-weight: 600; color: #10231a; background: #8fd3ac; border: 0; border-radius: 6px; cursor: pointer; }
+#gate-form button:hover { background: #a6e0c0; }
+.gate-error { margin: 14px 0 0; font-size: 12px; color: #f2a9a0; }
+.gate-foot { margin: 24px 0 0; font-size: 10px; color: #7d9184; }
