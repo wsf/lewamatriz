@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261030-02">
+  <link rel="stylesheet" href="styles.css?v=20261030-03">
 </head>
 <body>
   <header class="site-header">
@@ -49,6 +49,13 @@
         <a href="#ejes">Diez ejes</a>
         <a href="#matriz-interactiva">Matriz interactiva</a>
         <a href="#matriz-interactiva" data-axis-link="ciencia">Eje 9 · Ciencia e IA</a>
+      </div>
+    </details>
+    <details class="side-menu">
+      <summary><span>📣</span> Consignas y proyectos</summary>
+      <div class="side-submenu">
+        <a href="#consignas">Banco por eje</a>
+        <a href="#consignas-actualizacion">Cómo se actualiza</a>
       </div>
     </details>
     <details class="side-menu">
@@ -177,6 +184,17 @@
       </div>
     </section>
 
+    <section class="section messages" id="consignas" aria-labelledby="consignas-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Del diagnóstico a la campaña</p><h2 id="consignas-title">Consignas, lemas y proyectos por eje</h2></div>
+        <p>Banco de productos concretos para la labor legislativa y la difusión de campaña. Se nutre de los aportes verificados de la matriz: cada ítem es <strong>borrador</strong> hasta su validación política y comunicacional, y referencia la evidencia que lo respalda.</p>
+      </div>
+      <div class="axis-list" id="msg-axis-list" role="tablist" aria-label="Ejes del banco de consignas"></div>
+      <div id="msg-panel" class="msg-panel" aria-live="polite"></div>
+      <p class="section-kicker" id="consignas-actualizacion">Cómo se actualiza</p>
+      <p class="matrix-intro">Cuando un eje registra aportes verificados, el bot de Telegram extrae y propone aquí consignas, lemas, significantes, frases para la prensa, ideas ejecutivas y legislativas. El especialista del eje las aprueba o corrige antes de su publicación; el coordinador puede reorganizarlas. Estados: <strong>borrador</strong> (propuesto, pendiente de validación) y <strong>validado</strong> (aprobado con evidencia de respaldo).</p>
+    </section>
+
     <section class="section principles" id="trazabilidad" aria-labelledby="principios-title">
       <p class="section-kicker">Reglas de evidencia</p>
       <h2 id="principios-title">Lo que la matriz exige</h2>
@@ -254,6 +272,6 @@
     <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
     <a href="#inicio">Volver al inicio ↑</a>
   </footer>
-  <script src="script.js?v=20261030-02"></script>
+  <script src="script.js?v=20261030-03"></script>
 </body>
 </html>

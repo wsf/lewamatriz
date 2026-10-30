@@ -179,3 +179,51 @@ document.addEventListener("keydown", event => {
 
 renderAxis("seguridad");
 renderMatrix();
+
+/* ===== Banco de consignas, lemas y proyectos por eje ===== */
+const axisMessages = {"transversal": {"lemas": [{"t": "Santa Fe produce futuro.", "e": "borrador", "f": "narrativas en exploración del proyecto; pendiente validación comunicacional"}, {"t": "Una provincia que funciona.", "e": "borrador", "f": "narrativas en exploración del proyecto"}, {"t": "Cuidar lo nuestro. Hacer lo que falta.", "e": "borrador", "f": "narrativas en exploración del proyecto"}, {"t": "Talento santafesino, oportunidades santafesinas.", "e": "borrador", "f": "narrativas en exploración del proyecto"}, {"t": "Ideas de acá, soluciones para todos.", "e": "borrador", "f": "narrativas en exploración del proyecto"}], "consignas": [{"t": "Recuperar la capacidad pública para que Santa Fe produzca, cuide y vuelva a proyectar futuro.", "e": "borrador", "f": "narrativa transversal preliminar del proyecto"}], "prensa": [{"t": "Acá no hay relato: cada propuesta de esta matriz trae problema comprobado, responsable, costo, plazo e indicador público.", "e": "borrador", "f": "formato de propuestas de la matriz (documentos en Referencias)"}]}, "ciencia": {"consignas": [{"t": "Ningún algoritmo del Estado puede negar un derecho: la decisión final siempre es humana.", "e": "borrador", "f": "Medida 5 del informe comparado (modelo IRCC, Canadá)"}, {"t": "Lo que el Estado compra con IA, el Estado lo publica y lo audita.", "e": "borrador", "f": "Medidas 1, 4 y 8 del informe comparado"}, {"t": "Primero datos, después anuncios.", "e": "borrador", "f": "contra-lección Estonia: de ~130 'soluciones de IA' declaradas, la auditoría oficial reconoció ~30 genuinas (Riigikontroll, abr/2026)"}], "lemas": [{"t": "La ciencia cerca de cada problema.", "e": "borrador", "f": "narrativas en exploración del proyecto"}, {"t": "Conocimiento que se convierte en trabajo.", "e": "borrador", "f": "narrativas en exploración del proyecto"}, {"t": "Innovar para producir más y vivir mejor.", "e": "borrador", "f": "narrativas en exploración del proyecto"}], "significantes": [{"t": "IA pública responsable · registro provincial de IA · nodo provincial de IA · compra pública innovadora · soberanía de datos · evaluación de impacto · talento santafesino", "e": "borrador", "f": "informe comparado de IA gubernamental, medidas 1-8"}], "prensa": [{"t": "Santa Fe puede ser la primera provincia del país con registro público de sistemas de IA y evaluación de impacto obligatoria: no hace falta esperar una ley nacional, alcanza un decreto — Canadá y Uruguay ya gobiernan su IA así.", "e": "borrador", "f": "informe comparado, medidas 1-2 (modelos AIA Canadá / Observatorio Uruguay)"}, {"t": "Estonia declaró 130 soluciones de IA y su propia auditoría encontró apenas ~30 genuinas, la mayoría sin ahorros. Nosotros proponemos medir resultados auditados, no contar anuncios.", "e": "borrador", "f": "auditoría Riigikontroll, abril 2026"}, {"t": "Un nodo provincial de IA: que los municipios usen las mismas herramientas seguras en vez de comprar 50 veces lo mismo y quedar cautivos de un proveedor.", "e": "borrador", "f": "medida 3 (modelos Bürokratt Estonia / NIA Brasil / Pair Singapur); antecedente provincial: open gateway de IA generativa para expedientes (2023-24)"}], "ejecutivo": [{"t": "Decreto de gobernanza de IA: registro público provincial de sistemas de IA con ficha estándar (OCDE) + evaluación de impacto por niveles (modelo canadiense, herramienta abierta y gratuita) + supervisión humana obligatoria donde haya derechos en juego. Agenda: primeros 100 días.", "e": "borrador", "f": "informe comparado, medidas 1, 2 y 5"}, {"t": "Nodo provincial de IA en ASaCTeI: asistente generativo seguro para funcionarios (datos que no entrenan modelos de terceros), componentes reutilizables (RAG sobre normativa y expedientes) y catálogo de soluciones con reuso obligatorio antes de comprar.", "e": "borrador", "f": "informe comparado, medida 3"}, {"t": "Cláusulas IA obligatorias en pliegos de compra pública (provincia y Rosario vía Ord. 10.264): titularidad pública de datos, derechos de auditoría, pilotos de 60-90 días y plan de salida ordenada.", "e": "borrador", "f": "informe comparado, medida 4 (modelos PPN 02/24 UK, M-25-22 EE.UU., Directiva 44 ChileCompra)"}, {"t": "Programa provincial de alfabetización en IA por perfiles de rol con UNR/UNL/UTN/CONICET, y encuesta anual de adopción en el empleo público.", "e": "borrador", "f": "informe comparado, medidas 6-7 (modelos Singapur, Chile 61%, Brasil)"}, {"t": "Auditoría externa anual del portfolio provincial de IA (Auditoría General + universidades), con métricas ex ante y ex post por proyecto.", "e": "borrador", "f": "informe comparado, medida 8 (modelos Riigikontroll, GAO)"}], "legislativo": [{"t": "Pedido de informes sobre la analítica de video con IA de Rosario (600 cámaras): finalidad, proveedor, datos utilizados, evaluación de impacto, supervisión humana y mecanismo de reclamo — checklist completo publicado en el informe comparado.", "e": "borrador", "f": "informe comparado sección 5; Proyecto de Presupuesto Rosario 2025"}, {"t": "Ley de alfabetización digital e IA para la administración pública provincial (formación obligatoria por perfiles, con evaluación).", "e": "borrador", "f": "modelos Singapur (curso obligatorio 2024) y Corea del Sur (AI Basic Act, formación obligatoria); antecedente local: red formativa ESAM Rosario"}, {"t": "Ley de datos públicos provinciales: principio 'una sola vez' (once-only), interoperabilidad obligatoria provincia-municipios e infraestructura tipo X-Road.", "e": "borrador", "f": "modelo Estonia: X-Road ahorra ~1.345 años-trabajo/año documentados"}]}};
+const msgCategories = [
+  ["consignas", "Consignas políticas"],
+  ["lemas", "Lemas de campaña"],
+  ["significantes", "Significantes clave"],
+  ["prensa", "Frases para la prensa"],
+  ["ejecutivo", "Ideas para proyectos ejecutivos"],
+  ["legislativo", "Ideas legislativas"]
+];
+(function initMessages() {
+  const list = document.querySelector("#msg-axis-list");
+  const panel = document.querySelector("#msg-panel");
+  if (!list || !panel) return;
+  const keys = ["transversal", ...Object.keys(axes)];
+  const badge = e => e === "validado"
+    ? '<em class="badge badge-ok">validado</em>'
+    : '<em class="badge badge-draft">borrador</em>';
+  function renderMessages(key) {
+    const data = axisMessages[key] || {};
+    let html = "";
+    msgCategories.forEach(([cat, label]) => {
+      const items = data[cat] || [];
+      if (!items.length) return;
+      html += `<div class="msg-cat"><h3>${label}</h3><ul>${items.map(item =>
+        `<li class="msg-item">${badge(item.e)}<p>${item.t}</p>${item.f ? `<span class="msg-src">Base: ${item.f}</span>` : ""}</li>`
+      ).join("")}</ul></div>`;
+    });
+    if (!html) html = `<p class="msg-empty">Sin aportes todavía en este eje. Cuando la matriz registre diagnósticos y propuestas verificadas del eje, el bot propondrá aquí consignas, lemas, significantes, frases y proyectos — con aprobación del especialista antes de publicarse.</p>`;
+    const title = key === "transversal" ? "Transversales (todos los ejes)" : `Eje ${axes[key].number} · ${axes[key].title}`;
+    panel.innerHTML = `<h3 class="msg-axis-title">${title}</h3>${html}`;
+    [...list.querySelectorAll("button")].forEach(b => {
+      const on = b.dataset.msgAxis === key;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+  }
+  list.innerHTML = keys.map(k => {
+    const label = k === "transversal" ? "★ Transversales" : `${axes[k].number} ${axes[k].title}`;
+    return `<button type="button" role="tab" class="axis-button" data-msg-axis="${k}" aria-selected="false">${label}</button>`;
+  }).join("");
+  list.addEventListener("click", event => {
+    const btn = event.target.closest("[data-msg-axis]");
+    if (btn) renderMessages(btn.dataset.msgAxis);
+  });
+  renderMessages("transversal");
+})();
