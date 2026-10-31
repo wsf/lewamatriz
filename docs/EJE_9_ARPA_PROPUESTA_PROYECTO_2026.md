@@ -212,3 +212,18 @@ Presentar siempre en este orden: "esto es lo que Neuquén, Estonia y la UE logra
 ---
 
 *Documento de respaldo completo (evidencia, fuentes, 77 papers revisados, 28 componentes industriales, 21 casos sectoriales): `ARPA_ESTADO_DEL_ARTE_CONSOLIDADO.md` y `MEDIDA_9_APIC_INFORME.md`. Propuesta del Eje 9 — no constituye diagnóstico comprobado ni compromiso institucional.*
+
+
+---
+
+## 12. Adenda 31/10/2026 — convergencia Asia-Pacífico (anexo 12)
+
+Investigación posterior a la aprobación (186 fuentes verificadas en China y Japón, corte 31/10/2026; detalle completo en `EJE_9_CHINA_JAPON_2026.md`):
+
+1. **China** publicó la serie **GB/Z 185** (may-jul 2026, 7 documentos: arquitectura de interconexión de agentes, código de identidad, gestión de identidad) y ya emite códigos de identidad de agente ("身份码", trazabilidad 可管可控可溯): el análogo normativo más cercano a ARPA. Su filing CAC (1.112 servicios generativos + 731 apps al 31/08/2026, >5.000 algoritmos, consultable en beian.cac.gov.cn) es la Medida 1 a escala nacional — con la diferencia crítica de que opera como permiso de facto con evaluador partidario (no transferible).
+2. **Japón** adopta de facto el diseño ARPA: **Gennai Standard** (publicado junto al despliegue de agentes a ~180.000 funcionarios: derechos de ejecución limitados, aprobación humana para acciones importantes, logs, versionado y retiro de skills, responsabilidad en la administración) y piloto **KYA** del sector financiero con identidad dual (JPKI humano + VC/DID de agente y mandato). El Priority Plan japonés prevé certificados verificables y conexión agente-Mynaportal recién para mediados de 2030s: **ARPA llegaría antes con un régimen equivalente**.
+3. **Claim de novedad ajustado (sustituye la formulación anterior):** el vacío global persiste para la certificación de conformidad por clase de amenaza con suite pública (TCK) — China emite estándares pero no certifica por amenaza, Japón no tiene certificación obligatoria, AAIF certifica personas, ISO 42001 organizaciones — pero existen análogos normativos que deben citarse. Formulación defendible: *"primer instrumento público subnacional democrático que integra las 6 piezas (identidad dual + mandato + tipado + enforcement determinístico + certificación TCK por clase de amenaza + logging no repudiable) en un arnés obligatorio"*.
+4. **Mecanismos adicionales adoptables:** "AISI provincial" como certificación blanda complementaria al TCK (modelo J-AISI: pequeño, sin I+D propia, guías + red-teaming + MOCs con Anthropic/OpenAI/Corea, adhesión al HAIP Reporting Framework público y gratuito); filing/registro consultable por el ciudadano (modelo CAC sin efecto censor); regulación de servicios antropomórficos (china, vigente 15/07/2026) para las fases de agente personal.
+5. **NO transferible (documentado en el anexo 12):** censura pre-lanzamiento, social credit, gobernanza por órgano partidario, escala de I+D estatal china; y de Japón el gradualismo extremo sin enforcement (Santa Fe mantiene reglas determinísticas donde Japón tiene solo estándares internos).
+
+*Adenda verificada con fuentes primarias y secundarias marcadas; no modifica el resto del documento (corte 30/10/2026).*

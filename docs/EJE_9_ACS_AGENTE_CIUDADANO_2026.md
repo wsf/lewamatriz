@@ -694,3 +694,19 @@ Todas las URLs fueron accedidas el **31/10/2026** (bloques 1-4), salvo los docum
 ---
 
 *Documento consolidado del Eje 9 — evaluación "Agente Ciudadano Santafesino". Estado: draft con las decisiones del especialista (Alejandro Sartorio, 31/10/2026) aplicadas — P1 resuelta (encuadre autónomo y complementario); P2-P5 abiertas para la segunda etapa de diseño (§8). Todo el diseño y la Medida 10 son propuesta (interpretación), no hecho comprobado; los hechos citados conservan URL y fecha de acceso de los bloques fuente. Escrito en el área de trabajo del perfil (scratch); no se escribe en el repositorio ni se commitea.*
+
+
+---
+
+## 11. Adenda 31/10/2026 — aportes del anexo 12 (China y Japón)
+
+Investigación posterior a la aprobación (186 fuentes verificadas, corte 31/10/2026; detalle en `EJE_9_CHINA_JAPON_2026.md`):
+
+1. **Escala posible verificada:** las super-apps provinciales chinas en producción masiva — 粤省事 Guangdong 195,77M usuarios reales (estadística oficial mensual oct-2025), 浙里办 Zhejiang 130M, 随申办 Shanghai 87,86M personas + 4,44M empresas con 89% de tramitación online — prueban que la ventanilla única universal con once-only es técnicamente viable a cualquier escala. Lo transferible es la arquitectura (catálogo + datos compartidos por obligación regulatoria, Decreto 809 vigente 01/08/2025); la gobernanza autoritaria NO lo es.
+2. **Fases 2-3 del ACS (segundo cerebro / red familiar):** la regulación china de servicios de IA antropomórfica (emitida 10/04/2026 por CAC + 4 ministerios, vigente 15/07/2026) es el primer instrumento dedicado del mundo: prohíbe inducir dependencia emocional o manipulación, exige protección de menores e intervención en escenarios extremos. Referencia directa para el diseño anti-dark-patterns del ACS y para la P5 (límites de proactividad).
+3. **Hermano interno del ACS (lado funcionario):** el modelo **Gennai** japonés — plataforma LLM común para 39 agencias y ~180.000 funcionarios con 7 modelos domésticos evaluados en paralelo en trabajo administrativo real y compra remunerada desde abril 2027 — es el precedente de procurement coordinado y de "empezar por uno mismo" (隗より始めよ). Compatible con la Medida 3 (plataforma compartida).
+4. **Componente B2G faltante:** gBizID japonés (identidad corporativa única con MFA, 1,25M operadores) + Base Registry (once-only real desde mar-2026) sugieren un "ID Empresa santafesina" como complemento de la ID Ciudadana para trámites de empresas y profesionales.
+5. **Urgencia reforzada:** agentes personales masivos ya operan en China — Doubao (ByteDance) 419M MAU (sep-2026), Qwen-app (ex Quark, Alibaba) 158M, DeepSeek 123M: la velocidad de adopción confirma que la ventana del agente público se achica (consistente con el hallazgo Meta Muse).
+6. **Validación del diferencial público:** ni China ni Japón —los dos Estados con mayor capacidad digital de Asia— tienen un agente personal universal del ciudadano con mandato revocable y memoria soberana. La novedad del ACS se sostiene; su riesgo también (nadie lo hizo antes).
+
+*Adenda verificada; no modifica el resto del documento (corte 31/10/2026).*
