@@ -808,3 +808,19 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
 .fc-badge.fc-bajo { background: #f8d7da; color: #9c2b2b; }
 .fc-badge.fc-none { background: #eceff1; color: #607d8b; }
 .data-empty { padding: 18px; text-align: center; color: #5f6368; font-size: 12px; background: #f6f9fc; border-radius: 8px; margin-top: 10px; }
+
+/* Ampliar tabla de referencia numérica */
+.data-controls-extra { width: 100%; display: flex; justify-content: flex-end; }
+#data-expand { padding: 8px 14px; border: 0; border-radius: 6px; background: #16395e; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; }
+#data-expand:hover { background: #1b4f8a; }
+.data-modal { position: fixed; inset: 0; z-index: 3000; background: #fff; display: flex; flex-direction: column; padding: 14px 20px 20px; }
+.data-modal[hidden] { display: none; }
+.data-modal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.data-modal-head strong { color: #16395e; font-size: 15px; }
+.data-modal-actions { display: flex; gap: 8px; }
+.data-modal-head button { padding: 8px 14px; border: 0; border-radius: 6px; background: #1b4f8a; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; }
+.data-modal-head button:hover { background: #16395e; }
+.data-modal-body { flex: 1; overflow: auto; border: 1px solid #dce9f4; border-radius: 8px; }
+.data-modal-body .data-table { font-size: 13px; }
+.data-modal-body .data-table th { position: sticky; top: 0; z-index: 2; }
+.data-modal-body .data-table td:nth-child(2), .data-modal-body .data-table td:nth-child(4), .data-modal-body .data-table td:nth-child(6) { max-width: none; }

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261031-15">
+  <link rel="stylesheet" href="styles.css?v=20261031-16">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -297,6 +297,19 @@
           <tbody id="data-body"></tbody>
         </table>
       </div>
+      <div class="data-controls-extra">
+        <button id="data-expand" type="button" title="Ampliar la tabla a pantalla completa">⛶ Ampliar tabla</button>
+      </div>
+      <div id="data-modal" class="data-modal" hidden>
+        <div class="data-modal-head">
+          <strong id="data-modal-title">Referencia numérica por eje — vista ampliada</strong>
+          <span class="data-modal-actions">
+            <button id="data-print" type="button" title="Imprimir la tabla ampliada">🖨 Imprimir</button>
+            <button id="data-modal-close" type="button" aria-label="Cerrar vista ampliada">✕ Cerrar</button>
+          </span>
+        </div>
+        <div class="data-modal-body" id="data-modal-body"></div>
+      </div>
       <p class="data-empty" id="data-empty" hidden>Sin filas para este filtro todavía. Los ejes cuyo relevamiento aún no se cargó no tienen datos empíricos verificados — cuando un especialista aporte cifras, se registrarán acá con su fuente y su nivel de chequeo.</p>
     </section>
 
@@ -412,6 +425,6 @@
     <div id="asis-log" class="asis-log" aria-live="polite"></div>
     <div id="asis-menu" class="asis-menu"></div>
   </div>
-  <script src="script.js?v=20261031-15"></script>
+  <script src="script.js?v=20261031-16"></script>
 </body>
 </html>

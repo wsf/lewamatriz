@@ -290,7 +290,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Sistema de verificación de datos cuantitativos: cada cifra del Eje 9 muestra su nivel de chequeo (verde alto / amarillo medio / rojo bajo) con detalle por dato en docs/VERIFICACION_DATOS_EJE_9.md." },
     { fecha: "2026-10-31", texto: "Corrección por verificación: 3 cifras del comparado internacional ajustadas a los valores confirmados en fuentes oficiales (ATRS UK, AEAT España, Bürokratt) y elevadas a nivel alto." },
     { fecha: "2026-10-31", texto: "Nueva sección Referencia numérica: tabla compilada de todos los valores cuantitativos citados por eje, con unidad, período, territorio, fuente y nivel de verificación (35 valores del Eje 9 en la carga inicial)." },
-    { fecha: "2026-10-31", texto: "Referencia numérica: filas de una sola línea (texto largo con elipsis y tooltip al pasar el mouse)." }
+    { fecha: "2026-10-31", texto: "Referencia numérica: filas de una sola línea (texto largo con elipsis y tooltip al pasar el mouse)." },
+    { fecha: "2026-10-31", texto: "Referencia numérica: botón ⛶ para ampliar la tabla a pantalla completa y 🖨 para imprimirla (A4 apaisado), respetando el filtro y la búsqueda activos." }
   ]
 };
 (function initStats() {
@@ -887,4 +888,61 @@ const dataRegistry = [{"eje": "ciencia", "ind": "Inversión en I+D", "val": "193
   sel.addEventListener("change", render);
   if (search) search.addEventListener("input", render);
   render();
+})();
+
+(function initDataModal() {
+  const expandBtn = document.querySelector("#data-expand");
+  const modal = document.querySelector("#data-modal");
+  const modalBody = document.querySelector("#data-modal-body");
+  const closeBtn = document.querySelector("#data-modal-close");
+  const printBtn = document.querySelector("#data-print");
+  if (!expandBtn || !modal || !modalBody) return;
+  function tableHtml() {
+    const wrap = modalBody.querySelector(".data-table-wrap") || document.querySelector("#datos .data-table-wrap");
+    return wrap ? wrap.outerHTML : "";
+  }
+  function openModal() {
+    const wrap = document.querySelector("#datos .data-table-wrap");
+    if (!wrap) return;
+    modalBody.innerHTML = "";
+    modalBody.appendChild(wrap.cloneNode(true));
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal() {
+    modal.hidden = true;
+    modalBody.innerHTML = "";
+    document.body.style.overflow = "";
+  }
+  expandBtn.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+  printBtn.addEventListener("click", () => {
+    const w = window.open("", "_blank");
+    if (!w) { alert("Habilitá las ventanas emergentes para imprimir la tabla."); return; }
+    const today = new Date().toLocaleDateString("es-AR", { year: "numeric", month: "long", day: "numeric" });
+    w.document.open();
+    w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Referencia numérica — Matriz de diagnóstico</title>
+<style>
+ @page { size: A4 landscape; margin: 12mm; }
+ body { font-family: Calibri, Arial, sans-serif; color: #1c1e21; margin: 0; }
+ h1 { font-size: 15pt; color: #16395e; margin: 0 0 2px; }
+ .meta { font-size: 8.5pt; color: #555; margin-bottom: 10px; }
+ .data-table-wrap { overflow: visible; }
+ table { border-collapse: collapse; width: 100%; font-size: 8.5pt; }
+ th { background: #16395e; color: #fff; padding: 4px 6px; text-align: left; }
+ td { padding: 3px 6px; border-bottom: 1px solid #ccc; white-space: nowrap; }
+ tr:nth-child(even) td { background: #f2f6fa; }
+ .fc-badge { display: inline-block; padding: 1px 6px; border-radius: 8px; font-size: 7.5pt; font-weight: 700; }
+ .fc-alto { background: #d9f2e3; color: #1a6b3f; } .fc-medio { background: #fff3cd; color: #8a6d1a; } .fc-bajo { background: #f8d7da; color: #9c2b2b; } .fc-none { background: #eceff1; color: #607d8b; }
+ a { color: #1a5fb4; text-decoration: none; }
+</style></head><body>
+<h1>Matriz de diagnóstico Santa Fe y Rosario — Referencia numérica por eje</h1>
+<p class="meta">Generado el ${today} desde https://wsf.github.io/lewematriz/#datos · Verificación: 🟢 alto (fuente primaria) · 🟡 medio (parcial/oficial no contrastada) · 🔴 bajo (sin verificar)</p>
+${tableHtml()}
+</body></html>`);
+    w.document.close();
+    const doPrint = () => setTimeout(() => { try { w.focus(); w.print(); } catch (e) {} }, 350);
+    if (w.document.readyState === "complete") doPrint(); else w.onload = doPrint;
+  });
 })();
