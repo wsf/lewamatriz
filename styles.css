@@ -654,3 +654,24 @@ body.axis-report-open { overflow: hidden; }
 .asis-chip { padding: 6px 10px; font-size: 11px; color: #2f6f4e; background: #f0f6f2; border: 1px solid #d8e6dd; border-radius: 14px; cursor: pointer; }
 .asis-chip:hover { background: #e3efe7; }
 @media (max-width: 640px) { #asistente-panel { right: 8px; bottom: 76px; height: 66vh; } #asistente-fab { right: 12px; bottom: 12px; } }
+
+/* Resumen del eje — caja celeste al inicio del drawer */
+.axis-summary {
+  background: #e8f4fb;
+  border: 1px solid #bfe0f2;
+  border-left: 4px solid #5aa9d6;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 0 0 20px;
+  color: #1c3d52;
+  font-size: .93rem;
+  line-height: 1.7;
+}
+.axis-summary h4 {
+  margin: 0 0 8px;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #2c6e96;
+}
+.axis-summary strong { color: #143347; }
