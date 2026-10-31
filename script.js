@@ -272,7 +272,7 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Ambientación visual con la paleta del Partido Justicialista de Santa Fe: celeste y blanco, azul justicialista y dorado del sol de Mayo en portada de acceso, secciones, tablero y asistente." },
     { fecha: "2026-10-31", texto: "Nueva sección Mapa conceptual: grafo de burbujas interactivo con física de fuerzas, partículas en las conexiones, foco por cliqueo y filtros por tipo de nodo." },
     { fecha: "2026-10-31", texto: "Mapa conceptual: botón ⛶ para ampliarlo a pantalla completa (con ✕ para salir y tecla Escape)." },
-    { fecha: "2026-10-31", texto: "Video de presentación del proyecto (3:44 min) incrustado en la portada, con transcripción de capítulos disponible en Kommodo." }
+    { fecha: "2026-10-31", texto: "Video de presentación del proyecto (3:44 min) en la portada, como enlace con miniatura y botón de reproducción." }
   ]
 };
 (function initStats() {

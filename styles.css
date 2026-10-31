@@ -770,3 +770,10 @@ body.gm-open { overflow: hidden; }
 .hero-video { margin: 20px 0 0; }
 .hero-video video { display: block; width: 100%; max-width: 880px; border-radius: 10px; border: 1px solid #dce9f4; background: #0b1f38; box-shadow: 0 6px 24px rgba(11,31,56,.16); }
 .hero-video figcaption { margin-top: 8px; font-size: 11px; color: #5f6368; }
+
+/* Video de portada como enlace con miniatura */
+.hero-video-link { position: relative; display: block; max-width: 880px; border-radius: 10px; overflow: hidden; border: 1px solid #dce9f4; box-shadow: 0 6px 24px rgba(11,31,56,.16); }
+.hero-video-link img { display: block; width: 100%; }
+.hero-video-link .play-badge { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: rgba(27,79,138,.88); color: #fff; font-size: 22px; padding-left: 4px; box-shadow: 0 4px 18px rgba(11,31,56,.45); transition: background .15s ease, transform .15s ease; }
+.hero-video-link:hover .play-badge { background: #f6b40e; color: #16395e; transform: translate(-50%, -50%) scale(1.08); }
+.hero-video figcaption a { color: #1b4f8a; }
