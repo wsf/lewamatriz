@@ -765,3 +765,8 @@ body.axis-report-open { overflow: hidden; }
 #gm-collapse { position: absolute; top: 12px; left: 12px; z-index: 7; padding: 7px 12px; font-size: 12px; font-weight: 600; color: #fff; background: rgba(27,79,138,.85); border: 1px solid rgba(116,170,223,.5); border-radius: 6px; cursor: pointer; backdrop-filter: blur(3px); }
 #gm-collapse:hover { background: #16395e; }
 body.gm-open { overflow: hidden; }
+
+/* Video de presentación en portada */
+.hero-video { margin: 20px 0 0; }
+.hero-video video { display: block; width: 100%; max-width: 880px; border-radius: 10px; border: 1px solid #dce9f4; background: #0b1f38; box-shadow: 0 6px 24px rgba(11,31,56,.16); }
+.hero-video figcaption { margin-top: 8px; font-size: 11px; color: #5f6368; }
