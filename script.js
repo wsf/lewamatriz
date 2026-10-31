@@ -270,7 +270,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Diseño: fondos sutiles por sección y asistente emergente con menú de acceso rápido (novedades, estadísticas, proyectos, manual del bot)." },
     { fecha: "2026-10-31", texto: "Resúmenes de ~300 palabras al comienzo del desarrollo de cada eje (caja celeste): alcance, estado, fuentes por bloque y reglas metodológicas." },
     { fecha: "2026-10-31", texto: "Ambientación visual con la paleta del Partido Justicialista de Santa Fe: celeste y blanco, azul justicialista y dorado del sol de Mayo en portada de acceso, secciones, tablero y asistente." },
-    { fecha: "2026-10-31", texto: "Nueva sección Mapa conceptual: grafo de burbujas interactivo con física de fuerzas, partículas en las conexiones, foco por cliqueo y filtros por tipo de nodo." }
+    { fecha: "2026-10-31", texto: "Nueva sección Mapa conceptual: grafo de burbujas interactivo con física de fuerzas, partículas en las conexiones, foco por cliqueo y filtros por tipo de nodo." },
+    { fecha: "2026-10-31", texto: "Mapa conceptual: botón ⛶ para ampliarlo a pantalla completa (con ✕ para salir y tecla Escape)." }
   ]
 };
 (function initStats() {
@@ -685,4 +686,33 @@ const graphData = {
   if (window.ResizeObserver) new ResizeObserver(() => { resize(); }).observe(wrap);
   window.addEventListener("resize", resize);
   resize(); seed(); requestAnimationFrame(loop);
+})();
+
+/* ===== Ampliar mapa conceptual a pantalla completa ===== */
+(function initGraphExpand() {
+  const wrap = document.querySelector(".gm-wrap");
+  const expandBtn = document.querySelector("#gm-expand");
+  const collapseBtn = document.querySelector("#gm-collapse");
+  if (!wrap || !expandBtn) return;
+  function setFull(on) {
+    wrap.classList.toggle("gm-fullscreen", on);
+    document.body.classList.toggle("gm-open", on);
+    if (collapseBtn) collapseBtn.hidden = !on;
+    expandBtn.setAttribute("aria-expanded", on ? "true" : "false");
+    if (on && wrap.requestFullscreen) { try { wrap.requestFullscreen().catch(() => {}); } catch (e) {} }
+    else if (!on && document.fullscreenElement) { try { document.exitFullscreen().catch(() => {}); } catch (e) {} }
+  }
+  expandBtn.addEventListener("click", () => setFull(true));
+  if (collapseBtn) collapseBtn.addEventListener("click", () => setFull(false));
+  document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement && wrap.classList.contains("gm-fullscreen")) {
+      wrap.classList.remove("gm-fullscreen");
+      document.body.classList.remove("gm-open");
+      if (collapseBtn) collapseBtn.hidden = true;
+      expandBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+  document.addEventListener("keydown", ev => {
+    if (ev.key === "Escape" && wrap.classList.contains("gm-fullscreen") && !document.fullscreenElement) setFull(false);
+  });
 })();

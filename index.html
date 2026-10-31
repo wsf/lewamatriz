@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261031-03">
+  <link rel="stylesheet" href="styles.css?v=20261031-04">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -283,8 +283,10 @@
         <label class="gm-toggle"><input type="checkbox" data-gm-type="territorio" checked> Territorios</label>
         <label class="gm-toggle"><input type="checkbox" id="gm-labels" checked> Etiquetas</label>
         <button type="button" id="gm-reset">↻ Reiniciar</button>
+        <button type="button" id="gm-expand" aria-expanded="false">⛶ Ampliar mapa</button>
       </div>
       <div class="gm-wrap">
+        <button id="gm-collapse" type="button" hidden>✕ Salir de pantalla completa</button>
         <canvas id="gm-canvas" aria-label="Grafo interactivo de temas y relaciones de la matriz" role="img"></canvas>
         <div id="gm-tooltip" hidden></div>
         <aside id="gm-info" hidden aria-live="polite"></aside>
@@ -379,6 +381,6 @@
     <div id="asis-log" class="asis-log" aria-live="polite"></div>
     <div id="asis-menu" class="asis-menu"></div>
   </div>
-  <script src="script.js?v=20261031-03"></script>
+  <script src="script.js?v=20261031-04"></script>
 </body>
 </html>
