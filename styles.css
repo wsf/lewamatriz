@@ -798,7 +798,8 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
 .data-table-wrap { overflow-x: auto; border: 1px solid #dce9f4; border-radius: 8px; }
 .data-table { border-collapse: collapse; width: 100%; font-size: 12px; }
 .data-table th { background: #16395e; color: #fff; padding: 8px 10px; text-align: left; font-size: 11px; white-space: nowrap; }
-.data-table td { padding: 7px 10px; border-bottom: 1px solid #e8eff6; vertical-align: top; }
+.data-table td { padding: 5px 10px; border-bottom: 1px solid #e8eff6; vertical-align: middle; white-space: nowrap; }
+.data-table td:nth-child(2), .data-table td:nth-child(4), .data-table td:nth-child(6) { max-width: 250px; overflow: hidden; text-overflow: ellipsis; }
 .data-table tbody tr:nth-child(even) { background: #f6f9fc; }
 .data-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .fc-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; }

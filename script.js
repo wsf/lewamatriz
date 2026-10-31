@@ -289,7 +289,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Títulos de bloques del drawer más grandes y en color fucsia (también en los documentos exportados Word/PDF)." },
     { fecha: "2026-10-31", texto: "Sistema de verificación de datos cuantitativos: cada cifra del Eje 9 muestra su nivel de chequeo (verde alto / amarillo medio / rojo bajo) con detalle por dato en docs/VERIFICACION_DATOS_EJE_9.md." },
     { fecha: "2026-10-31", texto: "Corrección por verificación: 3 cifras del comparado internacional ajustadas a los valores confirmados en fuentes oficiales (ATRS UK, AEAT España, Bürokratt) y elevadas a nivel alto." },
-    { fecha: "2026-10-31", texto: "Nueva sección Referencia numérica: tabla compilada de todos los valores cuantitativos citados por eje, con unidad, período, territorio, fuente y nivel de verificación (35 valores del Eje 9 en la carga inicial)." }
+    { fecha: "2026-10-31", texto: "Nueva sección Referencia numérica: tabla compilada de todos los valores cuantitativos citados por eje, con unidad, período, territorio, fuente y nivel de verificación (35 valores del Eje 9 en la carga inicial)." },
+    { fecha: "2026-10-31", texto: "Referencia numérica: filas de una sola línea (texto largo con elipsis y tooltip al pasar el mouse)." }
   ]
 };
 (function initStats() {
@@ -879,7 +880,7 @@ const dataRegistry = [{"eje": "ciencia", "ind": "Inversión en I+D", "val": "193
     const ejeF = sel.value || "";
     const q = ((search && search.value) || "").toLowerCase().trim();
     const rows = dataRegistry.filter(r => (!ejeF || r.eje === ejeF) && (!q || [r.ind, r.val, r.uni, r.per, r.ter, r.src].join(" ").toLowerCase().includes(q)));
-    tbody.innerHTML = rows.map(r => '<tr><td>' + ejeLabel(r.eje) + '</td><td>' + r.ind + '</td><td class="num"><strong>' + r.val + '</strong></td><td>' + r.uni + '</td><td>' + r.per + '</td><td>' + r.ter + '</td><td>' + (badges[r.niv] || '<span class="fc-badge fc-none">sin chequear</span>') + '</td><td><a href="' + r.url + '" target="_blank" rel="noreferrer">' + r.src + '</a></td></tr>').join("");
+    tbody.innerHTML = rows.map(r => { const esc = t => String(t).replace(/"/g, '&quot;'); return '<tr><td>' + ejeLabel(r.eje) + '</td><td title="' + esc(r.ind) + '">' + r.ind + '</td><td class="num"><strong>' + r.val + '</strong></td><td title="' + esc(r.uni) + '">' + r.uni + '</td><td>' + r.per + '</td><td title="' + esc(r.ter) + '">' + r.ter + '</td><td>' + (badges[r.niv] || '<span class="fc-badge fc-none">sin chequear</span>') + '</td><td><a href="' + r.url + '" target="_blank" rel="noreferrer">' + r.src + '</a></td></tr>'; }).join("");
     if (count) count.textContent = rows.length + " de " + dataRegistry.length + " valores";
     if (empty) empty.hidden = rows.length > 0;
   }
