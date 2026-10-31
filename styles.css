@@ -789,3 +789,21 @@ mark.fc-medio { background: #fff3cd; color: #8a6d1a; padding: 0 3px; border-radi
 mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radius: 3px; }
 .fc-leyenda { background: #f6f9fc; border: 1px solid #dce9f4; border-radius: 6px; padding: 8px 12px; font-size: 11px; color: #445; margin-bottom: 12px; }
 .fc-leyenda mark { font-size: 10px; font-weight: 700; }
+
+/* Referencia numérica por eje */
+.data-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 14px 0; }
+.data-controls select, .data-controls input { padding: 8px 10px; border: 1px solid #c8d8e8; border-radius: 6px; font-size: 12px; background: #fff; color: #1c1e21; font-family: inherit; }
+.data-controls input { flex: 1; min-width: 220px; }
+.data-count { font-size: 11px; color: #5f6368; white-space: nowrap; }
+.data-table-wrap { overflow-x: auto; border: 1px solid #dce9f4; border-radius: 8px; }
+.data-table { border-collapse: collapse; width: 100%; font-size: 12px; }
+.data-table th { background: #16395e; color: #fff; padding: 8px 10px; text-align: left; font-size: 11px; white-space: nowrap; }
+.data-table td { padding: 7px 10px; border-bottom: 1px solid #e8eff6; vertical-align: top; }
+.data-table tbody tr:nth-child(even) { background: #f6f9fc; }
+.data-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fc-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; }
+.fc-badge.fc-alto { background: #d9f2e3; color: #1a6b3f; }
+.fc-badge.fc-medio { background: #fff3cd; color: #8a6d1a; }
+.fc-badge.fc-bajo { background: #f8d7da; color: #9c2b2b; }
+.fc-badge.fc-none { background: #eceff1; color: #607d8b; }
+.data-empty { padding: 18px; text-align: center; color: #5f6368; font-size: 12px; background: #f6f9fc; border-radius: 8px; margin-top: 10px; }

@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261031-13">
+  <link rel="stylesheet" href="styles.css?v=20261031-14">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -96,6 +96,7 @@
       <summary><span>📊</span> Estadísticas</summary>
       <div class="side-submenu">
         <a href="#estadisticas">Tablero KPI</a>
+        <a href="#datos">Referencia numérica</a>
         <a href="#nube-conceptos">Nube de conceptos</a>
         <a href="#actividad-matriz">Actividad</a>
         <a href="#mapa-conceptual">Mapa conceptual</a>
@@ -280,6 +281,25 @@
       <p class="matrix-intro"><small>Metodología: sitio estático — los contadores de productos se calculan al abrir la página desde los datos del banco; colaboradores y registro de actualizaciones son mantenidos por el bot en cada publicación. Las "actualizaciones publicadas" registran entregas del proyecto, no mensajes privados de los chats.</small></p>
     </section>
 
+    <section class="section dataref" id="datos" aria-labelledby="datos-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Datos empíricos</p><h2 id="datos-title">Referencia numérica por eje</h2></div>
+        <p>Todos los valores numéricos citados en los informes de la Matriz, con unidad, período, territorio, fuente y nivel de verificación (🟢 alto · 🟡 medio · 🔴 bajo, según el protocolo de fact-checking). La tabla crece a medida que los especialistas cargan el relevamiento de cada eje.</p>
+      </div>
+      <div class="data-controls">
+        <select id="data-eje" aria-label="Filtrar por eje"></select>
+        <input id="data-buscar" type="search" placeholder="Buscar indicador, valor, período, territorio o fuente…" aria-label="Buscar en la referencia numérica">
+        <span id="data-count" class="data-count"></span>
+      </div>
+      <div class="data-table-wrap">
+        <table class="data-table" id="data-table">
+          <thead><tr><th>Eje</th><th>Indicador</th><th>Valor</th><th>Unidad</th><th>Período</th><th>Territorio</th><th>Verificación</th><th>Fuente</th></tr></thead>
+          <tbody id="data-body"></tbody>
+        </table>
+      </div>
+      <p class="data-empty" id="data-empty" hidden>Sin filas para este filtro todavía. Los ejes cuyo relevamiento aún no se cargó no tienen datos empíricos verificados — cuando un especialista aporte cifras, se registrarán acá con su fuente y su nivel de chequeo.</p>
+    </section>
+
     <section class="section graphmap" id="mapa-conceptual" aria-labelledby="mapa-title">
       <div class="section-heading">
         <div><p class="section-kicker">Explorador conceptual</p><h2 id="mapa-title">Mapa vivo de temas y relaciones</h2></div>
@@ -392,6 +412,6 @@
     <div id="asis-log" class="asis-log" aria-live="polite"></div>
     <div id="asis-menu" class="asis-menu"></div>
   </div>
-  <script src="script.js?v=20261031-13"></script>
+  <script src="script.js?v=20261031-14"></script>
 </body>
 </html>
