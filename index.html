@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261030-06">
+  <link rel="stylesheet" href="styles.css?v=20261030-08">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -90,6 +90,14 @@
         <a href="#proyectos-politicos">Proyectos políticos</a>
         <a href="#frases-significantes">Frases y significantes</a>
         <a href="#consignas-actualizacion">Cómo se actualiza</a>
+      </div>
+    </details>
+    <details class="side-menu">
+      <summary><span>📊</span> Estadísticas</summary>
+      <div class="side-submenu">
+        <a href="#estadisticas">Tablero KPI</a>
+        <a href="#nube-conceptos">Nube de conceptos</a>
+        <a href="#actividad-matriz">Actividad</a>
       </div>
     </details>
     <details class="side-menu">
@@ -244,6 +252,22 @@
       <p class="matrix-intro">Cuando un eje registra aportes verificados, el bot de Telegram extrae y propone aquí consignas, lemas, significantes, frases para la prensa y proyectos políticos. El especialista del eje las aprueba o corrige antes de su publicación; el coordinador puede reorganizarlas. Estados: <strong>borrador</strong> (propuesto, pendiente de validación) y <strong>validado</strong> (aprobado con evidencia de respaldo).</p>
     </section>
 
+    <section class="section stats" id="estadisticas" aria-labelledby="estadisticas-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Tablero del proyecto</p><h2 id="estadisticas-title">Estadísticas de colaboración</h2></div>
+        <p>Quién participa, qué productos se van obteniendo y cómo evoluciona el documento. Los contadores se calculan en vivo sobre el banco de consignas y proyectos; el registro de actividad lo mantiene el bot en cada publicación.</p>
+      </div>
+      <div class="kpi-grid" id="kpi-grid"></div>
+
+      <p class="section-kicker" id="nube-conceptos">Nube de conceptos</p>
+      <p class="matrix-intro">Conceptos más presentes en lemas, consignas, significantes, frases y proyectos del banco (el tamaño refleja su peso relativo).</p>
+      <div id="word-cloud" class="word-cloud" role="img" aria-label="Nube de palabras con los conceptos principales del banco"></div>
+
+      <p class="section-kicker" id="actividad-matriz">Actividad y actualizaciones</p>
+      <div id="activity-log" class="activity-log"></div>
+      <p class="matrix-intro"><small>Metodología: sitio estático — los contadores de productos se calculan al abrir la página desde los datos del banco; colaboradores y registro de actualizaciones son mantenidos por el bot en cada publicación. Las "actualizaciones publicadas" registran entregas del proyecto, no mensajes privados de los chats.</small></p>
+    </section>
+
     <section class="section principles" id="trazabilidad" aria-labelledby="principios-title">
       <p class="section-kicker">Reglas de evidencia</p>
       <h2 id="principios-title">Lo que la matriz exige</h2>
@@ -321,6 +345,6 @@
     <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
     <a href="#inicio">Volver al inicio ↑</a>
   </footer>
-  <script src="script.js?v=20261030-07"></script>
+  <script src="script.js?v=20261030-08"></script>
 </body>
 </html>

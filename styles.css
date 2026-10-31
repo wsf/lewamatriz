@@ -606,3 +606,13 @@ body.axis-report-open { overflow: hidden; }
 .acc-body { padding: 6px 12px 12px; border-top: 1px solid #f2f2f0; }
 .acc-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
 .ambito-ejec { background: #d9f2e3; color: #1e6b40; }
+
+/* Tablero de estadísticas */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 14px 0; }
+.kpi-card { border: 1px solid #eee; border-radius: 6px; padding: 14px; background: #fbfbfa; }
+.kpi-card b { display: block; font-size: 26px; color: #2f6f4e; line-height: 1.1; }
+.kpi-card h3 { margin: 4px 0 2px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #37352f; }
+.kpi-card span { font-size: 10px; color: #9b9a97; }
+.word-cloud { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 8px 14px; padding: 22px 14px; margin: 10px 0 18px; border: 1px solid #eee; border-radius: 6px; background: #fff; }
+.word-cloud span { display: inline-block; font-weight: 600; line-height: 1.15; }
+.activity-log { margin: 10px 0; }

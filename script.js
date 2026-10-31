@@ -239,3 +239,91 @@ renderAccordion("#acc-frases",
     return html;
   },
   k => (((axisMessages[k] || {}).significantes) || []).length + (((axisMessages[k] || {}).prensa) || []).length);
+
+/* ===== Tablero de estadísticas de colaboración ===== */
+const siteStats = {
+  collaborators: [
+    { nombre: "Alejandro Sartorio", rol: "Especialista Eje 9 · dueño del proyecto", eje: "Ciencia, tecnología e innovación", desde: "2026-10-23" },
+    { nombre: "Matías Bk", rol: "Coordinador", eje: "Todos los ejes", desde: "2026-10-30" }
+  ],
+  changelog: [
+    { fecha: "2026-10-23", texto: "Línea base: matriz interactiva con 10 ejes, informe provincial del Eje 9 y documento Word V2." },
+    { fecha: "2026-10-24", texto: "Informe público del Eje 9 enlazado en Referencias; menú lateral desplegable con emojis." },
+    { fecha: "2026-10-29", texto: "Bot de Telegram operativo (@lewa_2027_matriz_bot); manual del usuario y ciclo de trabajo por eje publicados." },
+    { fecha: "2026-10-30", texto: "Informe comparado de IA gubernamental (14 jurisdicciones) integrado al Eje 9; banco de consignas y proyectos con acordeones; subsección Proyectos políticos; portada de acceso con clave; concepto Hiperproductividad incorporado." },
+    { fecha: "2026-10-30", texto: "Nuevo tablero de estadísticas de colaboración (KPI, nube de conceptos y actividad)." }
+  ]
+};
+(function initStats() {
+  const grid = document.querySelector("#kpi-grid");
+  const cloud = document.querySelector("#word-cloud");
+  const log = document.querySelector("#activity-log");
+  if (!grid || !cloud || !log) return;
+
+  /* --- conteos en vivo desde el banco --- */
+  const cats = { consignas: 0, lemas: 0, significantes: 0, prensa: 0, ejecutivo: 0, legislativo: 0 };
+  const ejesConAportes = new Set();
+  Object.keys(axisMessages).forEach(k => {
+    const m = axisMessages[k] || {};
+    let tiene = false;
+    Object.keys(cats).forEach(c => { const n = (m[c] || []).length; cats[c] += n; if (n && k !== "transversal") tiene = true; });
+    if (tiene) ejesConAportes.add(k);
+  });
+  const projs = Object.keys(axisProjects).flatMap(k => (axisProjects[k] || []).map(p => ({ ...p, eje: k })));
+  projs.forEach(p => ejesConAportes.add(p.eje));
+  const prov = projs.filter(p => (p.ambito || "").startsWith("Provincial")).length;
+  const nac = projs.filter(p => (p.ambito || "").startsWith("Nacional")).length;
+  const mun = projs.filter(p => (p.ambito || "").startsWith("Municipal")).length;
+  const ejec = projs.filter(p => (p.ambito || "").startsWith("Ejecutivo")).length;
+
+  const kpis = [
+    { label: "Colaboradores", value: siteStats.collaborators.length, sub: siteStats.collaborators.map(c => c.nombre.split(" ")[0]).join(" · ") },
+    { label: "Actualizaciones publicadas", value: siteStats.changelog.length, sub: "registro de actividad del proyecto" },
+    { label: "Proyectos políticos", value: projs.length, sub: `${prov} provinciales · ${nac} nacionales${mun + ejec ? ` · ${mun + ejec} otros` : ""}` },
+    { label: "Lemas de campaña", value: cats.lemas, sub: "en estado borrador" },
+    { label: "Consignas políticas", value: cats.consignas, sub: "en estado borrador" },
+    { label: "Frases para la prensa", value: cats.prensa, sub: "con datos verificables" },
+    { label: "Ideas ejecutivas y legislativas", value: cats.ejecutivo + cats.legislativo, sub: `${cats.ejecutivo} ejecutivas · ${cats.legislativo} legislativas` },
+    { label: "Ejes con aportes", value: `${ejesConAportes.size}/10`, sub: "más el nivel transversal" }
+  ];
+  grid.innerHTML = kpis.map(k =>
+    `<article class="kpi-card"><b>${k.value}</b><h3>${k.label}</h3><span>${k.sub}</span></article>`).join("");
+
+  /* --- colaboradores + actividad --- */
+  const collab = `<div class="msg-cat"><h3>Colaboradores</h3><ul class="acc-list">` +
+    siteStats.collaborators.map(c =>
+      `<li class="msg-item"><p><strong>${c.nombre}</strong> — ${c.rol}</p><span class="msg-src">Eje: ${c.eje} · desde ${c.desde}</span></li>`).join("") + `</ul></div>`;
+  const changelog = `<div class="msg-cat"><h3>Registro de actualizaciones</h3><ul class="acc-list">` +
+    siteStats.changelog.slice().reverse().map(c =>
+      `<li class="msg-item"><p>${c.texto}</p><span class="msg-src">${c.fecha}</span></li>`).join("") + `</ul></div>`;
+  log.innerHTML = collab + changelog;
+
+  /* --- nube de conceptos --- */
+  const STOP = new Set(("de la que el los las un una uno unos unas para con por en del al se su sus lo como más pero es son fue ser está están ha han hay o u e y a no si ya también cada todo todos toda todas otro otra otros otras mismo misma propios propia puede deben debe hacer haciendo hace desde hasta durante sobre entre cuando donde este esta estos estas ese esa esos esas aquel aquella ante bajo contra mediante según tras cual cuales le les me te nos va van ir tanto muy mucho poco pocos nada sido siendo sin ella ello ellas ellos fe país argentina argentino años año día días vez veces forma parte partes modo nivel equipo equipos persona personas cosa cosas tema temas caso casos uso usos medida medidas modelo modelos matriz eje ejes bloque bloques diagnóstico diagnósticos propuesta propuestas informe informes documento documentos fuente fuentes indicador indicadores sección secciones archivo archivos página sitio dato versión versiones").split(/\s+/));
+  const pesos = [["significantes", 5], ["lemas", 3], ["consignas", 3], ["prensa", 2], ["ejecutivo", 1], ["legislativo", 1]];
+  let corpus = "";
+  Object.values(axisMessages).forEach(m => pesos.forEach(([c, w]) => {
+    (m[c] || []).forEach(it => { corpus += ((it.t || "") + " ").repeat(w); });
+  }));
+  projs.forEach(p => { corpus += (p.titulo + " ").repeat(3) + (p.enunciado || "") + " "; });
+  corpus = corpus.toLowerCase()
+    .replace(/santa fe/g, "santafe").replace(/rosario/g, "rosario")
+    .replace(/inteligencia artificial/g, "ia")
+    .replace(/hiperproductividad/g, "hiperproductividad");
+  const freq = {};
+  corpus.split(/[^a-záéíóúüñ0-9]+/).forEach(w => {
+    if (w.length < 2 || STOP.has(w) || /^\d+$/.test(w)) return;
+    freq[w] = (freq[w] || 0) + 1;
+  });
+  const top = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 45);
+  if (top.length) {
+    const max = top[0][1], min = top[top.length - 1][1];
+    const palette = ["#2f6f4e", "#1a5fb4", "#8a6d1a", "#5b3a8f", "#9a4f14", "#37352f", "#0f766e"];
+    const fmt = w => w === "santafe" ? "Santa Fe" : w === "ia" ? "IA" : w.charAt(0).toUpperCase() + w.slice(1);
+    cloud.innerHTML = top.map(([w, n], i) => {
+      const size = max === min ? 18 : Math.round(12 + 22 * Math.sqrt((n - min) / (max - min)));
+      const rot = ((i * 37) % 9) - 4;
+      return `<span style="font-size:${size}px;color:${palette[i % palette.length]};transform:rotate(${rot}deg)" title="${fmt(w)}: ${n} apariciones">${fmt(w)}</span>`;
+    }).join("");
+  }
+})();
