@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261030-09">
+  <link rel="stylesheet" href="styles.css?v=20261030-10">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -348,6 +348,15 @@
     <p>Lewa Matriz · Memoria metodológica del diagnóstico de Santa Fe y Rosario</p>
     <a href="#inicio">Volver al inicio ↑</a>
   </footer>
-  <script src="script.js?v=20261030-09"></script>
+  <button id="asistente-fab" type="button" aria-label="Abrir asistente de la Matriz" title="Asistente rápido">▦</button>
+  <div id="asistente-panel" hidden role="dialog" aria-label="Asistente Lewa Matriz (simulación)">
+    <div class="asis-header">
+      <div><strong>Asistente Lewa Matriz</strong><span>simulación · bot real en <a href="https://t.me/lewa_2027_matriz_bot" target="_blank" rel="noreferrer">Telegram</a></span></div>
+      <button id="asistente-close" type="button" aria-label="Cerrar asistente">✕</button>
+    </div>
+    <div id="asis-log" class="asis-log" aria-live="polite"></div>
+    <div id="asis-menu" class="asis-menu"></div>
+  </div>
+  <script src="script.js?v=20261030-10"></script>
 </body>
 </html>

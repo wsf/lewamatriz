@@ -327,3 +327,83 @@ const siteStats = {
     }).join("");
   }
 })();
+
+/* ===== Asistente emergente (simulación del bot, acceso rápido para coordinación) ===== */
+(function initAsistente() {
+  const fab = document.querySelector("#asistente-fab");
+  const panel = document.querySelector("#asistente-panel");
+  const log = document.querySelector("#asis-log");
+  const menu = document.querySelector("#asis-menu");
+  const closeBtn = document.querySelector("#asistente-close");
+  if (!fab || !panel || !log || !menu) return;
+
+  const novedades = () => {
+    const ult = siteStats.changelog.slice(-3).reverse();
+    return { html: "Últimas actualizaciones de la página:<ul>" + ult.map(c => `<li><strong>${c.fecha}:</strong> ${c.texto}</li>`).join("") + "</ul>", go: "#actividad-matriz", goLabel: "Ver registro completo" };
+  };
+  const chips = [
+    { label: "🆕 Novedades", get: novedades },
+    { label: "📊 Estadísticas", reply: { html: "Tablero KPI en vivo: colaboradores, productos del banco (proyectos políticos, lemas, consignas, frases), ejes con aportes, nube de conceptos y registro de actividad.", go: "#estadisticas", goLabel: "Abrir tablero" } },
+    { label: "🧭 Proyectos políticos", reply: { html: "Enunciados en borrador listos para revisar, agrupados por ámbito (Legislatura provincial, Congreso Nacional, concejos, Ejecutivo). Cada uno con estado y evidencia de fundamento. Se despliegan en el acordeón de cada eje.", go: "#proyectos-politicos", goLabel: "Revisar proyectos" } },
+    { label: "📣 Consignas y lemas", reply: { html: "Banco por eje en acordeones: consignas políticas, lemas de campaña, frases para la prensa y significantes. Todo en estado borrador, pendiente de validación política y comunicacional.", go: "#consignas-politicas", goLabel: "Abrir banco" } },
+    { label: "🔬 Eje 9 · IA comparada", reply: { html: "Diagnóstico provincial íntegro + estudio de IA gubernamental en 14 jurisdicciones con 8 medidas adoptables por Santa Fe y agenda de 100 días. Clic en la fila 09 de la matriz interactiva para el desarrollo completo.", go: "#matriz-interactiva", goLabel: "Ir a la matriz" } },
+    { label: "🤖 Manual del bot y altas", reply: { html: "Los especialistas entran por t.me/lewa_2027_matriz_bot: obtienen su ID numérico en t.me/userinfobot y te lo mandan a vos (coordinador); Ale o el bot los autorizan. El manual completo tiene casos de uso y el ciclo de trabajo por eje.", go: "#manual-bot", goLabel: "Ver manual" } },
+    { label: "🔁 Ciclo de trabajo por eje", reply: { html: "Ciclo validado en 6 etapas: entrevista inicial → línea base provincial (8 bloques) → investigación verificable → informe consolidado → aprobación del especialista → publicación con aviso.", go: "#ciclo-de-trabajo", goLabel: "Ver ciclo" } }
+  ];
+
+  const bot = (html, go, goLabel) => {
+    const div = document.createElement("div");
+    div.className = "asis-bubble b-bot";
+    div.innerHTML = html + (go ? `<br><button class="go-btn" type="button" data-go="${go}">${goLabel || "Ir a la sección"} →</button>` : "");
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  };
+  const user = text => {
+    const div = document.createElement("div");
+    div.className = "asis-bubble b-user";
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  };
+  const typing = () => {
+    const div = document.createElement("div");
+    div.className = "asis-bubble b-bot";
+    div.innerHTML = '<span class="asis-typing"><i></i><i></i><i></i></span>';
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+    return div;
+  };
+  const goTo = sel => {
+    const t = document.querySelector(sel);
+    if (t) { panel.hidden = true; t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  };
+  log.addEventListener("click", ev => {
+    const btn = ev.target.closest("[data-go]");
+    if (btn) goTo(btn.dataset.go);
+  });
+  const ask = chip => {
+    user(chip.label);
+    const t = typing();
+    setTimeout(() => {
+      t.remove();
+      const r = chip.get ? chip.get() : chip.reply;
+      bot(r.html, r.go, r.goLabel);
+    }, 550);
+  };
+  menu.innerHTML = chips.map((c, i) => `<button type="button" class="asis-chip" data-chip="${i}">${c.label}</button>`).join("");
+  menu.addEventListener("click", ev => {
+    const btn = ev.target.closest("[data-chip]");
+    if (btn) ask(chips[Number(btn.dataset.chip)]);
+  });
+  let greeted = false;
+  fab.addEventListener("click", () => {
+    panel.hidden = !panel.hidden;
+    if (!panel.hidden && !greeted) {
+      greeted = true;
+      bot("Hola 👋 Soy el asistente de la Matriz (simulación del bot de Telegram). ¿Qué querés revisar? Tocá una opción del menú rápido.");
+    }
+    if (!panel.hidden) document.querySelector(".asis-chip")?.focus();
+  });
+  closeBtn.addEventListener("click", () => { panel.hidden = true; });
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !panel.hidden) panel.hidden = true; });
+})();
