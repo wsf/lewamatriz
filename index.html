@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261031-02">
+  <link rel="stylesheet" href="styles.css?v=20261031-03">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -98,6 +98,7 @@
         <a href="#estadisticas">Tablero KPI</a>
         <a href="#nube-conceptos">Nube de conceptos</a>
         <a href="#actividad-matriz">Actividad</a>
+        <a href="#mapa-conceptual">Mapa conceptual</a>
       </div>
     </details>
     <details class="side-menu">
@@ -270,6 +271,27 @@
       <p class="matrix-intro"><small>Metodología: sitio estático — los contadores de productos se calculan al abrir la página desde los datos del banco; colaboradores y registro de actualizaciones son mantenidos por el bot en cada publicación. Las "actualizaciones publicadas" registran entregas del proyecto, no mensajes privados de los chats.</small></p>
     </section>
 
+    <section class="section graphmap" id="mapa-conceptual" aria-labelledby="mapa-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">Explorador conceptual</p><h2 id="mapa-title">Mapa vivo de temas y relaciones</h2></div>
+        <p>Red interactiva de los ejes, conceptos y productos de la matriz. Arrastrá los nodos, pasá el cursor para ver detalles y cliqueá un tema para aislar sus conexiones.</p>
+      </div>
+      <div class="gm-toolbar">
+        <label class="gm-toggle"><input type="checkbox" data-gm-type="eje" checked> Ejes</label>
+        <label class="gm-toggle"><input type="checkbox" data-gm-type="concepto" checked> Conceptos</label>
+        <label class="gm-toggle"><input type="checkbox" data-gm-type="producto" checked> Productos</label>
+        <label class="gm-toggle"><input type="checkbox" data-gm-type="territorio" checked> Territorios</label>
+        <label class="gm-toggle"><input type="checkbox" id="gm-labels" checked> Etiquetas</label>
+        <button type="button" id="gm-reset">↻ Reiniciar</button>
+      </div>
+      <div class="gm-wrap">
+        <canvas id="gm-canvas" aria-label="Grafo interactivo de temas y relaciones de la matriz" role="img"></canvas>
+        <div id="gm-tooltip" hidden></div>
+        <aside id="gm-info" hidden aria-live="polite"></aside>
+      </div>
+      <p class="gm-legend"><span class="gm-dot" style="background:#74acdf"></span> Eje temático · <span class="gm-dot" style="background:#f6b40e"></span> Concepto · <span class="gm-dot" style="background:#cfe3f4"></span> Producto del proyecto · <span class="gm-dot" style="background:#7fd1c1"></span> Territorio</p>
+    </section>
+
     <section class="section principles" id="trazabilidad" aria-labelledby="principios-title">
       <p class="section-kicker">Reglas de evidencia</p>
       <h2 id="principios-title">Lo que la matriz exige</h2>
@@ -357,6 +379,6 @@
     <div id="asis-log" class="asis-log" aria-live="polite"></div>
     <div id="asis-menu" class="asis-menu"></div>
   </div>
-  <script src="script.js?v=20261031-02"></script>
+  <script src="script.js?v=20261031-03"></script>
 </body>
 </html>

@@ -269,7 +269,8 @@ const siteStats = {
     { fecha: "2026-10-30", texto: "Eje 9: paquete ARPA aprobado — propuesta de proyecto, estado del arte (77 papers), Medida 9 APIC y bloque 10 en el desarrollo del eje." },
     { fecha: "2026-10-31", texto: "Diseño: fondos sutiles por sección y asistente emergente con menú de acceso rápido (novedades, estadísticas, proyectos, manual del bot)." },
     { fecha: "2026-10-31", texto: "Resúmenes de ~300 palabras al comienzo del desarrollo de cada eje (caja celeste): alcance, estado, fuentes por bloque y reglas metodológicas." },
-    { fecha: "2026-10-31", texto: "Ambientación visual con la paleta del Partido Justicialista de Santa Fe: celeste y blanco, azul justicialista y dorado del sol de Mayo en portada de acceso, secciones, tablero y asistente." }
+    { fecha: "2026-10-31", texto: "Ambientación visual con la paleta del Partido Justicialista de Santa Fe: celeste y blanco, azul justicialista y dorado del sol de Mayo en portada de acceso, secciones, tablero y asistente." },
+    { fecha: "2026-10-31", texto: "Nueva sección Mapa conceptual: grafo de burbujas interactivo con física de fuerzas, partículas en las conexiones, foco por cliqueo y filtros por tipo de nodo." }
   ]
 };
 (function initStats() {
@@ -366,6 +367,7 @@ const siteStats = {
     { label: "📣 Consignas y lemas", reply: { html: "Banco por eje en acordeones: consignas políticas, lemas de campaña, frases para la prensa y significantes. Todo en estado borrador, pendiente de validación política y comunicacional.", go: "#consignas-politicas", goLabel: "Abrir banco" } },
     { label: "🔬 Eje 9 · IA comparada", reply: { html: "Diagnóstico provincial íntegro + estudio de IA gubernamental en 14 jurisdicciones con 8 medidas adoptables por Santa Fe y agenda de 100 días. Clic en la fila 09 de la matriz interactiva para el desarrollo completo.", go: "#matriz-interactiva", goLabel: "Ir a la matriz" } },
     { label: "🤖 Manual del bot y altas", reply: { html: "Los especialistas entran por t.me/lewa_2027_matriz_bot: obtienen su ID numérico en t.me/userinfobot y te lo mandan a vos (coordinador); Ale o el bot los autorizan. El manual completo tiene casos de uso y el ciclo de trabajo por eje.", go: "#manual-bot", goLabel: "Ver manual" } },
+    { label: "🕸️ Mapa conceptual", reply: { html: "Red interactiva de ejes, conceptos y productos de la matriz: arrastrá nodos, cliqueá para aislar conexiones y filtrá por tipo.", go: "#mapa-conceptual", goLabel: "Abrir mapa" } },
     { label: "🔁 Ciclo de trabajo por eje", reply: { html: "Ciclo validado en 6 etapas: entrevista inicial → línea base provincial (8 bloques) → investigación verificable → informe consolidado → aprobación del especialista → publicación con aviso.", go: "#ciclo-de-trabajo", goLabel: "Ver ciclo" } }
   ];
 
@@ -424,4 +426,263 @@ const siteStats = {
   });
   closeBtn.addEventListener("click", () => { panel.hidden = true; });
   document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !panel.hidden) panel.hidden = true; });
+})();
+
+/* ===== Mapa conceptual: grafo de burbujas interactivo ===== */
+const graphData = {
+  nodes: [
+    { id: "seguridad", label: "Seguridad y convivencia", type: "eje", r: 15, desc: "Eje 1 · violencia armada, homicidios, robos, mercados ilegales y convivencia urbana." },
+    { id: "justicia", label: "Justicia y sistema penal", type: "eje", r: 15, desc: "Eje 2 · tiempos procesales, población carcelaria, MPA, defensa y servicio penitenciario." },
+    { id: "economia", label: "Economía, producción y empleo", type: "eje", r: 15, desc: "Eje 3 · actividad por sectores, empleo, informalidad, exportaciones y crédito." },
+    { id: "educacion", label: "Educación", type: "eje", r: 15, desc: "Eje 4 · matrícula, trayectorias, aprendizajes, infraestructura y conectividad." },
+    { id: "salud", label: "Salud", type: "eje", r: 15, desc: "Eje 5 · resultados sanitarios, cobertura, acceso, salud mental y consumos." },
+    { id: "habitat", label: "Hábitat y vivienda", type: "eje", r: 14, desc: "Eje 6 · déficit habitacional, alquileres, barrios populares, suelo y riesgo hídrico." },
+    { id: "infraestructura", label: "Infraestructura y movilidad", type: "eje", r: 14, desc: "Eje 7 · rutas, transporte, siniestralidad, obras, logística e hidrovía." },
+    { id: "energia", label: "Energía y servicios públicos", type: "eje", r: 14, desc: "Eje 8 · tarifas, cortes, inversión de prestadoras, agua, cloacas y gas." },
+    { id: "ciencia", label: "Ciencia, tecnología e innovación", type: "eje", r: 19, desc: "Eje 9 · el de mayor desarrollo: diagnóstico provincial, comparado internacional de IA y propuesta ARPA." },
+    { id: "cultura", label: "Cultura, deporte y juventudes", type: "eje", r: 14, desc: "Eje 10 · oferta cultural, clubes de barrio, trayectorias juveniles y participación." },
+    { id: "ia", label: "Inteligencia Artificial", type: "concepto", r: 20, desc: "Vector tecnológico transversal de la matriz; foco del enfoque aprobado para el Eje 9." },
+    { id: "hiperproductividad", label: "Hiperproductividad", type: "concepto", r: 18, desc: "Significante rector: fin último de la IA y la evolución tecnológica; su vector actual es la automatización." },
+    { id: "automatizacion", label: "Automatización", type: "concepto", r: 13, desc: "Vector principal actual de la hiperproductividad; con salvaguardas de trabajo y supervisión." },
+    { id: "registro_ia", label: "Registro provincial de IA", type: "concepto", r: 13, desc: "Medida 1: inventario público de sistemas de IA del Estado con ficha estándar (modelo Uruguay/ATRS Reino Unido)." },
+    { id: "evaluacion_impacto", label: "Evaluación de impacto", type: "concepto", r: 12, desc: "Medida 2: clasificación de riesgo por niveles y evaluación previa obligatoria (modelo AIA Canadá)." },
+    { id: "supervision_humana", label: "Supervisión humana", type: "concepto", r: 12, desc: "Medida 5: la IA estatal nunca rechaza derechos; decisión final humana identificable (modelo IRCC)." },
+    { id: "nodo_ia", label: "Nodo Provincial de IA", type: "concepto", r: 13, desc: "Medida 3: infraestructura compartida ASaCTeI para provincia y municipios (modelos Bürokratt, NIA, Pair)." },
+    { id: "arpa", label: "ARPA", type: "concepto", r: 15, desc: "Arnés Referencial Provincial de Agentes de IA: identidad dual, mandato firmado, tipado por sensibilidad y auditoría no repudiable. Aprobado con revisión de 77 papers." },
+    { id: "apic", label: "APIC", type: "concepto", r: 13, desc: "Medida 9: infraestructura provincial de intercambio de datos descentralizado, estilo X-Road estonio." },
+    { id: "soberania_datos", label: "Soberanía de datos", type: "concepto", r: 13, desc: "Titularidad pública de datos; datos sensibles que no entrenan modelos de terceros; costos de salida controlados." },
+    { id: "compra_innovadora", label: "Compra pública innovadora", type: "concepto", r: 13, desc: "Medida 4: cláusulas IA en pliegos; en Rosario, régimen vigente (Ord. 10.264, Dec. 274/2026)." },
+    { id: "datos_abiertos", label: "Datos abiertos", type: "concepto", r: 11, desc: "Open Data Rosario (Ord. 9.279/2014) y publicación de fichas e inventarios." },
+    { id: "once_only", label: "Principio 'una sola vez'", type: "concepto", r: 11, desc: "El Estado no pide datos que ya posee; base de la ley de datos e interoperabilidad propuesta." },
+    { id: "alfabetizacion", label: "Alfabetización en IA", type: "concepto", r: 12, desc: "Medida 6: formación obligatoria por perfiles con universidades (modelos Singapur, Corea, ESAM Rosario)." },
+    { id: "transparencia", label: "Transparencia algorítmica", type: "concepto", r: 11, desc: "Publicación de fichas de sistemas que afectan decisiones; lección PLP: sin alcance obligatorio el registro queda incompleto." },
+    { id: "videovigilancia", label: "Analítica de video (600 cámaras)", type: "concepto", r: 12, desc: "Caso de Rosario sin evaluación pública localizada; checklist de transparencia publicado en el comparado." },
+    { id: "hidrovia", label: "Hidrovía y puertos", type: "concepto", r: 11, desc: "Corredor logístico Paraná-Paraguay: competitividad exportadora con dimensión provincial y nacional." },
+    { id: "rosario", label: "Rosario", type: "territorio", r: 14, desc: "Ciudad de Rosario: escenario de casos clave e instrumento propios (compra pública de innovación, datos abiertos, videovigilancia)." },
+    { id: "santafe", label: "Santa Fe", type: "territorio", r: 14, desc: "Provincia de Santa Fe: ámbito competencial de la matriz y de los proyectos legislativos provinciales." },
+    { id: "matriz", label: "Matriz de diagnóstico", type: "producto", r: 16, desc: "10 ejes × 8 bloques comunes (documento metodológico V1); fase 1 diagnóstico, fase 2 propuestas." },
+    { id: "bloques8", label: "Método de 8 bloques", type: "producto", r: 12, desc: "Diagnóstico, normativa, instituciones, políticas, casos, percepción, actores y síntesis." },
+    { id: "bot", label: "Bot de Telegram", type: "producto", r: 13, desc: "@lewa_2027_matriz_bot: asiste a especialistas con el ciclo completo por eje y aprobación previa a publicar." },
+    { id: "ciclo", label: "Ciclo de trabajo por eje", type: "producto", r: 12, desc: "Entrevista → línea base → investigación verificable → informe → aprobación → publicación." },
+    { id: "comparado", label: "Comparado IA (14 jurisdicciones)", type: "producto", r: 14, desc: "Informe con ~300 fuentes, 8 medidas adoptables, agenda 100 días y contra-lecciones verificadas." },
+    { id: "diagnostico_e9", label: "Diagnóstico Eje 9", type: "producto", r: 12, desc: "Línea base provincial (corte 23/10/2026): I+D, investigadores, normas, instituciones y casos." },
+    { id: "proyectos_politicos", label: "Proyectos políticos", type: "producto", r: 14, desc: "9 enunciados en borrador: 5 para la Legislatura, 3 para el Congreso y 1 ejecutivo, con fundamento." },
+    { id: "banco", label: "Banco de consignas", type: "producto", r: 12, desc: "Consignas, lemas, significantes y frases de prensa por eje, en acordeones y con estado borrador/validado." },
+    { id: "tablero", label: "Tablero de estadísticas", type: "producto", r: 10, desc: "KPIs en vivo, nube de conceptos y registro de actividad del proyecto." }
+  ],
+  links: [
+    ["matriz","bloques8",1],["matriz","bot",1],["matriz","santafe",1],["matriz","rosario",1],["matriz","tablero",.6],
+    ["bot","ciclo",1],["ciclo","comparado",.8],["ciclo","diagnostico_e9",.6],
+    ["comparado","proyectos_politicos",.9],["comparado","banco",.7],["comparado","registro_ia",.8],["comparado","evaluacion_impacto",.8],["comparado","nodo_ia",.8],["comparado","compra_innovadora",.7],["comparado","alfabetizacion",.7],["comparado","supervision_humana",.7],["comparado","transparencia",.7],
+    ["diagnostico_e9","ciencia",1],["diagnostico_e9","videovigilancia",.6],
+    ["ciencia","ia",1],["ciencia","arpa",1],["ciencia","apic",.8],["ciencia","nodo_ia",.8],["ciencia","registro_ia",.7],["ciencia","compra_innovadora",.7],["ciencia","hiperproductividad",.9],
+    ["ia","automatizacion",.9],["ia","hiperproductividad",1],["ia","evaluacion_impacto",.7],["ia","supervision_humana",.7],["ia","alfabetizacion",.6],["ia","videovigilancia",.6],["ia","transparencia",.6],
+    ["hiperproductividad","automatizacion",.9],["hiperproductividad","economia",.8],["hiperproductividad","banco",.6],
+    ["arpa","apic",.9],["arpa","salud",.6],["arpa","educacion",.6],["arpa","soberania_datos",.8],
+    ["apic","once_only",.8],["apic","datos_abiertos",.7],["apic","soberania_datos",.8],
+    ["registro_ia","transparencia",.8],["registro_ia","datos_abiertos",.6],["registro_ia","proyectos_politicos",.7],
+    ["nodo_ia","soberania_datos",.8],["nodo_ia","alfabetizacion",.6],
+    ["compra_innovadora","rosario",.8],["compra_innovadora","economia",.6],
+    ["datos_abiertos","rosario",.7],
+    ["once_only","proyectos_politicos",.7],["once_only","santafe",.6],
+    ["supervision_humana","justicia",.6],["evaluacion_impacto","videovigilancia",.7],
+    ["videovigilancia","seguridad",.9],["videovigilancia","rosario",.8],
+    ["seguridad","justicia",.8],["seguridad","rosario",.7],
+    ["economia","hidrovia",.8],["infraestructura","hidrovia",.8],["economia","infraestructura",.6],
+    ["energia","santafe",.6],["energia","economia",.5],
+    ["habitat","rosario",.7],["habitat","santafe",.5],
+    ["educacion","alfabetizacion",.8],["educacion","cultura",.5],
+    ["cultura","economia",.5],
+    ["salud","santafe",.5],
+    ["proyectos_politicos","banco",.7],["proyectos_politicos","santafe",.8],
+    ["banco","tablero",.6],
+    ["santafe","rosario",.9]
+  ]
+};
+(function initGraphMap() {
+  const canvas = document.querySelector("#gm-canvas");
+  if (!canvas || !canvas.getContext) return;
+  const wrap = canvas.parentElement;
+  const tooltip = document.querySelector("#gm-tooltip");
+  const info = document.querySelector("#gm-info");
+  const ctx = canvas.getContext("2d");
+  const TYPE_COLOR = { eje: "#74acdf", concepto: "#f6b40e", producto: "#cfe3f4", territorio: "#7fd1c1" };
+  const TYPE_LABEL = { eje: "Eje temático", concepto: "Concepto", producto: "Producto", territorio: "Territorio" };
+  let W = 0, H = 0, dpr = 1;
+  const nodes = graphData.nodes.map((n, i) => ({ ...n, x: 0, y: 0, vx: 0, vy: 0, phase: i * 1.7, pinned: false }));
+  const byId = {}; nodes.forEach(n => byId[n.id] = n);
+  const links = graphData.links.map(([a, b, s]) => ({ a: byId[a], b: byId[b], s: s || .6, off: Math.random() })).filter(l => l.a && l.b);
+  const neighbors = {}; nodes.forEach(n => neighbors[n.id] = new Set());
+  links.forEach(l => { neighbors[l.a.id].add(l.b.id); neighbors[l.b.id].add(l.a.id); });
+  const visible = { eje: true, concepto: true, producto: true, territorio: true };
+  let showLabels = true, hover = null, focus = null, dragging = null, heat = 1;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = wrap.clientWidth; H = wrap.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + "px"; canvas.style.height = H + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function seed() {
+    nodes.forEach((n, i) => {
+      const ang = (i / nodes.length) * Math.PI * 2;
+      const rad = Math.min(W, H) * 0.32 * (0.6 + Math.random() * 0.6);
+      n.x = W / 2 + Math.cos(ang) * rad; n.y = H / 2 + Math.sin(ang) * rad;
+      n.vx = 0; n.vy = 0; n.pinned = false;
+    });
+    heat = 1;
+  }
+  function tick(t) {
+    /* física: repulsión + resortes + centro */
+    const k = 0.55 + heat * 0.45;
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j];
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy || 1;
+        const d = Math.sqrt(d2);
+        const f = Math.min(2600 / d2, 2.2) * k;
+        dx /= d; dy /= d;
+        a.vx += dx * f; a.vy += dy * f; b.vx -= dx * f; b.vy -= dy * f;
+      }
+      a.vx += (W / 2 - a.x) * 0.0016 * k; a.vy += (H / 2 - a.y) * 0.0016 * k;
+    }
+    links.forEach(l => {
+      const dx = l.b.x - l.a.x, dy = l.b.y - l.a.y;
+      const d = Math.sqrt(dx * dx + dy * dy) || 1;
+      const rest = l.a.r + l.b.r + 74 - l.s * 26;
+      const f = (d - rest) * 0.006 * k;
+      const ux = dx / d, uy = dy / d;
+      l.a.vx += ux * f; l.a.vy += uy * f; l.b.vx -= ux * f; l.b.vy -= uy * f;
+    });
+    nodes.forEach(n => {
+      if (n === dragging || n.pinned) { n.vx = 0; n.vy = 0; return; }
+      n.vx *= 0.86; n.vy *= 0.86;
+      n.x += n.vx; n.y += n.vy;
+      const m = n.r + 8;
+      n.x = Math.max(m, Math.min(W - m, n.x));
+      n.y = Math.max(m, Math.min(H - m, n.y));
+    });
+    heat = Math.max(0.12, heat * 0.995);
+  }
+  function dimmed(n) {
+    if (!visible[n.type]) return true;
+    if (focus) return !(n === focus || neighbors[focus.id].has(n.id));
+    return false;
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    /* estrellas de fondo */
+    for (let i = 0; i < 46; i++) {
+      const sx = ((i * 173.3) % W), sy = ((i * 91.7) % H);
+      const tw = 0.25 + 0.25 * Math.sin(t / 900 + i);
+      ctx.fillStyle = `rgba(207,227,244,${tw * 0.5})`;
+      ctx.fillRect(sx, sy, 1.4, 1.4);
+    }
+    /* aristas + partículas */
+    links.forEach(l => {
+      const on = !dimmed(l.a) && !dimmed(l.b);
+      const strong = focus && (l.a === focus || l.b === focus);
+      ctx.strokeStyle = strong ? "rgba(246,180,14,.85)" : on ? `rgba(116,170,223,${0.14 + l.s * 0.22})` : "rgba(116,170,223,.05)";
+      ctx.lineWidth = strong ? 1.6 : 1;
+      ctx.beginPath(); ctx.moveTo(l.a.x, l.a.y); ctx.lineTo(l.b.x, l.b.y); ctx.stroke();
+      if (on) {
+        const p = ((t / (5200 - l.s * 2200)) + l.off) % 1;
+        const px = l.a.x + (l.b.x - l.a.x) * p, py = l.a.y + (l.b.y - l.a.y) * p;
+        ctx.fillStyle = strong ? "rgba(246,180,14,.95)" : "rgba(207,230,247,.8)";
+        ctx.shadowColor = strong ? "#f6b40e" : "#74acdf"; ctx.shadowBlur = 6;
+        ctx.beginPath(); ctx.arc(px, py, strong ? 2.4 : 1.7, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    });
+    /* nodos */
+    nodes.forEach(n => {
+      const dm = dimmed(n);
+      const col = TYPE_COLOR[n.type];
+      const pulse = 1 + Math.sin(t / 620 + n.phase) * 0.06;
+      const r = n.r * pulse * (n === hover || n === focus ? 1.22 : 1);
+      ctx.globalAlpha = dm ? 0.10 : 1;
+      ctx.shadowColor = col; ctx.shadowBlur = n === hover || n === focus ? 26 : 14;
+      const g = ctx.createRadialGradient(n.x - r * .3, n.y - r * .35, r * .15, n.x, n.y, r);
+      g.addColorStop(0, "rgba(255,255,255,.92)");
+      g.addColorStop(0.35, col);
+      g.addColorStop(1, "rgba(11,31,56,.9)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0;
+      if (n === focus) {
+        ctx.strokeStyle = "rgba(246,180,14,.9)"; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.arc(n.x, n.y, r + 6 + Math.sin(t / 300) * 2, 0, Math.PI * 2); ctx.stroke();
+      }
+      if (showLabels && !dm) {
+        ctx.font = `${n === hover || n === focus ? 600 : 500} ${n === hover || n === focus ? 12 : 10.5}px Inter, sans-serif`;
+        ctx.textAlign = "center";
+        ctx.fillStyle = n === hover || n === focus ? "#ffffff" : "rgba(220,233,245,.82)";
+        ctx.shadowColor = "rgba(0,0,0,.9)"; ctx.shadowBlur = 4;
+        ctx.fillText(n.label, n.x, n.y + r + 14);
+        ctx.shadowBlur = 0;
+      }
+      ctx.globalAlpha = 1;
+    });
+  }
+  function loop(t) { tick(t); draw(t); requestAnimationFrame(loop); }
+  function nodeAt(x, y) {
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const n = nodes[i];
+      const dx = x - n.x, dy = y - n.y;
+      if (dx * dx + dy * dy < (n.r + 7) * (n.r + 7)) return n;
+    }
+    return null;
+  }
+  function pos(ev) { const b = canvas.getBoundingClientRect(); return { x: ev.clientX - b.left, y: ev.clientY - b.top }; }
+  function showInfo(n) {
+    if (!info) return;
+    if (!n) { info.hidden = true; return; }
+    const conn = [...neighbors[n.id]].map(id => byId[id].label);
+    info.innerHTML = `<button type="button" id="gm-info-close" aria-label="Cerrar">✕</button><span class="gm-info-type" style="color:${TYPE_COLOR[n.type]}">${TYPE_LABEL[n.type]}</span><strong>${n.label}</strong><p>${n.desc}</p><em>Conexiones (${conn.length}):</em><ul>${conn.map(c => `<li>${c}</li>`).join("")}</ul>`;
+    info.hidden = false;
+    const c = document.querySelector("#gm-info-close");
+    if (c) c.addEventListener("click", () => { focus = null; showInfo(null); });
+  }
+  canvas.addEventListener("pointermove", ev => {
+    const p = pos(ev);
+    if (dragging) { dragging.x = p.x; dragging.y = p.y; dragging.vx = 0; dragging.vy = 0; heat = Math.max(heat, .35); return; }
+    const n = nodeAt(p.x, p.y);
+    hover = n;
+    canvas.style.cursor = n ? "pointer" : "default";
+    if (n && tooltip) {
+      tooltip.textContent = n.label;
+      tooltip.hidden = false;
+      tooltip.style.left = Math.min(p.x + 14, W - 170) + "px";
+      tooltip.style.top = (p.y - 30) + "px";
+    } else if (tooltip) tooltip.hidden = true;
+  });
+  canvas.addEventListener("pointerdown", ev => {
+    const p = pos(ev);
+    const n = nodeAt(p.x, p.y);
+    if (n) { dragging = n; canvas.setPointerCapture(ev.pointerId); }
+  });
+  canvas.addEventListener("pointerup", ev => {
+    const p = pos(ev);
+    if (dragging) {
+      const moved = Math.abs(p.x - dragging.x) + Math.abs(p.y - dragging.y);
+      dragging = null;
+    }
+    const n = nodeAt(p.x, p.y);
+    if (n) { focus = focus === n ? null : n; showInfo(focus); }
+    else { focus = null; showInfo(null); }
+  });
+  canvas.addEventListener("pointerleave", () => { hover = null; if (tooltip) tooltip.hidden = true; });
+  document.querySelectorAll("[data-gm-type]").forEach(cb => {
+    cb.addEventListener("change", () => { visible[cb.dataset.gmType] = cb.checked; });
+  });
+  const lab = document.querySelector("#gm-labels");
+  if (lab) lab.addEventListener("change", () => { showLabels = lab.checked; });
+  const reset = document.querySelector("#gm-reset");
+  if (reset) reset.addEventListener("click", () => { focus = null; showInfo(null); seed(); });
+  if (window.ResizeObserver) new ResizeObserver(() => { resize(); }).observe(wrap);
+  window.addEventListener("resize", resize);
+  resize(); seed(); requestAnimationFrame(loop);
 })();
