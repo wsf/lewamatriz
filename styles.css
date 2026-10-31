@@ -327,7 +327,7 @@ body.matrix-open { overflow: hidden; }
 .drawer-note { margin: 10px 0; padding: 8px 10px; color: #787774; background: #fbfbfa; border-left: 3px solid #ddd; font-size: 10px; }
 .drawer-content section { display: grid; grid-template-columns: 26px 1fr; gap: 8px; padding: 11px 0; border-bottom: 1px solid #eee; }
 .drawer-content section > span { color: #9b9a97; font-size: 9px; }
-.drawer-content h4 { margin: 0 0 4px; font-size: 13px; }
+.drawer-content h4 { margin: 0 0 4px; font-size: 16px; color: #d6006e; }
 .drawer-content p { margin: 0 0 4px; color: #5f5e5b; font-size: 11px; }
 .drawer-content small { color: #9b9a97; font-size: 9px; }
 .matrix-fullscreen .axis-drawer { position: absolute; }
@@ -477,7 +477,7 @@ section.matrix-section { width: min(1180px, calc(100% - 28px)); }
 .axis-drawer .drawer-note a { color: #2383e2; font-weight: 600; text-underline-offset: 2px; }
 .axis-drawer .drawer-content section { grid-template-columns: 38px 1fr; gap: 14px; padding: 20px 0; }
 .axis-drawer .drawer-content section > span { font-size: 11px; }
-.axis-drawer .drawer-content h4 { margin-bottom: 7px; font-size: 17px; }
+.axis-drawer .drawer-content h4 { margin-bottom: 8px; font-size: 21px; color: #d6006e; letter-spacing: .2px; }
 .axis-drawer .drawer-content p { margin-bottom: 7px; font-size: 14px; line-height: 1.55; }
 .axis-drawer .drawer-content small { font-size: 11px; line-height: 1.5; }
 body.axis-report-open { overflow: hidden; }

@@ -280,7 +280,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Nueva sección Mapa conceptual: grafo de burbujas interactivo con física de fuerzas, partículas en las conexiones, foco por cliqueo y filtros por tipo de nodo." },
     { fecha: "2026-10-31", texto: "Mapa conceptual: botón ⛶ para ampliarlo a pantalla completa (con ✕ para salir y tecla Escape)." },
     { fecha: "2026-10-31", texto: "Video de presentación del proyecto (3:44 min) en la portada, como enlace con miniatura y botón de reproducción." },
-    { fecha: "2026-10-31", texto: "Exportación por eje: botones 📄 Word (.doc) y 🖨 PDF en el desarrollo de cada eje, con documento completo (resumen, bloques y banco de productos)." }
+    { fecha: "2026-10-31", texto: "Exportación por eje: botones 📄 Word (.doc) y 🖨 PDF en el desarrollo de cada eje, con documento completo (resumen, bloques y banco de productos)." },
+    { fecha: "2026-10-31", texto: "Títulos de bloques del drawer más grandes y en color fucsia (también en los documentos exportados Word/PDF)." }
   ]
 };
 (function initStats() {
@@ -763,7 +764,7 @@ let currentAxisKey = null;
  body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #1c1e21; line-height: 1.5; margin: 28px; }
  h1 { font-size: 17pt; color: #16395e; border-bottom: 2px solid #74acdf; padding-bottom: 6px; }
  h2 { font-size: 13pt; color: #1b4f8a; margin-top: 22px; }
- h3 { font-size: 11.5pt; color: #16395e; margin-top: 16px; }
+ h3 { font-size: 13.5pt; color: #b30059; margin-top: 16px; }
  .meta { color: #555; font-size: 9.5pt; margin-bottom: 18px; }
  .resumen { background: #eaf4fb; border-left: 4px solid #74acdf; padding: 10px 14px; margin: 14px 0; }
  table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 8px 0; }
