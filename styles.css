@@ -782,3 +782,10 @@ body.gm-open { overflow: hidden; }
 .drawer-actions { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
 #drawer-doc, #drawer-pdf { padding: 6px 9px; color: #fff; background: #1b4f8a; border: 0; border-radius: 3px; font-size: 10px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 #drawer-doc:hover, #drawer-pdf:hover { background: #16395e; }
+
+/* Verificación de datos cuantitativos */
+mark.fc-alto { background: #d9f2e3; color: #1a6b3f; padding: 0 3px; border-radius: 3px; }
+mark.fc-medio { background: #fff3cd; color: #8a6d1a; padding: 0 3px; border-radius: 3px; }
+mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radius: 3px; }
+.fc-leyenda { background: #f6f9fc; border: 1px solid #dce9f4; border-radius: 6px; padding: 8px 12px; font-size: 11px; color: #445; margin-bottom: 12px; }
+.fc-leyenda mark { font-size: 10px; font-weight: 700; }
