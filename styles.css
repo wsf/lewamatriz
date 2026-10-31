@@ -675,3 +675,64 @@ body.axis-report-open { overflow: hidden; }
   color: #2c6e96;
 }
 .axis-summary strong { color: #143347; }
+
+/* ===== Ambientación PJ Santa Fe: celeste y blanco · azul justicialista · dorado sol de Mayo ===== */
+:root { --blue: #1b4f8a; --blue-dark: #16395e; --blue-soft: #e3eff9; --green: #c9922e; }
+.brand-mark i { background: #74acdf; }
+.brand-mark i:nth-child(2) { background: #16395e; }
+.brand-mark i:nth-child(3) { background: #f6b40e; }
+.brand-mark i:nth-child(4) { background: #74acdf; }
+.matrix-cover { background: radial-gradient(circle at 18% 115%, rgba(116,170,223,.32), transparent 43%), linear-gradient(112deg, #cfe3f4 0%, #eef5fb 48%, #f7ecd2 100%); }
+.matrix-cover::before, .matrix-cover::after { border-color: rgba(22,57,94,.16); }
+.matrix-cover span { color: #16395e; }
+.cover-icon { background: #f6b40e; color: #16395e; }
+/* Portada de acceso */
+#gate { background: radial-gradient(1200px 600px at 50% -10%, #2e5f96 0%, #16395e 55%, #0b1f38 100%); }
+.gate-mark { color: #f6b40e; }
+.gate-title span { color: #a8cdea; }
+.gate-sub { color: #93aec9; }
+.gate-copy { color: #c9dcec; }
+#gate-pass { background: rgba(0,0,0,.28); border-color: rgba(255,255,255,.24); color: #eef4fa; }
+#gate-pass:focus { border-color: #74acdf; }
+#gate-form button { background: #74acdf; color: #10243c; }
+#gate-form button:hover { background: #9cc5e8; }
+.gate-foot { color: #7e97b3; }
+/* Tablero KPI + banco */
+.kpi-card b { color: #1b4f8a; }
+.kpi-card { border-color: #dce9f4; background: #f8fbfe; }
+.ambito-ejec { background: #fdf3d7; color: #8a6516; }
+.msg-item { border-color: #e6eef6; background: #fafcfe; }
+.eje-acc { border-color: #e2ecf5; }
+.eje-acc summary:hover { background: #f5fafd; }
+.word-cloud { border-color: #dce9f4; background: #fcfdff; }
+.word-cloud span:nth-child(6n+1) { color: #1b4f8a; }
+.word-cloud span:nth-child(6n+2) { color: #74acdf; }
+.word-cloud span:nth-child(6n+3) { color: #16395e; }
+.word-cloud span:nth-child(6n+4) { color: #b98a0e; }
+.word-cloud span:nth-child(6n+5) { color: #2e5f96; }
+.word-cloud span:nth-child(6n+6) { color: #37352f; }
+/* Asistente emergente */
+#asistente-fab { background: #1b4f8a; }
+#asistente-fab:hover { background: #16395e; }
+.asis-header { background: linear-gradient(135deg, #1b4f8a, #16395e); }
+.asis-header a { color: #a8cdea; }
+.b-user { background: #ddebf7; color: #16395e; }
+.asis-bubble .go-btn { background: #1b4f8a; }
+.asis-chip { color: #1b4f8a; background: #eaf3fb; border-color: #c5ddf0; }
+.asis-chip:hover { background: #ddebf7; }
+.asis-log { background: #f8fbfe; }
+/* Fondos de sección: familia celeste/blanco/dorado muy sutil */
+#proposito { background: #f7fafd; box-shadow: 0 0 0 100vmax #f7fafd; }
+#proceso { background: #f1f6fb; box-shadow: 0 0 0 100vmax #f1f6fb; }
+#metodo { background: #ecf3fa; box-shadow: 0 0 0 100vmax #ecf3fa; }
+#ejes { background: #fbf8ef; box-shadow: 0 0 0 100vmax #fbf8ef; }
+#matriz-interactiva { background: #f0f6fb; box-shadow: 0 0 0 100vmax #f0f6fb; }
+#consignas { background: #f6f3fa; box-shadow: 0 0 0 100vmax #f6f3fa; }
+#estadisticas { background: #f7faf0; box-shadow: 0 0 0 100vmax #f7faf0; }
+#trazabilidad { background: #faf6f1; box-shadow: 0 0 0 100vmax #faf6f1; }
+#fuentes { background: #f4f8fa; box-shadow: 0 0 0 100vmax #f4f8fa; }
+.section.next { background: #f6f7f9; box-shadow: 0 0 0 100vmax #f6f7f9; }
+/* method-grid y grillas: acentos azules */
+.method-grid article { border-color: #dce9f4; }
+.method-grid article b { color: #1b4f8a; }
+.source-grid a:hover { border-color: #74acdf; }

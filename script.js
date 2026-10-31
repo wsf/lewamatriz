@@ -268,7 +268,8 @@ const siteStats = {
     { fecha: "2026-10-30", texto: "Nuevo tablero de estadísticas de colaboración (KPI, nube de conceptos y actividad)." },
     { fecha: "2026-10-30", texto: "Eje 9: paquete ARPA aprobado — propuesta de proyecto, estado del arte (77 papers), Medida 9 APIC y bloque 10 en el desarrollo del eje." },
     { fecha: "2026-10-31", texto: "Diseño: fondos sutiles por sección y asistente emergente con menú de acceso rápido (novedades, estadísticas, proyectos, manual del bot)." },
-    { fecha: "2026-10-31", texto: "Resúmenes de ~300 palabras al comienzo del desarrollo de cada eje (caja celeste): alcance, estado, fuentes por bloque y reglas metodológicas." }
+    { fecha: "2026-10-31", texto: "Resúmenes de ~300 palabras al comienzo del desarrollo de cada eje (caja celeste): alcance, estado, fuentes por bloque y reglas metodológicas." },
+    { fecha: "2026-10-31", texto: "Ambientación visual con la paleta del Partido Justicialista de Santa Fe: celeste y blanco, azul justicialista y dorado del sol de Mayo en portada de acceso, secciones, tablero y asistente." }
   ]
 };
 (function initStats() {
@@ -335,7 +336,7 @@ const siteStats = {
   const top = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 45);
   if (top.length) {
     const max = top[0][1], min = top[top.length - 1][1];
-    const palette = ["#2f6f4e", "#1a5fb4", "#8a6d1a", "#5b3a8f", "#9a4f14", "#37352f", "#0f766e"];
+    const palette = ["#1b4f8a", "#74acdf", "#16395e", "#b98a0e", "#2e5f96", "#37352f", "#5d87b5"];
     const fmt = w => w === "santafe" ? "Santa Fe" : w === "ia" ? "IA" : w.charAt(0).toUpperCase() + w.slice(1);
     cloud.innerHTML = top.map(([w, n], i) => {
       const size = max === min ? 18 : Math.round(12 + 22 * Math.sqrt((n - min) / (max - min)));
