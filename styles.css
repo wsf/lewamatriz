@@ -824,3 +824,14 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
 .data-modal-body .data-table { font-size: 13px; }
 .data-modal-body .data-table th { position: sticky; top: 0; z-index: 2; }
 .data-modal-body .data-table td:nth-child(2), .data-modal-body .data-table td:nth-child(4), .data-modal-body .data-table td:nth-child(6) { max-width: none; }
+
+/* Introducción narrativa por bloque del Eje 9 */
+.block-intro {
+  border-left: 3px solid #9db8c9;
+  padding: 2px 0 2px 12px;
+  margin: 0 0 14px;
+  color: #46627a;
+  font-style: italic;
+  font-size: .92rem;
+  line-height: 1.65;
+}
