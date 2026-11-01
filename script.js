@@ -291,7 +291,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Corrección por verificación: 3 cifras del comparado internacional ajustadas a los valores confirmados en fuentes oficiales (ATRS UK, AEAT España, Bürokratt) y elevadas a nivel alto." },
     { fecha: "2026-10-31", texto: "Nueva sección Referencia numérica: tabla compilada de todos los valores cuantitativos citados por eje, con unidad, período, territorio, fuente y nivel de verificación (35 valores del Eje 9 en la carga inicial)." },
     { fecha: "2026-10-31", texto: "Referencia numérica: filas de una sola línea (texto largo con elipsis y tooltip al pasar el mouse)." },
-    { fecha: "2026-10-31", texto: "Referencia numérica: botón ⛶ para ampliar la tabla a pantalla completa y 🖨 para imprimirla (A4 apaisado), respetando el filtro y la búsqueda activos." }
+    { fecha: "2026-10-31", texto: "Referencia numérica: botón ⛶ para ampliar la tabla a pantalla completa y 🖨 para imprimirla (A4 apaisado), respetando el filtro y la búsqueda activos." },
+    { fecha: "2026-10-31", texto: "Nueva sección 'Observaciones de Matías': registro público de las observaciones del coordinador que él autoriza desde el bot de Telegram (arranca vacío y crece con sus aportes)." }
   ]
 };
 (function initStats() {
@@ -945,4 +946,16 @@ ${tableHtml()}
     const doPrint = () => setTimeout(() => { try { w.focus(); w.print(); } catch (e) {} }, 350);
     if (w.document.readyState === "complete") doPrint(); else w.onload = doPrint;
   });
+})();
+
+/* ===== Observaciones de Matías (registro público autorizado desde el bot) ===== */
+const matiasObservations = [];
+
+(function initObservaciones() {
+  const list = document.querySelector("#obs-list");
+  const empty = document.querySelector("#obs-empty");
+  if (!list) return;
+  const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  list.innerHTML = matiasObservations.map(o => `<article class="obs-card"><header><span class="obs-fecha">${o.fecha}</span>${o.eje ? `<span class="obs-eje">${esc(o.eje)}</span>` : ""}</header><p>${esc(o.texto)}</p><footer>Vía bot de Telegram · publicada con autorización de Matías</footer></article>`).join("");
+  if (empty) empty.hidden = matiasObservations.length > 0;
 })();

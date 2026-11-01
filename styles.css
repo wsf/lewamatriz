@@ -835,3 +835,14 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
   font-size: .92rem;
   line-height: 1.65;
 }
+
+/* Observaciones de Matías */
+.obs-list { display: grid; gap: 12px; margin-top: 14px; }
+.obs-card { background: #fff; border: 1px solid #dce9f4; border-left: 4px solid #f6b40e; border-radius: 8px; padding: 12px 16px; }
+.obs-card header { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+.obs-fecha { font-size: 11px; font-weight: 700; color: #16395e; background: #e8f4fb; padding: 2px 8px; border-radius: 10px; }
+.obs-eje { font-size: 11px; color: #5f6368; background: #f1f3f4; padding: 2px 8px; border-radius: 10px; }
+.obs-card p { margin: 0; font-size: 13px; line-height: 1.55; color: #1c1e21; }
+.obs-card footer { margin-top: 8px; font-size: 10px; color: #80868b; }
+.obs-empty { padding: 18px; text-align: center; color: #5f6368; font-size: 12px; background: #f6f9fc; border-radius: 8px; margin-top: 14px; }
+.obs-empty a { color: #1b4f8a; }
