@@ -810,8 +810,7 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
 .data-empty { padding: 18px; text-align: center; color: #5f6368; font-size: 12px; background: #f6f9fc; border-radius: 8px; margin-top: 10px; }
 
 /* Ampliar tabla de referencia numérica */
-.data-controls-extra { width: 100%; display: flex; justify-content: flex-end; }
-#data-expand { padding: 8px 14px; border: 0; border-radius: 6px; background: #16395e; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; }
+#data-expand { padding: 8px 14px; border: 0; border-radius: 6px; background: #16395e; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
 #data-expand:hover { background: #1b4f8a; }
 .data-modal { position: fixed; inset: 0; z-index: 3000; background: #fff; display: flex; flex-direction: column; padding: 14px 20px 20px; }
 .data-modal[hidden] { display: none; }

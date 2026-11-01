@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261031-20">
+  <link rel="stylesheet" href="styles.css?v=20261031-21">
 </head>
 <body>
   <div id="gate" role="dialog" aria-modal="true" aria-label="Acceso al portal">
@@ -289,6 +289,7 @@
         <p>Todos los valores numéricos citados en los informes de la Matriz, con unidad, período, territorio, fuente y nivel de verificación (🟢 alto · 🟡 medio · 🔴 bajo, según el protocolo de fact-checking). La tabla crece a medida que los especialistas cargan el relevamiento de cada eje.</p>
       </div>
       <div class="data-controls">
+        <button id="data-expand" type="button" title="Ampliar la tabla a pantalla completa">⛶ Ampliar tabla</button>
         <select id="data-eje" aria-label="Filtrar por eje"></select>
         <input id="data-buscar" type="search" placeholder="Buscar indicador, valor, período, territorio o fuente…" aria-label="Buscar en la referencia numérica">
         <span id="data-count" class="data-count"></span>
@@ -298,9 +299,6 @@
           <thead><tr><th>Eje</th><th>Indicador y pertenencia</th><th>Valor / rango</th><th>Comentario</th><th>Verificación</th><th>Fuente</th></tr></thead>
           <tbody id="data-body"></tbody>
         </table>
-      </div>
-      <div class="data-controls-extra">
-        <button id="data-expand" type="button" title="Ampliar la tabla a pantalla completa">⛶ Ampliar tabla</button>
       </div>
       <div id="data-modal" class="data-modal" hidden>
         <div class="data-modal-head">
@@ -436,6 +434,6 @@
     <div id="asis-log" class="asis-log" aria-live="polite"></div>
     <div id="asis-menu" class="asis-menu"></div>
   </div>
-  <script src="script.js?v=20261031-20"></script>
+  <script src="script.js?v=20261031-21"></script>
 </body>
 </html>
