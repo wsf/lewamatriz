@@ -293,7 +293,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Referencia numérica: filas de una sola línea (texto largo con elipsis y tooltip al pasar el mouse)." },
     { fecha: "2026-10-31", texto: "Referencia numérica: botón ⛶ para ampliar la tabla a pantalla completa y 🖨 para imprimirla (A4 apaisado), respetando el filtro y la búsqueda activos." },
     { fecha: "2026-10-31", texto: "Nueva sección 'Observaciones de Matías': registro público de las observaciones del coordinador que él autoriza desde el bot de Telegram (arranca vacío y crece con sus aportes)." },
-    { fecha: "2026-11-01", texto: "Referencia numérica más legible: eje por número, indicador con su pertenencia (país/institución/área), valor o rango concreto y columna de comentario." }
+    { fecha: "2026-11-01", texto: "Referencia numérica más legible: eje por número, indicador con su pertenencia (país/institución/área), valor o rango concreto y columna de comentario." },
+    { fecha: "2026-11-01", texto: "Video institucional del proyecto (resumen explicativo generado con NotebookLM) enlazado desde la portada con botón destacado." }
   ]
 };
 (function initStats() {

@@ -845,3 +845,9 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
 .obs-card footer { margin-top: 8px; font-size: 10px; color: #80868b; }
 .obs-empty { padding: 18px; text-align: center; color: #5f6368; font-size: 12px; background: #f6f9fc; border-radius: 8px; margin-top: 14px; }
 .obs-empty a { color: #1b4f8a; }
+
+/* Botón de video institucional en portada */
+.hero-video-link-row { margin: 16px 0 0; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.hero-btn { display: inline-block; padding: 11px 20px; background: #f6b40e; color: #16395e; font-weight: 700; font-size: 13px; border-radius: 6px; text-decoration: none; box-shadow: 0 3px 12px rgba(11,31,56,.18); transition: transform .15s ease, background .15s ease; }
+.hero-btn:hover { background: #ffc933; transform: translateY(-1px); }
+.hero-btn-note { font-size: 11px; color: #5f6368; }
