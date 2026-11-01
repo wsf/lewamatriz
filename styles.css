@@ -851,3 +851,34 @@ mark.fc-bajo { background: #f8d7da; color: #9c2b2b; padding: 0 3px; border-radiu
 .hero-btn { display: inline-block; padding: 11px 20px; background: #f6b40e; color: #16395e; font-weight: 700; font-size: 13px; border-radius: 6px; text-decoration: none; box-shadow: 0 3px 12px rgba(11,31,56,.18); transition: transform .15s ease, background .15s ease; }
 .hero-btn:hover { background: #ffc933; transform: translateY(-1px); }
 .hero-btn-note { font-size: 11px; color: #5f6368; }
+
+/* PoC Supervisor Matriz — avatar flotante simulado */
+#sup-avatar { position: fixed; right: 22px; bottom: 22px; width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(145deg, #1b4f8a, #16395e); border: 2px solid #f6b40e; display: grid; place-items: center; cursor: pointer; z-index: 2500; box-shadow: 0 6px 22px rgba(11,31,56,.4); user-select: none; }
+#sup-avatar:hover { transform: scale(1.06); }
+#sup-avatar .sup-face { font-size: 28px; line-height: 1; }
+#sup-avatar .sup-badge { position: absolute; bottom: -4px; right: -6px; background: #f6b40e; color: #16395e; font-size: 8px; font-weight: 800; padding: 2px 5px; border-radius: 8px; letter-spacing: .5px; }
+#sup-avatar .sup-pulse { position: absolute; inset: -2px; border-radius: 50%; border: 2px solid rgba(246,180,14,.7); animation: supPulse 2.4s ease-out infinite; pointer-events: none; }
+@keyframes supPulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.55); opacity: 0; } }
+#sup-toast { position: fixed; right: 22px; bottom: 92px; max-width: 330px; background: #fff; border: 1px solid #dce9f4; border-left: 4px solid #f6b40e; border-radius: 10px; padding: 10px 14px; box-shadow: 0 8px 28px rgba(11,31,56,.22); z-index: 2500; cursor: pointer; opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
+#sup-toast.show { opacity: 1; transform: translateY(0); }
+#sup-toast .sup-toast-tag { display: inline-block; font-size: 9px; font-weight: 800; color: #8a6d1a; background: #fff3cd; padding: 2px 7px; border-radius: 8px; margin-bottom: 5px; letter-spacing: .4px; }
+#sup-toast p { margin: 0; font-size: 12px; color: #1c1e21; line-height: 1.45; }
+#sup-panel { position: fixed; right: 22px; bottom: 92px; width: 360px; max-width: calc(100vw - 32px); max-height: min(520px, calc(100vh - 130px)); background: #fff; border: 1px solid #dce9f4; border-radius: 12px; box-shadow: 0 14px 44px rgba(11,31,56,.3); z-index: 2600; display: flex; flex-direction: column; overflow: hidden; }
+#sup-panel[hidden] { display: none; }
+#sup-panel header { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: linear-gradient(145deg, #1b4f8a, #16395e); color: #fff; }
+#sup-panel .sup-head-id { font-weight: 700; font-size: 13px; }
+#sup-panel .sup-pill { background: #f6b40e; color: #16395e; font-size: 8.5px; font-weight: 800; padding: 3px 7px; border-radius: 9px; letter-spacing: .4px; }
+#sup-panel .sup-head-actions { margin-left: auto; display: flex; gap: 4px; }
+#sup-panel .sup-head-actions button { background: rgba(255,255,255,.14); border: 0; color: #fff; border-radius: 5px; padding: 3px 7px; font-size: 12px; cursor: pointer; }
+#sup-panel .sup-head-actions button:hover { background: rgba(255,255,255,.28); }
+#sup-panel .sup-warn { margin: 0; padding: 8px 12px; background: #fff3cd; color: #6b5610; font-size: 10px; line-height: 1.45; border-bottom: 1px solid #f3e2b3; }
+#sup-feed { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #f6f9fc; }
+.sup-msg { background: #fff; border: 1px solid #e3edf5; border-radius: 10px; padding: 8px 11px; font-size: 12px; line-height: 1.5; color: #1c1e21; max-width: 95%; box-shadow: 0 1px 3px rgba(11,31,56,.06); }
+.sup-idform { display: flex; flex-direction: column; gap: 8px; }
+.sup-idform input { padding: 8px 10px; border: 1px solid #c8d8e8; border-radius: 6px; font-size: 12px; font-family: inherit; }
+.sup-roles { display: flex; flex-wrap: wrap; gap: 6px; }
+.sup-roles button { padding: 6px 10px; border: 1px solid #1b4f8a; background: #fff; color: #1b4f8a; border-radius: 14px; font-size: 11px; font-weight: 600; cursor: pointer; }
+.sup-roles button:hover { background: #1b4f8a; color: #fff; }
+#sup-quick { display: flex; gap: 6px; padding: 10px 12px; border-top: 1px solid #e3edf5; flex-wrap: wrap; }
+#sup-quick button { padding: 7px 11px; border: 0; background: #16395e; color: #fff; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; }
+#sup-quick button:hover { background: #1b4f8a; }

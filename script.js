@@ -294,7 +294,8 @@ const siteStats = {
     { fecha: "2026-10-31", texto: "Referencia numérica: botón ⛶ para ampliar la tabla a pantalla completa y 🖨 para imprimirla (A4 apaisado), respetando el filtro y la búsqueda activos." },
     { fecha: "2026-10-31", texto: "Nueva sección 'Observaciones de Matías': registro público de las observaciones del coordinador que él autoriza desde el bot de Telegram (arranca vacío y crece con sus aportes)." },
     { fecha: "2026-11-01", texto: "Referencia numérica más legible: eje por número, indicador con su pertenencia (país/institución/área), valor o rango concreto y columna de comentario." },
-    { fecha: "2026-11-01", texto: "Video institucional del proyecto (resumen explicativo generado con NotebookLM) enlazado desde la portada con botón destacado." }
+    { fecha: "2026-11-01", texto: "Video institucional del proyecto (resumen explicativo generado con NotebookLM) enlazado desde la portada con botón destacado." },
+    { fecha: "2026-11-01", texto: "Prueba de concepto: avatar flotante 'Supervisor Matriz' que simula recorrer el documento y avisar conclusiones (demostración guionada, con advertencia visible de simulación)." }
   ]
 };
 (function initStats() {
@@ -960,4 +961,197 @@ const matiasObservations = [];
   const esc = t => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   list.innerHTML = matiasObservations.map(o => `<article class="obs-card"><header><span class="obs-fecha">${o.fecha}</span>${o.eje ? `<span class="obs-eje">${esc(o.eje)}</span>` : ""}</header><p>${esc(o.texto)}</p><footer>Vía bot de Telegram · publicada con autorización de Matías</footer></article>`).join("");
   if (empty) empty.hidden = matiasObservations.length > 0;
+})();
+
+/* ===== PoC: Supervisor Matriz — avatar flotante SIMULADO ===== */
+(function initSupervisorPoC() {
+  if (window.__supPoCInit) return;
+  window.__supPoCInit = true;
+  const LS_USER = "sup_poc_user_v1";
+  const SS_TOASTS = "sup_poc_toasts_v1";
+
+  function stGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function stSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function ssGet(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+  function ssSet(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
+
+  /* --- "conclusiones" calculadas sobre datos reales del sitio (presentación simulada) --- */
+  function conclusions() {
+    const out = [];
+    try {
+      const n = { alto: 0, medio: 0, bajo: 0 };
+      factChecks.claims.forEach(c => { n[c.nivel] = (n[c.nivel] || 0) + 1; });
+      out.push(`Recorrí el documento completo: conté ${dataRegistry.length} valores en la referencia numérica y ${factChecks.claims.length} afirmaciones verificadas (${n.alto} 🟢, ${n.medio} 🟡, ${n.bajo} 🔴).`);
+      const bank = (typeof axisMessages !== "undefined" && axisMessages["ciencia"]) || {};
+      const projs = (typeof axisProjects !== "undefined" && axisProjects["ciencia"]) || [];
+      out.push(`El banco de productos tiene ${(bank.lemas || []).length} lemas, ${(bank.consignas || []).length} consignas y ${projs.length} proyectos políticos — todos del Eje 9. Conclusión: hay 9 ejes esperando sus primeros aportes.`);
+      out.push(`Concepto emergente: "Hiperproductividad" se repite en lemas, consignas y proyectos. Mi lectura (simulada): es el significante con más tracción del banco.`);
+      out.push(`Actividad del documento: ${siteStats.changelog.length} actualizaciones publicadas y ${siteStats.collaborators.length} colaboradores activos. Esto está vivo.`);
+      out.push(`Rigor detectado: las 3 cifras que fallaron la verificación fueron corregidas y registradas con fecha. Así se construye confianza pública.`);
+      out.push(`Cobertura territorial: los datos distinguen provincia de Santa Fe, ciudad de Rosario y comparaciones internacionales de 14 jurisdicciones. Ningún universo se mezcla con otro.`);
+    } catch (e) {
+      out.push("Estuve supervisando el documento: la matriz consolida 10 ejes con un método común de 8 bloques.");
+    }
+    return out;
+  }
+
+  const ADVICE = {
+    especialista: [
+      "Productividad: volcá tus datos al bot de Telegram apenas los detectes — el ciclo aporte → fuente → publicación toma minutos, no días.",
+      "Productividad: usá los 8 bloques como checklist de tu eje y exportalo a Word (📄 en el drawer) para revisarlo offline.",
+      "Productividad: cada cifra que cargues con valor, período, territorio, unidad y fuente entra verde en la verificación. Sin fuente, entra roja: mejor declararla siempre."
+    ],
+    coordinador: [
+      "Productividad: el tablero KPI y el registro de actividad te dan el pulso diario; cada publicación llega a tu Telegram con los contadores.",
+      "Productividad: priorizá validar borradores del banco — lo validado es lo que el asesor político puede usar sin riesgo.",
+      "Productividad: tus observaciones autorizadas quedan públicas y ordenan el criterio de todos los especialistas. Una observación tuya vale por diez correcciones."
+    ],
+    asesor: [
+      "Productividad: filtrá el banco por estado 'validado' antes de usar material en prensa; las frases con base citable blindan al candidato.",
+      "Productividad: la referencia numérica te da el dato + fuente + color de verificación en una fila — ideal para preparar entrevistas y discursos.",
+      "Productividad: exportá el eje a PDF antes de cada reunión de equipo; el documento completo con su banco viaja en un archivo."
+    ],
+    visitante: [
+      "Productividad: empezá por el video institucional de la portada (2 min de contexto), seguí por el mapa conceptual y cerrá con la referencia numérica.",
+      "Productividad: cada cifra del sitio tiene color de verificación — verde es citable, amarillo es con cautela. Usalo como semáforo.",
+      "Productividad: el registro de actividad te muestra qué cambió y cuándo: guardá la página y volvé cuando veas movimientos nuevos."
+    ]
+  };
+  const ROLES = [["especialista", "🧑‍🔬 Especialista de eje"], ["coordinador", "🧭 Coordinación"], ["asesor", "🏛️ Asesor político"], ["visitante", "👀 Visitante"]];
+
+  function adviceFor(role) {
+    const list = ADVICE[role] || ADVICE.visitante;
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  /* --- DOM --- */
+  const avatar = document.createElement("div");
+  avatar.id = "sup-avatar";
+  avatar.title = "Supervisor Matriz — prueba de concepto (SIMULACIÓN)";
+  avatar.innerHTML = '<span class="sup-face">🤖</span><span class="sup-badge">SIM</span><span class="sup-pulse"></span>';
+  document.body.appendChild(avatar);
+
+  const toast = document.createElement("div");
+  toast.id = "sup-toast";
+  toast.hidden = true;
+  toast.innerHTML = '<span class="sup-toast-tag">🔔 Simulación</span><p id="sup-toast-text"></p>';
+  document.body.appendChild(toast);
+
+  const panel = document.createElement("div");
+  panel.id = "sup-panel";
+  panel.hidden = true;
+  panel.innerHTML = `
+    <header>
+      <span class="sup-head-id">🤖 Supervisor Matriz</span>
+      <span class="sup-pill">PoC · SIMULACIÓN</span>
+      <span class="sup-head-actions">
+        <button id="sup-mute" type="button" title="Pausar avisos">🔔</button>
+        <button id="sup-close" type="button" title="Cerrar">✕</button>
+      </span>
+    </header>
+    <p class="sup-warn">⚠️ <strong>Prueba de concepto:</strong> este avatar es una simulación con fines demostrativos. No supervisa realmente el documento ni identifica usuarios: los mensajes son guionados en tu navegador y nada se envía a ningún servidor.</p>
+    <div id="sup-feed"></div>
+    <div id="sup-quick"></div>`;
+  document.body.appendChild(panel);
+
+  const feed = panel.querySelector("#sup-feed");
+  const quick = panel.querySelector("#sup-quick");
+  const toastText = toast.querySelector("#sup-toast-text");
+  let muted = false;
+  let usedC = 0;
+
+  function say(html, delay) {
+    setTimeout(() => {
+      const d = document.createElement("div");
+      d.className = "sup-msg";
+      d.innerHTML = html;
+      feed.appendChild(d);
+      feed.scrollTop = feed.scrollHeight;
+    }, delay || 250);
+  }
+  function quickButtons(user) {
+    quick.innerHTML = "";
+    const mk = (label, fn) => { const b = document.createElement("button"); b.type = "button"; b.textContent = label; b.addEventListener("click", fn); quick.appendChild(b); };
+    mk("💡 Un consejo", () => say("💡 " + adviceFor(user.role)));
+    mk("🔎 ¿Qué detectaste?", () => { const cs = conclusions(); say("🔎 " + cs[usedC % cs.length]); usedC++; });
+    mk("🔁 Reiniciar demo", () => { try { localStorage.removeItem(LS_USER); } catch (e) {} location.reload(); });
+  }
+
+  function identify() {
+    let user = null;
+    try { user = JSON.parse(stGet(LS_USER) || "null"); } catch (e) {}
+    if (user && user.name && user.role) {
+      say(`Hola de nuevo, <strong>${user.name}</strong> 👋 (te "reconocí" de tu visita anterior — simulado, guardado solo en este navegador).`);
+      say("🔎 " + conclusions()[0]);
+      say("💡 " + adviceFor(user.role));
+      quickButtons(user);
+      return;
+    }
+    say("Hola 👋 Soy el <strong>Supervisor Matriz</strong>, un avatar de prueba que simula recorrer el documento, sacar conclusiones y avisarte lo relevante.");
+    say("Para la demo necesito \"identificarte\" (simulado: queda solo en tu navegador, nada viaja a ningún servidor). ¿Con quién hablo?");
+    const form = document.createElement("div");
+    form.className = "sup-idform";
+    form.innerHTML = '<input id="sup-name" type="text" placeholder="Tu nombre" maxlength="40"><div class="sup-roles">' +
+      ROLES.map(([r, l]) => `<button type="button" data-role="${r}">${l}</button>`).join("") + "</div>";
+    feed.appendChild(form);
+    feed.scrollTop = feed.scrollHeight;
+    form.querySelectorAll(".sup-roles button").forEach(b => b.addEventListener("click", () => {
+      const name = (form.querySelector("#sup-name").value || "").trim() || "colega";
+      const role = b.dataset.role;
+      stSet(LS_USER, JSON.stringify({ name, role }));
+      form.remove();
+      const roleLabel = (ROLES.find(x => x[0] === role) || [])[1] || role;
+      say(`Identificado ✅ <strong>${name}</strong> · perfil ${roleLabel} <em>(simulación)</em>.`);
+      say(`Encantado, ${name}. Recién terminé una pasada por el documento. Te cuento lo primero que detecté:`);
+      say("🔎 " + conclusions()[0]);
+      say("💡 Y un consejo para tu tarea: " + adviceFor(role));
+      quickButtons({ name, role });
+      startToasts(name);
+    }));
+  }
+
+  function showToast(text) {
+    toastText.textContent = text;
+    toast.hidden = false;
+    toast.classList.add("show");
+    setTimeout(() => { toast.classList.remove("show"); setTimeout(() => { toast.hidden = true; }, 400); }, 9000);
+  }
+
+  let toastTimer = null;
+  function startToasts(name) {
+    let shown = parseInt(ssGet(SS_TOASTS) || "0", 10);
+    if (toastTimer) clearInterval(toastTimer);
+    toastTimer = setInterval(() => {
+      if (muted || shown >= 8 || !panel.hidden) return;
+      const cs = conclusions();
+      showToast(`${name ? name + ": " : ""}${cs[shown % cs.length]} — clic para abrir el Supervisor.`);
+      shown++;
+      ssSet(SS_TOASTS, String(shown));
+    }, 60000);
+  }
+
+  avatar.addEventListener("click", () => {
+    toast.hidden = true;
+    if (panel.hidden) {
+      panel.hidden = false;
+      if (!feed.dataset.init) { feed.dataset.init = "1"; identify(); }
+    } else {
+      panel.hidden = true;
+    }
+  });
+  toast.addEventListener("click", () => { toast.hidden = true; avatar.click(); });
+  panel.querySelector("#sup-close").addEventListener("click", () => { panel.hidden = true; });
+  panel.querySelector("#sup-mute").addEventListener("click", e => {
+    muted = !muted;
+    e.currentTarget.textContent = muted ? "🔕" : "🔔";
+    e.currentTarget.title = muted ? "Reanudar avisos" : "Pausar avisos";
+  });
+
+  setTimeout(() => {
+    if (parseInt(ssGet(SS_TOASTS) || "0", 10) >= 8) return;
+    showToast("Supervisor Matriz (simulación) 🤖: detecté algunas cosas recorriendo el documento… clic para verlas.");
+    ssSet(SS_TOASTS, String(parseInt(ssGet(SS_TOASTS) || "0", 10) + 1));
+  }, 18000);
+
+  window.supervisorPoC = { conclusions, adviceFor };
 })();
